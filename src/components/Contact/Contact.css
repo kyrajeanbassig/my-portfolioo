@@ -1,0 +1,86 @@
+.contact-section {
+  padding: 2.5rem 1rem;
+  background: #ffffff;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #6a0dad;
+  margin-bottom: 2rem;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact-box {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(106, 13, 173, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(106, 13, 173, 0.2);
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+  color: #6a0dad;
+  margin-bottom: 0.5rem;
+}
+
+.contact-box h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #6a0dad;
+  margin-bottom: 0.5rem;
+}
+
+.contact-box p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.contact-box a {
+  color: #6a0dad;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-box a:hover {
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.social-circle {
+  background: #c59dd6;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 3px 8px rgba(106, 13, 173, 0.2);
+}
+
+.social-circle:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(106, 13, 173, 0.3);
+}

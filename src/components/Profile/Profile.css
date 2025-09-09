@@ -1,0 +1,120 @@
+.profile-section {
+  position: relative;
+  padding: 4rem 2rem;
+  background: #fdfaff; /* your light purple-ish background */
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+.profile-intro {
+  flex: 1;
+}
+
+.intro-greeting {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 0.3rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0.2rem 0;
+  color: #222;
+}
+
+.highlight {
+  color: #6a0dad; /* your purple highlight color */
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin: 0.5rem 0 1rem;
+  color: #6a0dad;
+}
+
+.social-links a {
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #6a0dad;
+}
+
+.profile-image {
+  flex: 1;
+  text-align: center;
+}
+
+.profile-pic {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  border: 6px solid white;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background-color: #6a0dad; /* purple button */
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #7f39ff;
+}
+
+.background-shape {
+  position: absolute;
+  z-index: 0;
+  opacity: 0.3;
+  border-radius: 50%;
+  filter: blur(60px);
+}
+
+.shape-one {
+  width: 300px;
+  height: 300px;
+  background: #6a0dad; /* yellow */
+  top: -60px;
+  right: -80px;
+}
+
+.shape-two {
+  width: 250px;
+  height: 250px;
+  background: #6a0dad; /* orange */
+  bottom: -60px;
+  left: -60px;
+}
+
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-pic {
+    width: 180px;
+    height: 180px;
+  }
+}

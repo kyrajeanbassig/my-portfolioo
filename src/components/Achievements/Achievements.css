@@ -1,0 +1,81 @@
+.achievements-section {
+  padding: 3rem 1rem;
+  background: #faf7ff;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.achievements-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #6a0dad;
+  margin-bottom: 2.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  user-select: none;
+}
+
+/* Grid layout with 2 columns and gap */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.8rem;
+  padding: 0 0.5rem;
+}
+
+/* Card style with soft gradient & rounded corners */
+.achievement-card {
+  background: linear-gradient(135deg, #fceaff 0%, #e9f0ff 100%);
+  border-radius: 18px;
+  padding: 1.4rem 1.6rem;
+  box-shadow: 0 5px 15px rgba(106, 13, 173, 0.1);
+  transition: all 0.35s ease;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  user-select: none;
+}
+
+.achievement-card:hover {
+  box-shadow: 0 10px 25px rgba(106, 13, 173, 0.25);
+  transform: translateY(-6px);
+}
+
+/* Icon with circle background & subtle shadow */
+.achievement-icon {
+  flex-shrink: 0;
+  font-size: 2rem;
+  background: #fff;
+  padding: 0.6rem;
+  border-radius: 50%;
+  box-shadow: 0 3px 7px rgba(106, 13, 173, 0.12);
+  color: #6a0dad;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* Text styling */
+.achievement-text {
+  font-weight: 600;
+  color: #4a2b7f;
+  font-size: 1rem;
+  line-height: 1.3;
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievement-card {
+    padding: 1.2rem 1rem;
+  }
+}
