@@ -247,3 +247,47 @@ p {
     justify-content: center;
   }
 }
+/* Orbiting Icons around profile */
+.orbit-btn {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #6a0dad; /* your purple palette */
+  color: #fff;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(106, 13, 173, 0.6); /* glowing */
+  animation: spin 6s linear infinite;
+  user-select: none;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.orbit-btn:hover {
+  transform: scale(1.2);
+  background-color: #7f39ff;
+}
+
+/* Orbit positions */
+.orbit1 { top: -70px; left: 50%; transform-origin: 0 0; }
+.orbit2 { top: 50%; left: -70px; transform-origin: 0 0; }
+.orbit3 { bottom: -70px; left: 50%; transform-origin: 0 0; }
+
+/* Spin animation */
+@keyframes spin {
+  0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .orbit-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    animation: spin 8s linear infinite;
+  }
+}

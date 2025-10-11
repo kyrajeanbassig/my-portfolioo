@@ -1,0 +1,76 @@
+/* Orbit wrapper (relative to profile image) */
+.profile-image {
+  position: relative;
+  display: inline-block;
+  width: 180px;   /* match your profile image size */
+  height: 180px;
+}
+
+/* Orbiting icons container */
+.orbit-btn {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #6a0dad; 
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  top: 78%;
+  left: 4%;
+  margin: -2px; /* half of orbit-btn size to center */
+  transform-origin: 200px 0; /* profile radius (90) + half icon (25) = 115px */
+}
+
+/* Hover effect */
+.orbit-btn:hover {
+  transform: scale(1.2);
+  background-color: #7f39ff;
+}
+
+/* Circular motion animation */
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Apply animation with delays for multiple icons */
+.orbit1 { animation: orbit 8s linear infinite; }
+.orbit2 { animation: orbit 8s linear infinite; animation-delay: 2s; }
+.orbit3 { animation: orbit 8s linear infinite; animation-delay: 4s; }
+.orbit4 { animation: orbit 8s linear infinite; animation-delay: 6s; }
+
+.dash-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  z-index: 100;
+  text-align: center;
+  width: 300px;
+}
+
+.dash-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
