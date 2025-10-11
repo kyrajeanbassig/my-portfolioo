@@ -3,57 +3,43 @@ import './Profile.css';
 import profile from '../../assets/download.jpg';
 
 function Profile() {
-  const [dogImage, setDogImage] = useState(null);
+  const [quote, setQuote] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
-  // Handle icon clicks
-  const handleClick = async (icon) => {
+  // Array of inspirational quotes
+  const quotes = [
+    "The best way to predict the future is to create it. — Peter Drucker",
+    "Believe you can and you're halfway there. — Theodore Roosevelt",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts. — Winston Churchill",
+    "Your limitation—it’s only your imagination.",
+    "Push yourself, because no one else is going to do it for you.",
+    "Great things never come from comfort zones.",
+    "Dream it. Wish it. Do it.",
+    "Don’t watch the clock; do what it does. Keep going. — Sam Levenson",
+    "The harder you work for something, the greater you’ll feel when you achieve it.",
+    "Little by little, day by day, what is meant for you will find its way."
+  ];
+
+  const handleClick = (icon) => {
     switch (icon) {
       case "💻":
-        // Fetch a random dog image and show modal
-        try {
-          const response = await fetch("https://dog.ceo/api/breeds/image/random");
-          const data = await response.json();
-          setDogImage(data.message);
-        } catch {
-          alert("Failed to fetch dog image!");
-        }
+        document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
         break;
-
       case "🤓":
-        // Fun fact
-        const facts = [
-          "Dogs can understand up to 250 words and gestures!",
-          "A dog's sense of smell is 40 times better than humans!",
-          "Puppies are born deaf, blind, and toothless!",
-          "Dogs have three eyelids, including one to keep their eyes moist!"
-        ];
-        const randomFact = facts[Math.floor(Math.random() * facts.length)];
-        alert(`🤓 Fun Fact: ${randomFact}`);
+        document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
         break;
-
       case "💬":
-        // Simple chat prompt
-        const msg = prompt("Say something to your virtual dog:");
-        if (msg) alert(`You said: "${msg}" 🐶`);
+        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
         break;
-
       case "🌟":
-        // Fetch random dog breed
-        try {
-          const response = await fetch("https://dog.ceo/api/breeds/list/random");
-          const data = await response.json();
-          alert(`🌟 Random Dog Breed: ${data.message}`);
-        } catch {
-          alert("Failed to fetch dog breed!");
-        }
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        setQuote(randomQuote);
+        setShowModal(true);
         break;
-
       default:
-        console.log("Icon clicked");
+        break;
     }
   };
-
-  const closeModal = () => setDogImage(null);
 
   return (
     <section id="profile" className="profile-section">
@@ -61,7 +47,6 @@ function Profile() {
       <div className="background-shape shape-two"></div>
 
       <div className="profile-header">
-        {/* Left content */}
         <div className="profile-intro">
           <p className="intro-greeting">Hello,</p>
           <h1 className="title">
@@ -85,24 +70,22 @@ function Profile() {
           <a href="#contact" className="cta-button">Get in Touch</a>
         </div>
 
-        {/* Right content */}
         <div className="profile-image">
           <img src={profile} alt="Kyra Jean Bassig" className="profile-pic" />
 
-          {/* Orbiting Icons */}
-          <div className="orbit-btn orbit1" onClick={() => handleClick("💻")} title="Random Dog 💻">💻</div>
-          <div className="orbit-btn orbit2" onClick={() => handleClick("🤓")} title="Fun Fact 🤓">🤓</div>
-          <div className="orbit-btn orbit3" onClick={() => handleClick("💬")} title="Chat 💬">💬</div>
-          <div className="orbit-btn orbit4" onClick={() => handleClick("🌟")} title="Random Breed 🌟">🌟</div>
+          <div className="orbit-btn orbit1" onClick={() => handleClick("💻")}>💻</div>
+          <div className="orbit-btn orbit2" onClick={() => handleClick("🤓")}>🤓</div>
+          <div className="orbit-btn orbit3" onClick={() => handleClick("💬")}>💬</div>
+          <div className="orbit-btn orbit4" onClick={() => handleClick("🌟")}>🌟</div>
         </div>
       </div>
 
-      {/* Modal for Dog Image */}
-      {dogImage && (
-        <div className="modal-overlay" onClick={closeModal}>
+      {/* Modal for Quote */}
+      {showModal && (
+        <div className="modal-overlay" onClick={() => setShowModal(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <img src={dogImage} alt="Random Dog" />
-            <button onClick={closeModal}>Close</button>
+            <p style={{ fontStyle: 'italic' }}>{quote}</p>
+            <button className="modal-close-btn" onClick={() => setShowModal(false)}>Close</button>
           </div>
         </div>
       )}

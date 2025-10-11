@@ -15,9 +15,7 @@ function App() {
 
   useEffect(() => {
     const savedMode = localStorage.getItem('darkMode');
-    if (savedMode === 'true') {
-      setDarkMode(true);
-    }
+    if (savedMode === 'true') setDarkMode(true);
   }, []);
 
   useEffect(() => {
@@ -28,11 +26,11 @@ function App() {
     <div className={darkMode ? 'App dark' : 'App'}>
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
       <Profile />
-      <About />
-      <Educational /> 
+      <About id="about" />
+      <Educational />
       <Skills />
-      <Projects />
-      <Contact />
+      <Projects id="projects" />
+      <Contact id="contact" />
       <Footer />
     </div>
   );
