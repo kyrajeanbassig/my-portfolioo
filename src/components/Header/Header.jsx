@@ -1,7 +1,10 @@
-import React from 'react';
-import './Header.css';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import "./Header.css";
 
 function Header() {
+  const location = useLocation();
+
   return (
     <header className="site-header">
       <div className="container">
@@ -12,11 +15,46 @@ function Header() {
 
         <nav className="navbar">
           <ul>
-            <li><a href="#home" className="nav-link active">Home</a></li>
-            <li><a href="#about" className="nav-link">About</a></li>
-            <li><a href="#projects" className="nav-link">Projects</a></li>
-            <li><a href="#skills" className="nav-link">Skills</a></li>
-            <li><a href="#contact" className="nav-link">Contact</a></li>
+            <li>
+              <Link
+                to="/"
+                className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/about"
+                className={`nav-link ${location.pathname === "/about" ? "active" : ""}`}
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/projects"
+                className={`nav-link ${location.pathname === "/projects" ? "active" : ""}`}
+              >
+                Projects
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/skills"
+                className={`nav-link ${location.pathname === "/skills" ? "active" : ""}`}
+              >
+                Skills
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/contact"
+                className={`nav-link ${location.pathname === "/contact" ? "active" : ""}`}
+              >
+                Contact
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

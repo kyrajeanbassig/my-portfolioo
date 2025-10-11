@@ -1,11 +1,21 @@
+
 .site-header {
-  background-color: #ffffff;
-  border-bottom: 1px solid #ddd;
-  padding: 20px 0;
-  position: sticky;
+  background: linear-gradient(90deg, #ffffff 0%, #f8f9fc 100%);
+  border-bottom: 1px solid #e0e0e0;
+  padding: 18px 0;
+  position: fixed; 
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+body {
+  padding-top: 80px; 
+  margin: 0;
 }
 
 .container {
@@ -15,25 +25,28 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 24px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #222;
-  gap: 8px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1e1e1e;
+  gap: 10px;
+  letter-spacing: 0.5px;
 }
 
 .logo-icon {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  color: #4A90E2;
 }
 
 .navbar ul {
   list-style: none;
   display: flex;
-  gap: 24px;
+  gap: 28px;
   margin: 0;
   padding: 0;
 }
@@ -44,22 +57,25 @@
   font-weight: 600;
   font-size: 1rem;
   position: relative;
-  transition: color 0.3s ease;
+  letter-spacing: 0.3px;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .nav-link:hover,
 .nav-link:focus {
-  color: #000;
+  color: #4A90E2;
+  transform: translateY(-2px);
 }
 
 .nav-link::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -4px;
+  bottom: -5px;
   width: 0%;
   height: 2px;
-  background-color: #000;
+  background-color: #4A90E2;
+  border-radius: 2px;
   transition: width 0.3s ease;
 }
 
@@ -68,13 +84,44 @@
   width: 100%;
 }
 
-/* Optional: Add responsive behavior */
 @media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 14px;
+  }
+
   .navbar ul {
-    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
   }
 
   .logo-text {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
   }
+
+  .nav-link {
+    font-size: 0.95rem;
+  }
+}
+
+.projects-container {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.project-card {
+  width: 300px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
 }

@@ -1,17 +1,15 @@
-/* Orbit wrapper (relative to profile image) */
-.profile-image {
+
+.api-orbit-wrapper {
   position: relative;
   display: inline-block;
-  width: 180px;   /* match your profile image size */
-  height: 180px;
 }
 
-/* Orbiting icons container */
+
 .orbit-btn {
   position: absolute;
   width: 50px;
   height: 50px;
-  background-color: #6a0dad; 
+  background-color: #6a0dad;
   color: #fff;
   border-radius: 50%;
   display: flex;
@@ -20,29 +18,25 @@
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   transition: transform 0.3s ease, background-color 0.3s ease;
-  top: 78%;
-  left: 4%;
-  margin: -2px; /* half of orbit-btn size to center */
-  transform-origin: 200px 0; /* profile radius (90) + half icon (25) = 115px */
+  font-size: 22px;
 }
 
-/* Hover effect */
 .orbit-btn:hover {
   transform: scale(1.2);
   background-color: #7f39ff;
 }
 
-/* Circular motion animation */
+
+.orbit1 { top: -20px; left: 180px; animation: orbit 8s linear infinite; }
+.orbit2 { top: 50px; left: 240px; animation: orbit 8s linear infinite 2s; }
+.orbit3 { top: 170px; left: 200px; animation: orbit 8s linear infinite 4s; }
+.orbit4 { top: 100px; left: 100%; animation: orbit 8s linear infinite 6s; }
+
 @keyframes orbit {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from { transform: rotate(0deg) translateX(10px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(10px) rotate(-360deg); }
 }
 
-/* Apply animation with delays for multiple icons */
-.orbit1 { animation: orbit 8s linear infinite; }
-.orbit2 { animation: orbit 8s linear infinite; animation-delay: 2s; }
-.orbit3 { animation: orbit 8s linear infinite; animation-delay: 4s; }
-.orbit4 { animation: orbit 8s linear infinite; animation-delay: 6s; }
 
 .dash-card {
   position: fixed;
@@ -53,9 +47,17 @@
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  z-index: 100;
+  z-index: 2000;
   text-align: center;
   width: 300px;
+  color: #333;
+  border-top: 4px solid #6a0dad;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -60%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
 }
 
 .dash-card img {
@@ -66,11 +68,11 @@
 
 .close-btn {
   position: absolute;
-  top: 8px;
+  top: 6px;
   right: 8px;
   background: transparent;
   border: none;
   font-size: 18px;
+  color: #6a0dad;
   cursor: pointer;
 }
-

@@ -1,41 +1,69 @@
-import React, { useState } from 'react';
-import './Profile.css';
-import profile from '../../assets/download.jpg';
+import React, { useState } from "react";
+import "./Profile.css";
+import profile from "../../assets/download.jpg";
 
 function Profile() {
-  const [quote, setQuote] = useState('');
+  const [content, setContent] = useState("");
   const [showModal, setShowModal] = useState(false);
 
-  // Array of inspirational quotes
-  const quotes = [
-    "The best way to predict the future is to create it. — Peter Drucker",
-    "Believe you can and you're halfway there. — Theodore Roosevelt",
-    "Success is not final, failure is not fatal: It is the courage to continue that counts. — Winston Churchill",
-    "Your limitation—it’s only your imagination.",
-    "Push yourself, because no one else is going to do it for you.",
-    "Great things never come from comfort zones.",
-    "Dream it. Wish it. Do it.",
-    "Don’t watch the clock; do what it does. Keep going. — Sam Levenson",
-    "The harder you work for something, the greater you’ll feel when you achieve it.",
-    "Little by little, day by day, what is meant for you will find its way."
-  ];
+  const skills = ["HTML", "CSS", "JavaScript", "React", "Python", "Networking"];
+  const softSkills = ["Teamwork", "Adaptability", "Problem-solving", "Communication", "Leadership"];
 
   const handleClick = (icon) => {
     switch (icon) {
-      case "💻":
-        document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
-        break;
-      case "🤓":
-        document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-        break;
-      case "💬":
-        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-        break;
-      case "🌟":
-        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-        setQuote(randomQuote);
+      case "📘":
+        setContent(
+          <div className="resume-card glass-purple">
+            <h2 className="resume-title">📘 Mini Resume</h2>
+            <div className="resume-body">
+              <p><strong>Name:</strong> Kyra Jean Bassig</p>
+              <p><strong>Course:</strong> BS in Information Technology</p>
+              <p><strong>Goal:</strong> To apply my skills in web development and system management.</p>
+            </div>
+            <a
+              href="/KyraJean_Resume.pdf"
+              download
+              className="resume-download-btn"
+            >
+              ⬇ Download Resume
+            </a>
+          </div>
+        );
         setShowModal(true);
         break;
+
+      case "🧩":
+        const randomSkill = skills[Math.floor(Math.random() * skills.length)];
+        setContent(
+          <div className="api-card">
+            <h2>🧩 Skill Generator</h2>
+            <p>🎯 Random Skill: <strong>{randomSkill}</strong></p>
+          </div>
+        );
+        setShowModal(true);
+        break;
+
+      case "🧾":
+        setContent(
+          <div className="api-card">
+            <h2>🧾 Certificate Viewer</h2>
+            <p>🏅 Coming Soon: A showcase of my achievements and training certificates.</p>
+          </div>
+        );
+        setShowModal(true);
+        break;
+
+      case "✨":
+        const randomSoft = softSkills[Math.floor(Math.random() * softSkills.length)];
+        setContent(
+          <div className="api-card">
+            <h2>✨ Soft Skills Spotlight</h2>
+            <p>💡 Highlighted Soft Skill: <strong>{randomSoft}</strong></p>
+          </div>
+        );
+        setShowModal(true);
+        break;
+
       default:
         break;
     }
@@ -56,15 +84,9 @@ function Profile() {
           <h2 className="subtitle">BSIT Student</h2>
 
           <div className="social-links">
-            <a href="https://www.facebook.com/kyrajeannn" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-facebook"></i>
-            </a>
-            <a href="https://www.instagram.com/_kyyy.yyy/?next=%2F" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="https://x.com/_kyraajeannnn" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-twitter"></i>
-            </a>
+            <a href="https://www.facebook.com/kyrajeannn" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/_kyyy.yyy/?next=%2F" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
+            <a href="https://x.com/_kyraajeannnn" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i></a>
           </div>
 
           <a href="#contact" className="cta-button">Get in Touch</a>
@@ -73,18 +95,19 @@ function Profile() {
         <div className="profile-image">
           <img src={profile} alt="Kyra Jean Bassig" className="profile-pic" />
 
-          <div className="orbit-btn orbit1" onClick={() => handleClick("💻")}>💻</div>
-          <div className="orbit-btn orbit2" onClick={() => handleClick("🤓")}>🤓</div>
-          <div className="orbit-btn orbit3" onClick={() => handleClick("💬")}>💬</div>
-          <div className="orbit-btn orbit4" onClick={() => handleClick("🌟")}>🌟</div>
+          {}
+          <div className="orbit-btn orbit1" data-label="Mini Resume" onClick={() => handleClick("📘")}>📘</div>
+          <div className="orbit-btn orbit2" data-label="Skill Generator" onClick={() => handleClick("🧩")}>🧩</div>
+          <div className="orbit-btn orbit3" data-label="Certificate Viewer" onClick={() => handleClick("🧾")}>🧾</div>
+          <div className="orbit-btn orbit4" data-label="Soft Skills" onClick={() => handleClick("✨")}>✨</div>
         </div>
       </div>
 
-      {/* Modal for Quote */}
+      {}
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <p style={{ fontStyle: 'italic' }}>{quote}</p>
+            {content}
             <button className="modal-close-btn" onClick={() => setShowModal(false)}>Close</button>
           </div>
         </div>

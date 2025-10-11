@@ -1,49 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import "./API.css";
 
 function API() {
-  const handleClick = (icon) => {
-    switch (icon) {
-      case "💻":
-        // Fetch a random dog image and show in alert
-        fetch("https://dog.ceo/api/breeds/image/random")
-          .then(res => res.json())
-          .then(data => alert(`💻 Dog Image URL: ${data.message}`))
-          .catch(() => alert("Failed to fetch dog"));
-        break;
+  const [card, setCard] = useState(null);
 
-      case "🤓":
-        // Fun fact alert
-        const facts = [
-          "Dogs can understand up to 250 words and gestures!",
-          "A dog's sense of smell is 40 times better than humans!",
-          "Puppies are born deaf, blind, and toothless!",
-          "Dogs have three eyelids, including one to keep their eyes moist!"
-        ];
-        const randomFact = facts[Math.floor(Math.random() * facts.length)];
-        alert(`🤓 Fun Fact: ${randomFact}`);
-        break;
-
-      case "💬":
-        // Simple chat prompt
-        const msg = prompt("Say something to your virtual dog:");
-        if (msg) {
-          alert(`You said: "${msg}" 🐶`);
-        }
-        break;
-
-      default:
-        console.log("Icon clicked");
-    }
+  const handleClick = (type) => {
+    setCard(type);
   };
+
+  const closeCard = () => setCard(null);
 
   return (
     <div className="api-orbit-wrapper">
-      <div className="api-orbit-container">
-        <div className="orbit-btn orbit1" onClick={() => handleClick("💻")}>💻</div>
-        <div className="orbit-btn orbit2" onClick={() => handleClick("🤓")}>🤓</div>
-        <div className="orbit-btn orbit3" onClick={() => handleClick("💬")}>💬</div>
-      </div>
+      {}
+      <div className="orbit-btn orbit1" onClick={() => handleClick("resume")}>📄</div>
+      <div className="orbit-btn orbit2" onClick={() => handleClick("skills")}>🧠</div>
+      <div className="orbit-btn orbit3" onClick={() => handleClick("certs")}>🎓</div>
+      <div className="orbit-btn orbit4" onClick={() => handleClick("soft")}>💬</div>
+
+      {}
+      {card && (
+        <div className="dash-card">
+          <button className="close-btn" onClick={closeCard}>✖</button>
+          
+          {card === "resume" && (
+            <>
+              <h3>Mini Resume 📄</h3>
+              <p><strong>Name:</strong> Kyra Jean Bassig</p>
+              <p><strong>Course:</strong> BSIT Student</p>
+              <p><strong>Goal:</strong> Build creative and useful digital solutions.</p>
+            </>
+          )}
+
+          {card === "skills" && (
+            <>
+              <h3>Skill Generator 🧠</h3>
+              <p>🎨 Frontend: React, HTML, CSS</p>
+              <p>💻 Backend: Node.js, Firebase</p>
+              <p>⚙️ Tools: Git, Figma, Canva</p>
+            </>
+          )}
+
+          {card === "certs" && (
+            <>
+              <h3>Certificates 🎓</h3>
+              <img 
+                src="https://via.placeholder.com/250x150?text=Certificate+Preview"
+                alt="Certificate"
+              />
+              <p>Click to view your latest achievement!</p>
+            </>
+          )}
+
+          {card === "soft" && (
+            <>
+              <h3>Soft Skills 💬</h3>
+              <ul>
+                <li>🌟 Adaptability</li>
+                <li>🤝 Teamwork</li>
+                <li>💡 Problem Solving</li>
+                <li>💬 Communication</li>
+              </ul>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }
