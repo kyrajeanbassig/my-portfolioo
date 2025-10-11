@@ -1,11 +1,13 @@
+/* ===== Profile Section ===== */
 .profile-section {
   position: relative;
   padding: 4rem 2rem;
-  background: #fdfaff; /* your light purple-ish background */
+  background: #fdfaff;
   overflow: hidden;
   font-family: 'Segoe UI', sans-serif;
 }
 
+/* ===== Profile Header ===== */
 .profile-header {
   display: flex;
   align-items: center;
@@ -34,7 +36,7 @@
 }
 
 .highlight {
-  color: #6a0dad; /* your purple highlight color */
+  color: #6a0dad;
 }
 
 .subtitle {
@@ -54,25 +56,10 @@
   color: #6a0dad;
 }
 
-.profile-image {
-  flex: 1;
-  text-align: center;
-  margin: -130px auto 0;  
-  position: relative;  
-}
-
-.profile-pic {
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  border: 6px solid white;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
 .cta-button {
   display: inline-block;
   margin-top: 1.5rem;
-  background-color: #6a0dad; /* purple button */
+  background-color: #6a0dad;
   color: #fff;
   padding: 0.75rem 1.5rem;
   border-radius: 30px;
@@ -85,6 +72,64 @@
   background-color: #7f39ff;
 }
 
+/* ===== Profile Image & Orbit ===== */
+.profile-image {
+  position: relative;           /* parent for absolute orbit icons */
+  width: 250px;                 /* profile image size */
+  height: 250px;
+   left: -60px; 
+   top: -30px;    
+  margin: 60px auto 0;          /* vertical spacing */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 6px solid white;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* ===== Orbiting Icons ===== */
+.orbit-btn {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #6a0dad;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  top: 50%;
+  left: 50%;
+  margin: -25px;                /* half icon size */
+  transform-origin: 165px 0;    /* orbit radius: profile radius + half icon */
+  animation: orbit 8s linear infinite;
+}
+
+.orbit1 { animation-delay: 0s; }
+.orbit2 { animation-delay: 2s; }
+.orbit3 { animation-delay: 4s; }
+.orbit4 { animation-delay: 6s; }
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(165px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(165px) rotate(-360deg); }
+}
+
+.orbit-btn:hover {
+  transform: scale(1.2);
+  background-color: #7f39ff;
+}
+
+/* ===== Background Shapes ===== */
 .background-shape {
   position: absolute;
   z-index: 0;
@@ -96,7 +141,7 @@
 .shape-one {
   width: 300px;
   height: 300px;
-  background: #6a0dad; /* yellow */
+  background: #6a0dad;
   top: -60px;
   right: -80px;
 }
@@ -104,98 +149,29 @@
 .shape-two {
   width: 250px;
   height: 250px;
-  background: #6a0dad; /* orange */
+  background: #6a0dad;
   bottom: -60px;
   left: -60px;
 }
 
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
   .profile-header {
     flex-direction: column;
     text-align: center;
   }
 
-  .profile-pic {
+  .profile-image {
     width: 180px;
     height: 180px;
+    margin: 40px auto 0;
   }
-}
 
-.orbit-container {
-  position: absolute;
-  width: 280px;
-  height: 280px;
-  top: 0;
-  left: 0;
-}
-
-.orbit-btn {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background: #e0c3fc;
-  color: #fff;
-  font-size: 1.5rem;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(106, 13, 173, 0.6);
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-/* Hover effect */
-.orbit-btn:hover {
-  transform: scale(1.2);
-  background: linear-gradient(135deg, #e0c3fc, #8ec5fc); /* Moved gradient here */
-  background-color: #e0c3fc;
-}
-
-/* Orbit positions using spin animation */
-.orbit1 {
-  top: 0;
-  left: 50%;
-  transform-origin: -80px 80px;
-  animation: spin1 6s linear infinite;
-}
-
-.orbit2 {
-  top: 50%;
-  left: 0;
-  transform-origin: 80px -80px;
-  animation: spin2 6s linear infinite reverse;
-}
-
-.orbit3 {
-  bottom: 0;
-  left: 50%;
-  transform-origin: -80px -80px;
-  animation: spin3 6s linear infinite;
-}
-
-/* Spin animations */
-@keyframes spin1 {
-  0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
-}
-
-@keyframes spin2 {
-  0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
-}
-
-@keyframes spin3 {
-  0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
   .orbit-btn {
     width: 40px;
     height: 40px;
     font-size: 1.2rem;
     animation-duration: 8s;
+    transform-origin: 115px 0; /* smaller orbit for smaller profile */
   }
 }
