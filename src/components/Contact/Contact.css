@@ -1,8 +1,11 @@
 .contact-section {
-padding: 7.0rem 1rem;
-background: linear-gradient(135deg, #dfd3e2, #e9f0ff);
-text-align: center;
+  position: relative;
+  padding:10rem 1rem;
+  background: linear-gradient(100deg, #ffffff, #fefeff);
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
 }
+
 
 .contact-title {
   font-size: 3.8rem;
@@ -13,7 +16,7 @@ text-align: center;
 
 .contact-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   max-width: 1000px;
   margin: 0 auto;

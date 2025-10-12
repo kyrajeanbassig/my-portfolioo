@@ -1,9 +1,11 @@
 .skills-section {
-  padding: 11.5rem 1rem;
-  background: linear-gradient(135deg, #dfd3e2, #e9f0ff);
+  position: relative;
+  padding:15rem 1rem;
+  background: linear-gradient(100deg, #ffffff, #fefeff);
   overflow: hidden;
-  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
 }
+
 
 .skills-title {
   font-size: 3.8rem;

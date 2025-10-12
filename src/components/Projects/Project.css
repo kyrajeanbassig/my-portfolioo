@@ -1,19 +1,22 @@
 .projects-section {
-  padding: 7.5rem 1rem;
-  background: #faf7ff;
-  text-align: center;
+  position: relative;
+  padding:10rem 10rem;
+  background: linear-gradient(50deg, #dfd3e2, #fefeff);
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
 }
+
 
 .projects-title {
   font-size: 2.8rem;
   font-weight: 700;
   color: #6a0dad;
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
 }
 
 .projects-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
   gap: 1.2rem;
 }
 

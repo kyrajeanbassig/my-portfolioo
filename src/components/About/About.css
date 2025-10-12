@@ -1,18 +1,19 @@
 .about-section {
-  padding: 5.5rem 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: none; 
+  position: relative;
+  padding:15rem 0rem;
+  background: linear-gradient(100deg, #ffffff, #fefeff);
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
 }
+
 
 .about-container {
   display: flex;
   flex-direction: row-reverse; 
-  align-items: center;
+  align-items: streth;
   max-width: 3500px;
   width: 560%;
-  background: linear-gradient(120deg, #e0c3fc, #8ec5fc); 
+  background: linear-gradient(120deg, #e0c3fc, #e199f3); 
   border-radius: 20px;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
   overflow: hidden;
@@ -51,7 +52,7 @@
 .section-label {
   color: #6a0dad;
   font-weight: 1000;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0rem;
   font-size: 2rem;
   text-transform: uppercase;
 }
