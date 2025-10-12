@@ -1,24 +1,27 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
 .skills-section {
   position: relative;
-  padding:15rem 1rem;
+  padding: 15rem 1rem;
   background: linear-gradient(100deg, #ffffff, #fefeff);
   overflow: hidden;
   font-family: 'Segoe UI', sans-serif;
 }
-
 
 .skills-title {
   font-size: 3.8rem;
   font-weight: 700;
   color: #ab39ce;
   margin-bottom: 5rem;
+  text-align: center;
+  animation: fadeInUp 1s ease-out forwards;
 }
 
 .skills-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.2rem;
+  gap: 2rem;
 }
 
 .skill-circle {
@@ -26,17 +29,56 @@
   color: white;
   width: 150px;
   height: 150px;
-  border-radius: 100%;
+  border-radius: 50%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 0.95rem;
   font-weight: 600;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 10px 10px rgba(106, 13, 173, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 10px 15px rgba(106, 13, 173, 0.2);
+  animation: floatIn 0.6s ease-in-out both;
+}
+
+.skill-circle i {
+  font-size: 2.2rem;
+  margin-bottom: 0.6rem;
+  transition: transform 0.3s ease;
 }
 
 .skill-circle:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 12px rgba(241, 91, 247, 0.3);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(171, 57, 206, 0.35);
+}
+
+.skill-circle:hover i {
+  transform: scale(1.2);
+}
+
+.skill-circle span {
+  margin-top: 0.2rem;
+}
+
+/* Animations */
+@keyframes floatIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

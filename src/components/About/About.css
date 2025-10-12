@@ -1,6 +1,6 @@
 .about-section {
   position: relative;
-  padding:15rem 0rem;
+  padding:15rem 1rem;
   background: linear-gradient(100deg, #ffffff, #fefeff);
   overflow: hidden;
   font-family: 'Segoe UI', sans-serif;
@@ -13,7 +13,7 @@
   align-items: streth;
   max-width: 3500px;
   width: 560%;
-  background: linear-gradient(120deg, #e0c3fc, #e199f3); 
+  background: linear-gradient(100deg, #e0c3fc, #e199f3); 
   border-radius: 20px;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
   overflow: hidden;
