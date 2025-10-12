@@ -1,134 +1,142 @@
-.edu-section {
+.edu-container {
   position: relative;
-  padding:15rem 17rem;
+  min-height: 100vh;
   background: linear-gradient(100deg, #dfd3e2, #fefeff);
   overflow: hidden;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
   font-family: 'Segoe UI', sans-serif;
 }
 
-
-.edu-container {
-  display: flex;
-  flex-direction: row-reverse; 
-  align-items: center;
-  max-width: 1100px;
-  width: 100%;
-  background: linear-gradient(100deg, #e0c3fc, #8ec5fc); 
-  border-radius: 10px;
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  animation: fadeInUp 1s ease-in-out;
-}
-
-.edu-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.edu-subheading {
-  font-size: 10.85rem;
-  color: #6a0dad;
-  margin-bottom: 0.3rem;
-  letter-spacing: 1.5px;
-  font-weight: 600;
-}
-
-.edu-heading {
-  font-size: 1.9rem;
-  font-weight: 700;
-  color: #333;
-}
-
-.edu-heading .purple {
-  color: #6a0dad;
-}
-
-.edu-heading .gold {
-  color: #f4b400;
-}
-
-.edu-wrapper {
-  display: flex;
-  gap: 1.2rem;
-  max-width: 850px;
-  width: 100%;
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
-
-.edu-column,
-.personal-column {
-  flex: 2 1 48%;
-  background: white;
-  padding: 1.2rem;
-  border-radius: 10px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);
-}
-
-.edu-timeline {
-  position: relative;
-  margin-left: 0.5rem;
-  padding-left: 1rem;
-  border-left: 2px solid #6a0dad;
-}
-
-.edu-item {
-  position: relative;
-  margin-bottom: 1rem;
-}
-
-.edu-item:last-child {
-  margin-bottom: 0;
-}
-
-.dot {
+/* Wave background */
+.wave-bg {
   position: absolute;
-  left: -0.9rem;
-  top: 0.4rem;
-  width: 9px;
-  height: 9px;
-  background: #6a0dad;
-  border-radius: 50%;
-  box-shadow: 0 0 3px rgba(106, 13, 173, 0.4);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 280px;
+  background: url("https://www.svgrepo.com/show/19527/wave.svg") no-repeat bottom;
+  background-size: cover;
+  opacity: 0.2;
+  animation: waveFloat 6s ease-in-out infinite alternate;
 }
 
-.edu-content h3 {
-  margin: 0 0 0.2rem 0;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #222;
+@keyframes waveFloat {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50px); }
 }
 
-.edu-subtitle {
+/* Section Titles */
+.edu-text, .personal-text {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.edu-text h2, .personal-text h2 {
+  font-size: 2.2rem;
+  color: #4b0082;
   font-weight: 700;
+  text-shadow: 0 0 10px rgba(130, 50, 255, 0.2);
+}
+
+.edu-text p, .personal-text p {
+  color: #5c3d75;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* Card Layout */
+.edu-cards, .personal-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: -70px;
+}
+
+.edu-card, .personal-card {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(160, 75, 255, 0.25);
+  border-radius: 20px;
+  padding: 30px;
+  width: 280px;
+  box-shadow: 0 8px 25px rgba(150, 50, 255, 0.2);
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeInUp 0.8s ease forwards;
+  backdrop-filter: blur(12px);
+}
+
+.edu-card:hover, .personal-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 35px rgba(255, 110, 236, 0.4);
+}
+
+/* Icons */
+.edu-icon, .info-icon {
+  font-size: 2rem;
   color: #6a0dad;
-  margin-bottom: 0.2rem;
-  font-size: 0.85rem;
+  margin-bottom: 0px;
+  animation: float 3s ease-in-out infinite;
 }
 
-.edu-details {
-  font-size: 0.8rem;
-  color: #555;
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
-.section-title {
-  font-size: 1.3rem;
-  color: #6a0dad;
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-  border-bottom: 2px solid #6a0dad;
-  display: inline-block;
-  padding-bottom: 0.2rem;
+/* Text Styling */
+.edu-card h3 {
+  color: #32006a;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0px;
 }
 
-/* Responsive Design */
+.level {
+  color: #5d2dbd;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.details {
+  font-size: 0.9rem;
+  color: #4a3666;
+}
+
+.personal-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+.info-content h4 {
+  margin: 0;
+  color: #3a004c;
+  font-size: 1rem;
+}
+
+.info-content p {
+  color: #5a3c74;
+  font-size: 0.9rem;
+}
+
+/* Entrance Animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .edu-wrapper {
-    flex-direction: column;
+  .edu-text h2, .personal-text h2 {
+    font-size: 1.8rem;
   }
-
-  .edu-column,
-  .personal-column {
-    flex: 1 1 100%;
+  .edu-card, .personal-card {
+    width: 90%;
   }
 }
