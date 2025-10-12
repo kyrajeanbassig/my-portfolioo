@@ -1,14 +1,15 @@
 .skills-section {
-  padding: 2.5rem 1rem;
-  background: #ffffff;
+  padding: 11.5rem 1rem;
+  background: linear-gradient(135deg, #dfd3e2, #e9f0ff);
+  overflow: hidden;
   text-align: center;
 }
 
 .skills-title {
-  font-size: 1.8rem;
+  font-size: 3.8rem;
   font-weight: 700;
-  color: #6a0dad;
-  margin-bottom: 2rem;
+  color: #ab39ce;
+  margin-bottom: 5rem;
 }
 
 .skills-container {
@@ -19,21 +20,21 @@
 }
 
 .skill-circle {
-  background: #c59dd6;
+  background: #ce8ceb;
   color: white;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.95rem;
   font-weight: 600;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 3px 8px rgba(106, 13, 173, 0.2);
+  box-shadow: 0 10px 10px rgba(106, 13, 173, 0.2);
 }
 
 .skill-circle:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 12px rgba(106, 13, 173, 0.3);
+  box-shadow: 0 5px 12px rgba(241, 91, 247, 0.3);
 }

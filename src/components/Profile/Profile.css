@@ -1,7 +1,7 @@
 
 .profile-section {
   position: relative;
-  padding: 4rem 2rem;
+  padding: 8rem 18rem;
   background: #fdfaff;
   overflow: hidden;
   font-family: 'Segoe UI', sans-serif;
@@ -23,8 +23,8 @@
 }
 
 .intro-greeting {
-  font-size: 1.2rem;
-  color: #444;
+  font-size: 1.5rem;
+  color: #000000;
   margin-bottom: 0.3rem;
 }
 
@@ -77,8 +77,8 @@
   position: relative;         
   width: 250px;                
   height: 250px;
-   left: -60px; 
-   top: -30px;    
+   left: 100px; 
+   top: -60px;    
   margin: 60px auto 0;          
   display: flex;
   justify-content: center;

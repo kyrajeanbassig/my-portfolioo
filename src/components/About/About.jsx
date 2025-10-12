@@ -5,7 +5,7 @@ import aboutImage from "../../assets/download.jpg";
 function About() {
   return (
     <div className="about-page">
-      <h1 className="page-title">About Page</h1>
+      <h1 className="page-title"></h1>
 
       <section id="about" className="about-section">
         <div className="about-container">
