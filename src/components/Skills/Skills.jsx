@@ -1,7 +1,7 @@
 import React from "react";
 import "./Skills.css";
 
-// Map skill names to their Font Awesome icon classes
+
 const skillIconMap = {
   HTML: "fab fa-html5",
   CSS: "fab fa-css3-alt",

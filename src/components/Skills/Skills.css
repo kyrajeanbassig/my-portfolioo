@@ -1,17 +1,50 @@
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
-
 .skills-section {
   position: relative;
-  background: linear-gradient(100deg, #dfd3e2, #fefeff);
-  font-family: 'Segoe UI', sans-serif; width: 100%;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  
+  
+  background: linear-gradient(100deg, #dfd3e2 0%, #fefeff 60%, #ffffff 100%);
+  
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  overflow: hidden;
-  color: white;
+  
+  color: #333;
+  margin: 0;
+  padding: 4rem 0;
+  z-index: 1;
 }
+
+.skills-section::before,
+.skills-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  z-index: 0;
+}
+
+.skills-section::before {
+  width: 350px;
+  height: 350px;
+  background: #8b3fcf;
+  top: -100px;
+  right: -120px;
+}
+
+.skills-section::after {
+  width: 300px;
+  height: 300px;
+  background: #6a0dad;
+  bottom: -80px;
+  left: -100px;
+}
+
 
 .skills-title {
   font-size: 3.8rem;
@@ -20,6 +53,7 @@
   margin-bottom: 5rem;
   text-align: center;
   animation: fadeInUp 1s ease-out forwards;
+  z-index: 1;
 }
 
 .skills-container {
@@ -27,6 +61,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
+  z-index: 1;
 }
 
 .skill-circle {
@@ -44,6 +79,7 @@
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   box-shadow: 0 10px 15px rgba(106, 13, 173, 0.2);
   animation: floatIn 0.6s ease-in-out both;
+  z-index: 1;
 }
 
 .skill-circle i {
@@ -63,27 +99,4 @@
 
 .skill-circle span {
   margin-top: 0.2rem;
-}
-
-/* Animations */
-@keyframes floatIn {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
 }

@@ -10,6 +10,7 @@ import Skills from "./components/Skills/Skills";
 import Projects from "./components/Projects/Projects";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
+import GiphyAPI from "./components/GiphyAPI/GiphyAPI"; 
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -37,6 +38,7 @@ function App() {
             element={
               <>
                 <Profile />
+                 <GiphyAPI />
                 <About />
                 <Skills />
                 <Projects />

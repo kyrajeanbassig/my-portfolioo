@@ -11,7 +11,7 @@ function Contact() {
           <div className="contact-icon">📧</div>
           <h3>E-mail</h3>
           <p>
-            <a href="mailto:kyrajean64@gmail.com">kyrajean64@gmail.com</a>
+            <a href="mailto:kyrajean64@gmail.com">kyrajean.bassig@email.lcup.edu.ph</a>
           </p>
         </div>
 

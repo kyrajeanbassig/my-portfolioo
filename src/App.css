@@ -278,3 +278,20 @@ p {
     animation: spin 8s linear infinite;
   }
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* prevents the scrollbar from creating a horizontal shift */
+}
+
+#root, .App {
+  width: 100%;
+  min-height: 100vh;
+}

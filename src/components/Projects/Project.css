@@ -1,57 +1,92 @@
 .projects-section {
   position: relative;
-  background: linear-gradient(100deg, #dfd3e2, #fefeff);
+width: calc(100vw - 8px);
+  min-height: 100vh;
   font-family: 'Segoe UI', sans-serif;
-  width: 100%;
-  min-height: 100vh; /* Use min-height for better responsiveness */
-  display: flex;
-  flex-direction: column; /* Stack title and cards vertically */
-  align-items: center;
-  justify-content: flex-start; /* Push content from the top */
-  padding: 6rem 4rem; /* Controls section spacing */
   overflow: hidden;
   color: #333;
+
+  background: linear-gradient(100deg, #dfd3e2 0%, #fefeff 60%, #ffffff 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 6rem 4rem;
+  z-index: 1;
 }
 
-/* ===== Title ===== */
+
+
+.projects-section::before,
+.projects-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  z-index: 0;
+}
+
+.projects-section::before {
+  width: 350px;
+  height: 350px;
+  background: #8b3fcf;
+  top: -120px;
+  right: -150px;
+}
+
+.projects-section::after {
+  width: 300px;
+  height: 300px;
+  background: #6a0dad;
+  bottom: -100px;
+  left: -100px;
+}
+
+
 .projects-title {
-  font-size: 2.5rem;
+  font-size: 5rem;
   font-weight: 700;
   color: #6a0dad;
   text-align: center;
   width: 100%;
-  margin-bottom: 2.5rem;
+  margin-bottom: 10.5rem;
   letter-spacing: 1px;
+  z-index: 1;
+  animation: fadeInUp 1s ease-out forwards;
 }
 
-/* ===== Projects Grid ===== */
+
 .projects-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
-  gap: 2rem; /* Space between cards */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
   justify-items: center;
   width: 100%;
-  max-width: 1100px; /* Prevents it from stretching too wide */
+  max-width: 1100px;
+  z-index: 1;
 }
 
-/* ===== Project Card ===== */
+
 .project-card {
-  background: linear-gradient(135deg, #dfd3e2, #ea9bfd);
+  background: linear-gradient(145deg, #f7ecff, #e6d4ff);
   padding: 1.5rem;
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(106, 13, 173, 0.15);
   text-align: center;
-  width: 260px; /* Card width control */
+  width: 260px;
   height: auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
+  margin-bottom: 0.75rem;
 }
 
 .project-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(106, 13, 173, 0.25);
+  box-shadow: 0 8px 22px rgba(106, 13, 173, 0.25);
 }
 
-/* ===== Image ===== */
+
 .project-image-wrapper {
   width: 100%;
   height: 150px;
@@ -72,11 +107,11 @@
   transform: scale(1.05);
 }
 
-/* ===== Text ===== */
+
 .project-card h3 {
   font-size: 1.1rem;
   font-weight: 700;
-  margin-bottom: 0rem;
+  margin-bottom: 0.4rem;
   color: #6a0dad;
 }
 
@@ -88,7 +123,6 @@
   font-weight: 500;
 }
 
-/* ===== Button ===== */
 .btn-view {
   display: inline-block;
   padding: 0.5rem 1rem;
@@ -97,21 +131,22 @@
   font-size: 0.8rem;
   border-radius: 8px;
   text-decoration: none;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .btn-view:hover {
   background: #9c4dcc;
+  transform: translateY(-2px);
 }
 
-/* ===== Responsive ===== */
+
 @media (max-width: 768px) {
   .projects-section {
     padding: 4rem 1.5rem;
   }
 
   .projects-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 2rem;
   }
 
