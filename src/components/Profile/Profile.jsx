@@ -83,10 +83,23 @@ function Profile() {
           </h1>
           <h2 className="subtitle">BSIT Student</h2>
 
+          {/* UPDATED SOCIAL ICONS — HORIZONTAL */}
           <div className="social-links">
-            <a href="https://www.facebook.com/kyrajeannn" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/_kyyy.yyy/?next=%2F" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
-            <a href="https://x.com/_kyraajeannnn" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/kyrajeannn" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://github.com/kyrajeanbassig/my-portfolioo" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-github"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/kyrajeanbassig" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+
+            <a href="mailto:kyrajeanbassig@gmail.com" target="_blank" rel="noopener noreferrer">
+              <i className="fas fa-envelope"></i>
+            </a>
           </div>
 
           <a href="#contact" className="cta-button">Get in Touch</a>
@@ -95,7 +108,6 @@ function Profile() {
         <div className="profile-image">
           <img src={profile} alt="Kyra Jean Bassig" className="profile-pic" />
 
-          {}
           <div className="orbit-btn orbit1" data-label="Mini Resume" onClick={() => handleClick("📘")}>📘</div>
           <div className="orbit-btn orbit2" data-label="Skill Generator" onClick={() => handleClick("🧩")}>🧩</div>
           <div className="orbit-btn orbit3" data-label="Certificate Viewer" onClick={() => handleClick("🧾")}>🧾</div>
@@ -103,7 +115,6 @@ function Profile() {
         </div>
       </div>
 
-      {}
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
