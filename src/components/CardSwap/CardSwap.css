@@ -27,7 +27,7 @@
 /* --- NEW VIEW BUTTON (Right) --- */
 .view-btn {
   position: absolute;
-  bottom: 300px;
+  bottom: 350px;
   right: 0; /* Aligns to Right */
   
   background: linear-gradient(135deg, #6a0dad, #8b3fcf); /* Purple Gradient */

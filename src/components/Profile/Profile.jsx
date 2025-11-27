@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./Profile.css";
 import profile from "../../assets/download.jpg";
 
+// 1. IMPORT THE ANIMATION COMPONENT
+import SplitText from "../SplitText/SplitText"; 
 
 function Profile() {
   const [content, setContent] = useState("");
@@ -68,33 +70,36 @@ function Profile() {
 
   return (
     <section id="profile" className="profile-section">
-      
-
       <div className="profile-header content-wrapper">
         <div className="profile-intro">
           <p className="intro-greeting">Hello,</p>
-          <h1 className="title">
-            I am <span className="highlight">Kyra Jean Bassig</span>
-            <span className="wave"> 👋</span>
-          </h1>
+          
+    
+<h1 className="title">
+  I am{' '}
+  <span className="highlight">
+    <SplitText
+      text="Kyra Jean Bassig"
+      className="custom-split-text"
+      delay={60}
+      duration={1.2}
+      animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
+      animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+      threshold={0.1}
+      rootMargin="-50px"
+      tag="span"
+      
+      /* ❌ REMOVE repeat={-1}, repeatDelay, and yoyo={true} lines */
+    />
+  </span>
+</h1>
           <h2 className="subtitle">BSIT Student</h2>
 
           <div className="social-links">
-            <a href="https://www.facebook.com/kyrajeannn" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-
-            <a href="https://github.com/kyrajeanbassig/my-portfolioo" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-github"></i>
-            </a>
-
-            <a href="https://www.linkedin.com/in/kyrajeanbassig" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-
-            <a href="mailto:kyrajeanbassig@gmail.com" target="_blank" rel="noopener noreferrer">
-              <i className="fas fa-envelope"></i>
-            </a>
+            <a href="https://www.facebook.com/kyrajeannn"><i className="fab fa-facebook-f"></i></a>
+            <a href="https://github.com/kyrajeanbassig/my-portfolioo"><i className="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/kyrajeanbassig"><i className="fab fa-linkedin-in"></i></a>
+            <a href="mailto:kyrajeanbassig@gmail.com"><i className="fas fa-envelope"></i></a>
           </div>
 
           <a href="#contact" className="cta-button">Get in Touch</a>
@@ -102,14 +107,13 @@ function Profile() {
 
         <div className="profile-image">
           <img src={profile} alt="Kyra Jean Bassig" className="profile-pic" />
-
-          <div className="orbit-btn orbit1" data-label="Mini Resume" onClick={() => handleClick("📘")}>📘</div>
-          <div className="orbit-btn orbit2" data-label="Skill Generator" onClick={() => handleClick("🧩")}>🧩</div>
-          <div className="orbit-btn orbit3" data-label="Certificate Viewer" onClick={() => handleClick("🧾")}>🧾</div>
-          <div className="orbit-btn orbit4" data-label="Soft Skills" onClick={() => handleClick("✨")}>✨</div>
+          <div className="orbit-btn orbit1" onClick={() => handleClick("📘")}>📘</div>
+          <div className="orbit-btn orbit2" onClick={() => handleClick("🧩")}>🧩</div>
+          <div className="orbit-btn orbit3" onClick={() => handleClick("🧾")}>🧾</div>
+          <div className="orbit-btn orbit4" onClick={() => handleClick("✨")}>✨</div>
         </div>
       </div>
-
+      
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>

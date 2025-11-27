@@ -64,8 +64,8 @@ function Projects() {
         {/* RIGHT SIDE: Card Stack */}
         <div className="swap-wrapper">
           <CardSwap 
-            width={300} 
-            height={380} 
+             width={450}   /* Was 360 */
+            height={550}  /* Was 460 */
             cardDistance={50} 
             verticalDistance={30}
             skewAmount={2}

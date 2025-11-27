@@ -1,0 +1,26 @@
+/* Container for the split text */
+.split-parent {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+/* Individual Lines (if splitting by lines) */
+.split-line {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Individual Words */
+.split-word {
+  display: inline-block;
+  white-space: nowrap; /* Prevents words from breaking apart */
+}
+
+/* Individual Characters */
+.split-char {
+  display: inline-block;
+  transform-origin: 50% 100%; /* Animates from the bottom */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}

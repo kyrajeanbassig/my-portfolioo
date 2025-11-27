@@ -3,11 +3,12 @@
   position: relative;
   width: 100%;
   min-height: 100vh; /* Make sure it takes full height */
-  padding: 50px 20px;
+  padding: 10px 20px;
   background: transparent !important;
   display: flex;
   align-items: center; /* Vertically center everything */
   justify-content: center;
+  margin-top: 400px; 
 }
 
 /* 2. The Layout Wrapper (Splits screen in half) */
@@ -16,22 +17,22 @@
   align-items: center;
   justify-content: space-between; /* Pushes Text Left, Cards Right */
   width: 100%;
-  max-width: 1200px; /* Constraints width */
+  max-width: 1500px; /* Constraints width */
   margin: 0 auto;
   
 }
 
-/* 3. LEFT SIDE: Text Styling */
-.projects-text-side {
-  flex: 1000; /* Takes up 50% width */
-  text-align: left; /* Aligns text to the left */
-  padding-left: 1px;
-  z-index: 2;
-  margin-top: -700px;
-}
+  /* 3. LEFT SIDE: Text Styling */
+  .projects-text-side {
+    flex: 1500; /* Takes up 50% width */
+    text-align: left; /* Aligns text to the left */
+    padding-left: 1px;
+    z-index: 2;
+    margin-top: -980px;
+  }
 
 .projects-title {
-  font-size: 5rem;
+  font-size: 7rem;
   font-weight: 800;
   color: #6a0dad; /* Purple Title */
   margin-bottom: 1rem;
@@ -40,7 +41,7 @@
 }
 
 .projects-subtitle {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: #444;
   margin-left: 5px;
 }
@@ -52,7 +53,7 @@
   justify-content: center; /* Centers the stack within the right half */
   align-items: center;
   position: relative;
-  height: 500px; /* Height for the animation area */
+  height: 700px; /* Height for the animation area */
   z-index: 10;
 }
 
@@ -74,17 +75,22 @@
 
 .project-image-wrapper {
   width: 100%;
-  height: 180px;
+  /* 👇 INCREASE HEIGHT so the image isn't tiny */
+  height: 250px; 
   overflow: hidden;
   border-radius: 10px;
-  margin-bottom: 1rem;
+  
+  /* 👇 FIX: Change 20rem to something reasonable like 1rem */
+  margin-bottom: 1rem; 
   background: #eee;
 }
 
 .project-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* 👇 KEY FIX: Ensures image covers the area without stretching */
+  object-fit: cover; 
+  object-position: center;
 }
 
 .card-content h3 {
