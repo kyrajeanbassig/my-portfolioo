@@ -1,4 +1,5 @@
 import React from "react";
+import "./Educational.css"; // Imports the CSS you provided
 import {
   FaUserGraduate,
   FaSchool,
@@ -7,7 +8,6 @@ import {
   FaFlag,
   FaLanguage,
 } from "react-icons/fa";
-import "./Educational.css";
 
 function Educational() {
   const educationData = [
@@ -47,9 +47,10 @@ function Educational() {
 
   return (
     <section className="edu-container">
+      {/* Decorative Background */}
       <div className="wave-bg"></div>
 
-      {/* Education Section */}
+      {/* --- Education Section --- */}
       <div className="edu-text">
         <h2>Educational Background</h2>
         <p>My academic journey reflects growth, achievement, and a commitment to excellence.</p>
@@ -66,7 +67,7 @@ function Educational() {
         ))}
       </div>
 
-      {/* Personal Info Section */}
+      {/* --- Personal Info Section --- */}
       <div className="personal-text">
         <h2>Personal Information</h2>
         <p>Get to know me better through a few key details.</p>

@@ -1,205 +1,239 @@
-/* 1. Make the container transparent so global background shows */
-.about-section {
+/* --- Main Section Reset --- */
+.about-modern-section {
   position: relative;
   width: 100%;
-  padding: 40px 0;
-  background: transparent !important; /* Forces transparency */
+  min-height: 110vh;
+  /* Keeping it light/white to match the reference image style */
+  background-color: #ffffff; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  
+}
+
+/* --- Container Layout --- */
+.about-modern-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  gap: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+/* --- LEFT SIDE: Image & Blobs --- */
+.about-image-wrapper {
+  flex: 1;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* 2. Remove the blobs (::before/::after) if they look messy, 
-   or set their opacity very low */
-.about-section::before, 
-.about-section::after {
-  display: none; /* Hides the purple blobs so Iridescence shows */
-}
-
-/* Optional: You can keep these blobs, or remove them if 
-   you want PURE global background. I lowered opacity so they blend better. */
-.about-section::before,
-.about-section::after {
-  content: "";
+/* Organic Shapes */
+.blob {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.2; /* Lowered opacity to blend with Iridescence */
+  background-color: #f3e8ff; /* Very light purple */
   z-index: 0;
-  pointer-events: none;
+  opacity: 0.8;
 }
 
-.about-section::before {
-  width: 300px;
-  height: 300px;
-  background: #6a0dad;
-  top: -60px;
-  right: -80px;
+.blob-1 {
+  width: 500px;
+  height: 500px;
+  top: -50px;
+  left: -50px;
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  animation: morph 8s ease-in-out infinite;
 }
 
-.about-section::after {
+.blob-2 {
   width: 250px;
   height: 250px;
-  background: #6a0dad;
-  bottom: -60px;
-  left: -60px;
+  bottom: -30px;
+  right: 10px;
+  background-color: #e9d5ff; /* Slightly darker purple */
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  z-index: 0;
+  animation: morph 10s ease-in-out infinite reverse;
 }
 
-
-/* 3. The Card itself - GLASS EFFECT */
-.about-container {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: stretch;
-  width: 85%;
-  max-width: 1200px;
-  
-  /* GLASSMOPHISM: This makes it look like frosted glass over the animation */
-  background: rgba(255, 255, 255, 0.6); 
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  
+/* The Image */
+.modern-profile-pic {
+  width: 400px;
+  height: 500px; /* Taller portrait aspect ratio */
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
   z-index: 2;
-  margin-bottom: 50px;
+  object-fit: cover;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
-.about-image {
-  flex: 0.4;
+
+/* --- RIGHT SIDE: Content --- */
+.about-content-wrapper {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.modern-heading {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #6a0dad;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.modern-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.modern-description {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+/* --- Stats Grid --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 Columns */
+  gap: 30px;
+  margin-bottom: 3rem;
+}
+
+.stat-item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.2); /* Slight tint for image side */
-}
-.about-image img {
-  width: 280px;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 6px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 6px 12px rgba(112, 28, 101, 0.15);
+  gap: 15px;
 }
 
-/* 4. Ensure text area is transparent */
-.about-text {
-  flex: 1;
-  padding: 4rem;
-  background: transparent; /* Changed from white */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.section-label {
-  color: #6a0dad;
-  font-weight: 700;
-  margin-bottom: 0rem;
-  font-size: 2rem;
-  text-transform: uppercase;
-  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
-}
-
-.about-title {
+.stat-icon {
   font-size: 2.5rem;
-  font-weight: 900;
-  color: #222;
-  margin-bottom: 0.3rem;
+  color: #6a0dad; /* Theme Purple */
 }
 
-.about-subtitle {
-  font-size: 1.3rem;
+.stat-text h4 {
+  font-size: 1rem;
   font-weight: 700;
-  color: #4a148c; /* Darker purple for better contrast on glass */
-  margin-bottom: 1.5rem;
+  color: #222;
+  margin: 0;
 }
 
-.about-description {
-  font-size: 1.05rem;
-  line-height: 1.9;
-  color: #1a1a1a; /* Darker text for readability */
-  margin-bottom: 2rem;
-  font-weight: 500;
+.stat-text span {
+  font-size: 0.9rem;
+  color: #666;
 }
 
-.about-buttons {
+/* --- Footer: Button & Socials --- */
+.about-footer {
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  gap: 30px;
 }
 
-.btn {
-  padding: 0.9rem 2rem;
-  border-radius: 10px;
-  font-weight: 900;
+.modern-btn {
+  padding: 12px 35px;
+  border: 2px solid #1a1a1a;
+  background: transparent;
+  color: #1a1a1a;
+  font-weight: 600;
   text-decoration: none;
-  transition: 0.3s ease;
-  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.primary-btn {
+.modern-btn:hover {
+  background: #6a0dad;
+  border-color: #6a0dad;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(106, 13, 173, 0.2);
+}
+
+.social-links-modern {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links-modern a {
+  width: 45px;
+  height: 45px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #555;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: white;
+  font-size: 1.2rem;
+}
+
+.social-links-modern a:hover {
   background: #6a0dad;
   color: white;
-  box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
+  border-color: #6a0dad;
+  transform: translateY(-3px);
 }
 
-.primary-btn:hover {
-  background: #580c9e;
-  transform: translateY(-2px);
+/* --- Animation --- */
+@keyframes morph {
+  0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+  34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+  67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+  100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
 }
 
-.secondary-btn {
-  border: 2px solid #6a0dad;
-  color: #6a0dad;
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.secondary-btn:hover {
-  background: #6a0dad;
-  color: white;
-  transform: translateY(-2px);
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 900px) {
-  .about-text {
-    padding: 3rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .about-container {
-    flex-direction: column-reverse;
-    flex-wrap: nowrap;
-    width: 95%; /* Wider on mobile */
-  }
-
-  .about-text {
-    padding: 2.5rem 1.5rem;
+/* --- Responsive --- */
+@media (max-width: 968px) {
+  .about-modern-container {
+    flex-direction: column;
     text-align: center;
-    border-radius: 0 0 20px 20px;
-  }
-  
-  .about-image {
-    padding: 2rem 1rem;
-    background: transparent;
+    gap: 40px;
   }
 
-  .about-image img {
-    width: 180px;
-    height: 180px;
+  .about-image-wrapper {
+    margin-bottom: 20px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr; /* 1 Column on mobile */
+    justify-items: center;
+    text-align: left; /* Keep stats aligned nicely */
   }
   
-  .about-buttons {
+  .stat-item {
+    width: 200px; /* Fixed width for better mobile alignment */
+  }
+
+  .about-footer {
     justify-content: center;
+    flex-direction: column;
+  }
+  
+  .modern-title {
+    font-size: 2.5rem;
+  }
+  
+  .blob-1 {
+    width: 350px;
+    height: 350px;
+  }
+  
+  .modern-profile-pic {
+    width: 300px;
+    height: 380px;
   }
 }

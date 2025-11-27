@@ -15,6 +15,8 @@ import GiphyAPI from "./components/GiphyAPI/GiphyAPI";
 // 1. Fixed: Imported ProjectLand only once
 import ProjectLand from "./components/ProjectLand/ProjectLand";
 
+
+
 // 2. Import Iridescence 
 import Iridescence from "./components/Iridescence/Iridescence"; 
 

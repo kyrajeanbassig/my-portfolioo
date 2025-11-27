@@ -1,16 +1,17 @@
 .edu-container {
   position: relative;
   min-height: 100vh;
-  background: linear-gradient(100deg, #dfd3e2, #fefeff);
+  /* CHANGE: Make transparent so global background shows */
+  background: transparent; 
   overflow: hidden;
   padding: 80px 20px;
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  gap: 60px; /* Reduced gap slightly */
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* Wave background */
+/* Rest of your CSS stays the same... */
 .wave-bg {
   position: absolute;
   top: 0;
@@ -19,8 +20,9 @@
   height: 280px;
   background: url("https://www.svgrepo.com/show/19527/wave.svg") no-repeat bottom;
   background-size: cover;
-  opacity: 0.2;
+  opacity: 0.1; /* Lowered opacity */
   animation: waveFloat 6s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
 @keyframes waveFloat {
@@ -28,23 +30,23 @@
   100% { transform: translateX(-50px); }
 }
 
-/* Section Titles */
 .edu-text, .personal-text {
   text-align: center;
   max-width: 700px;
   margin: 0 auto;
+  z-index: 1;
 }
 
 .edu-text h2, .personal-text h2 {
-  font-size: 2.2rem;
-  color: #4b0082;
+  font-size: 2.5rem;
+  color: #fff; /* White text for dark background */
   font-weight: 700;
-  text-shadow: 0 0 10px rgba(130, 50, 255, 0.2);
+  text-shadow: 0 0 10px rgba(130, 50, 255, 0.5);
 }
 
 .edu-text p, .personal-text p {
-  color: #5c3d75;
-  font-size: 1rem;
+  color: #d8b4fe; /* Light purple text */
+  font-size: 1.1rem;
   margin-top: 10px;
 }
 
@@ -53,33 +55,36 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
-  margin-top: -70px;
+  gap: 30px;
+  z-index: 1;
 }
 
 .edu-card, .personal-card {
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(160, 75, 255, 0.25);
+  /* Glassmorphism Update */
+  background: rgba(20, 10, 40, 0.6); 
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   padding: 30px;
-  width: 280px;
-  box-shadow: 0 8px 25px rgba(150, 50, 255, 0.2);
+  width: 300px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   text-align: center;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   animation: fadeInUp 0.8s ease forwards;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .edu-card:hover, .personal-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 0 35px rgba(255, 110, 236, 0.4);
+  box-shadow: 0 0 35px rgba(160, 75, 255, 0.4);
+  border-color: #ff00ff;
 }
 
 /* Icons */
 .edu-icon, .info-icon {
-  font-size: 2rem;
-  color: #6a0dad;
-  margin-bottom: 0px;
+  font-size: 2.5rem;
+  color: #d8b4fe;
+  margin-bottom: 15px;
   animation: float 3s ease-in-out infinite;
 }
 
@@ -89,54 +94,3 @@
 }
 
 /* Text Styling */
-.edu-card h3 {
-  color: #32006a;
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 0px;
-}
-
-.level {
-  color: #5d2dbd;
-  font-weight: 600;
-  margin: 5px 0;
-}
-
-.details {
-  font-size: 0.9rem;
-  color: #4a3666;
-}
-
-.personal-card {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  justify-content: flex-start;
-}
-
-.info-content h4 {
-  margin: 0;
-  color: #3a004c;
-  font-size: 1rem;
-}
-
-.info-content p {
-  color: #5a3c74;
-  font-size: 0.9rem;
-}
-
-/* Entrance Animation */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .edu-text h2, .personal-text h2 {
-    font-size: 1.8rem;
-  }
-  .edu-card, .personal-card {
-    width: 90%;
-  }
-}

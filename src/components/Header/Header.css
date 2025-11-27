@@ -1,164 +1,167 @@
-/* ===== HEADER ===== */
-.site-header {
-  background: linear-gradient(90deg, #dfd3e2 0%, #fefeff 100%);
-  border-bottom: 1px solid #e2cfee;
-  padding: 18px 0;
+/* --- Container Positioning --- */
+.glass-header-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  box-shadow: 0 3px 12px rgba(106, 13, 173, 0.1);
-  backdrop-filter: blur(8px);
-  transition: all 0.4s ease;
-  animation: fadeSlideDown 0.8s ease-out;
-}
-
-@keyframes fadeSlideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ===== BODY ===== */
-body {
-  padding-top: 80px;
-  margin: 0;
-  background: linear-gradient(100deg, #dfd3e2, #fefeff);
+  top: 1.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1000px;
+  z-index: 9999;
   font-family: 'Segoe UI', sans-serif;
-  animation: fadeInBody 1s ease-in;
 }
 
-@keyframes fadeInBody {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* ===== CONTAINER ===== */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+/* --- The Glass Bar Styling --- */
+.glass-navbar {
   display: flex;
-  justify-content: space-between;
+  
+  /* 👇 THIS SWAPS THEM: Nav goes Left, Logo goes Right */
+  flex-direction: row; 
+  
+  /* Keeps them pushed to the edges */
+  justify-content: space-between; 
+  
   align-items: center;
-  padding: 0 24px;
-  background: transparent;
-  box-shadow: none;
-  animation: fadeUp 1s ease-in-out;
+  height: 70px;
+  padding: 0 30px;
+  
+  /* Glass Styling */
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.glass-navbar:hover {
+  box-shadow: 0 15px 40px rgba(106, 13, 173, 0.15);
 }
 
-/* ===== LOGO ===== */
-.logo {
+/* --- Logo (Now on Right) --- */
+.logo-container {
   display: flex;
   align-items: center;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #6a0dad;
   gap: 10px;
-  letter-spacing: 0.5px;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.logo:hover {
-  transform: scale(1.08);
-  color: #9c4dcc;
-  text-shadow: 0 0 8px rgba(156, 77, 204, 0.3);
+  text-decoration: none;
+  color: #333;
+  font-weight: 800;
+  font-size: 1.2rem;
+  /* Ensure it doesn't shrink */
+  flex-shrink: 0; 
 }
 
 .logo-icon {
-  font-size: 1.8rem;
-  color: #9c4dcc;
-  animation: rotatePulse 3s infinite ease-in-out;
+  font-size: 1.4rem;
 }
 
-@keyframes rotatePulse {
-  0%, 100% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(8deg) scale(1.1); }
-}
-
-/* ===== NAVIGATION ===== */
-.navbar ul {
-  list-style: none;
+/* --- Navigation Links (Now on Left) --- */
+.nav-menu ul {
   display: flex;
-  gap: 28px;
+  list-style: none;
+  gap: 10px;
   margin: 0;
   padding: 0;
 }
 
 .nav-link {
   text-decoration: none;
-  color: #5a3472;
+  color: #555;
   font-weight: 600;
-  font-size: 1rem;
-  position: relative;
-  letter-spacing: 0.3px;
-  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+  font-size: 0.95rem;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
 }
 
-.nav-link:hover,
-.nav-link:focus {
-  color: #9c4dcc;
-  transform: translateY(-2px);
-  text-shadow: 0 0 8px rgba(156, 77, 204, 0.5);
+/* Hover State */
+.nav-link:hover {
+  color: #6a0dad;
+  background: rgba(106, 13, 173, 0.05);
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 0%;
-  height: 2px;
-  background-color: #9c4dcc;
+/* Active State (Current Page) */
+.nav-link.active {
+  background: linear-gradient(135deg, #6a0dad, #ff00ff);
+  color: white;
+  box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
+}
+
+/* --- Mobile Hamburger Icon --- */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
   border-radius: 2px;
-  transition: width 0.3s ease;
+  transition: 0.3s;
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
-  width: 100%;
-}
-
-/* ===== RESPONSIVE ===== */
+/* --- Mobile Responsive Styles --- */
 @media (max-width: 768px) {
-  .container {
+  .glass-navbar {
+    padding: 0 20px;
+    /* On Mobile, keep Logo Left and Hamburger Right (Standard) */
+    flex-direction: row; 
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Mobile Menu Logic */
+  .nav-menu {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 20px;
+    
+    /* Hide by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+
+  .nav-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-menu ul {
     flex-direction: column;
-    gap: 14px;
-    text-align: center;
-  }
-
-  .navbar ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-  }
-
-  .logo-text {
-    font-size: 1.3rem;
+    align-items: center;
+    gap: 15px;
   }
 
   .nav-link {
-    font-size: 0.95rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Hamburger Animation */
+  .hamburger.open .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
 }

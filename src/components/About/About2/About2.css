@@ -1,0 +1,199 @@
+/* --- Main Page Container --- */
+.about2-page {
+  width: 100%;
+  min-height: 100vh;
+  /* Ensures it sits well within the global layout */
+  padding-top: 80px; 
+}
+
+/* --- Section Layout --- */
+.about2-section {
+  position: relative;
+  width: 100%;
+  padding: 40px 20px;
+  background: transparent !important; /* Allow global background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- The Glass Card Container --- */
+.about2-container {
+  display: flex;
+  flex-direction: row; /* Text Left, Image Right */
+  align-items: stretch;
+  width: 90%;
+  max-width: 1200px;
+  
+  /* Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.65); 
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 2;
+  animation: fadeInUp 1s ease-in-out;
+  margin-bottom: 50px;
+}
+
+/* --- Image Side (Right) --- */
+.about2-image {
+  flex: 0.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(106, 13, 173, 0.05); /* Slight purple tint */
+  padding: 2rem;
+}
+
+.about2-image img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 25px rgba(106, 13, 173, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.about2-image img:hover {
+  transform: scale(1.05);
+}
+
+/* --- Text Side (Left) --- */
+.about2-text {
+  flex: 0.6;
+  padding: 4rem;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+/* --- Typography --- */
+.section-label {
+  color: #6a0dad;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.about2-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 0.2rem;
+  line-height: 1.1;
+}
+
+.about2-subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #8b3fcf; /* Lighter Purple */
+  margin-bottom: 1.5rem;
+}
+
+.about2-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+  max-width: 90%;
+}
+
+/* --- Buttons --- */
+.about2-buttons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.btn {
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #6a0dad, #9d4edd);
+  color: white;
+  box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
+  border: none;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(106, 13, 173, 0.5);
+  color: white;
+}
+
+.secondary-btn {
+  border: 2px solid #6a0dad;
+  color: #6a0dad;
+  background: transparent;
+}
+
+.secondary-btn:hover {
+  background: #6a0dad;
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* --- Animation --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 968px) {
+  .about2-container {
+    flex-direction: column-reverse; /* Image Top, Text Bottom */
+    width: 95%;
+  }
+
+  .about2-text {
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    align-items: center; /* Center buttons */
+  }
+  
+  .about2-title {
+    font-size: 2.5rem;
+  }
+
+  .about2-description {
+    max-width: 100%;
+    font-size: 1rem;
+  }
+
+  .about2-image {
+    padding: 2rem 1rem;
+  }
+
+  .about2-image img {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .about2-buttons {
+    justify-content: center;
+  }
+}

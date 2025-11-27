@@ -1,126 +1,174 @@
-/* ===== CONTACT SECTION ===== */
+/* 1. Main Section Container */
 .contact-section {
   position: relative;
-  background: linear-gradient(120deg, #dfd3e2, #fefeff);
-  font-family: 'Segoe UI', sans-serif;
   width: 100%;
-  min-height: 100vh;
+  /* Changed to auto so it grows with content, prevents overlap */
+  min-height: auto; 
+  overflow: visible; /* Allow shadows/glows to show */
+  background: transparent;
+  font-family: 'Segoe UI', sans-serif;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6rem 2rem;
-  overflow: hidden;
+  
+  /* FIX: Adjusted spacing */
+  padding: 50px 20px 100px 20px; /* Added bottom padding for footer space */
+  margin-top: 50px; /* Positive margin to separate from previous section */
+  
+  color: #333;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
-/* ===== TITLE ===== */
+/* Remove blobs if they interfere, or keep them subtle */
+.contact-section::before,
+.contact-section::after {
+   display: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* 2. Title Styling */
 .contact-title {
-  font-size: 2.8rem;
-  font-weight: 700;
+  font-size: 5rem;
+  font-weight: 800;
   color: #6a0dad;
   text-align: center;
-  margin-bottom: 3rem;
-  position: relative;
+  width: 100%;
+  margin-bottom: 4rem; /* Reduced gap slightly */
+  line-height: 1.1;
+  text-shadow: 0 0 20px rgba(106, 13, 173, 0.2);
+  animation: fadeIn 1.2s ease-in-out;
+  z-index: 1;
 }
 
-.contact-title::after {
-  content: '';
-  display: block;
-  width: 80px;
-  height: 4px;
-  background: #b47ed3;
-  margin: 1rem auto 0;
-  border-radius: 2px;
-}
-
-/* ===== CONTACT GRID ===== */
+/* 3. Grid Container */
 .contact-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  animation: fadeInUp 1s ease forwards;
+  display: grid;
+  /* Better responsive sizing */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap: 30px;
+  justify-items: center;
+  width: 100%;
+  max-width: 1200px;
+  animation: fadeIn 1.8s ease-in-out;
+  z-index: 1;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ===== CONTACT BOX ===== */
+/* 4. Contact Box (Glass Effect Updated) */
 .contact-box {
-  background: linear-gradient(135deg, #e8d5f4, #f4ebff);
-  padding: 1.5rem;
-  border-radius: 16px;
-  width: 260px;
+  /* Glassmorphism Background */
+  background: rgba(255, 255, 255, 0.75); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  
+  padding: 2.5rem 2rem;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
-  box-shadow: 0 8px 20px rgba(106, 13, 173, 0.15);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  width: 100%; /* Take full width of grid cell */
+  max-width: 350px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: float 4s ease-in-out infinite;
+  z-index: 1;
 }
 
 .contact-box:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 10px 25px rgba(106, 13, 173, 0.25);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(106, 13, 173, 0.3);
+  border-color: #6a0dad;
 }
 
-/* ===== ICONS ===== */
+/* Icon Styling */
 .contact-icon {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #6a0dad;
-  margin-bottom: 0.75rem;
-  animation: floatIcon 3s ease-in-out infinite;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+  display: inline-block;
 }
 
-@keyframes floatIcon {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+.contact-box:hover .contact-icon {
+  transform: rotate(15deg) scale(1.1);
+  text-shadow: 0 0 15px rgba(106, 13, 173, 0.5);
 }
 
-/* ===== TEXT ===== */
+/* Text Styling */
 .contact-box h3 {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  color: #4a0072;
-  margin-bottom: 0.3rem;
+  color: #4a148c;
+  margin-bottom: 0.5rem;
 }
 
-.contact-box p {
-  font-size: 0.9rem;
-  color: #333;
-  font-weight: 600;
+.contact-box p,
+.contact-box a {
+  font-size: 1rem;
+  color: #444;
+  font-weight: 500;
+  text-decoration: none;
+  line-height: 1.5;
 }
 
-/* ===== FLOATING DECORATIVE ICONS ===== */
-.floating-icons i,
-.floating-icons svg {
-  position: absolute;
-  font-size: 1.5rem;
-  color: rgba(106, 13, 173, 0.2);
-  animation: moveAround 8s ease-in-out infinite;
+.contact-box a:hover {
+  color: #6a0dad;
+  font-weight: 700;
+  transition: color 0.3s ease;
 }
 
-.floating-icons svg:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
-.floating-icons svg:nth-child(2) { top: 60%; right: 20%; animation-delay: 2s; }
-.floating-icons svg:nth-child(3) { bottom: 15%; left: 25%; animation-delay: 4s; }
-
-@keyframes moveAround {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(20deg); }
+/* 5. Social Icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-/* ===== RESPONSIVE ===== */
+.social-circle {
+  background: linear-gradient(135deg, #6a0dad, #ff00ff);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(106, 13, 173, 0.3);
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.social-circle:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .contact-title {
-    font-size: 2.2rem;
+  .contact-section {
+    padding: 2rem 1rem;
+    margin-top: 20px;
   }
+
+  .contact-title {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+
   .contact-box {
     width: 100%;
-    max-width: 300px;
+    max-width: 100%;
   }
 }
