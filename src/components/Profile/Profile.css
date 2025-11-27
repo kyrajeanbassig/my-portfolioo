@@ -1,9 +1,7 @@
 /* 1. Fix the container to fill the screen */
 .profile-section {
   position: relative;
-  /* Remove overflow:hidden so it doesn't clip the view */
-  /* Remove background-color */
-  background: transparent !important; /* Crucial fix */
+  background: transparent !important;
   min-height: 90vh;
   display: flex;
   align-items: center;
@@ -61,15 +59,20 @@
 }
 
 .title {
-  font-size: 5rem; /* Made slightly bigger */
+  font-size: 5rem;
   font-weight: 700;
   margin: 0.2rem 0;
   color: #000000;
   line-height: 1.2;
+  /* Add flex-wrap if the name breaks on mobile */
+  display: inline-block; 
 }
 
+
 .highlight {
-  color: #ffffff;
+   color: #ffffff;
+  display: inline-block; /* Keeps name on one line if possible */
+  vertical-align: bottom; /* Aligns with "I am" and the Wave */
 }
 
 .subtitle {
@@ -198,4 +201,11 @@
   .social-links a {
     margin: 0 0.8rem;
   }
+}
+
+
+/* Fix for the SplitText internal spans */
+.custom-split-text {
+  display: inline-block;
+  white-space: nowrap; /* Prevents name from breaking into multiple lines awkwardly */
 }

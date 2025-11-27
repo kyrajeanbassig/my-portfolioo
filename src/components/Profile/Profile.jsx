@@ -75,7 +75,7 @@ function Profile() {
           <p className="intro-greeting">Hello,</p>
           <h1 className="title">
             I am <span className="highlight">Kyra Jean Bassig</span>
-           
+            <span className="wave"> 👋</span>
           </h1>
           <h2 className="subtitle">BSIT Student</h2>
 

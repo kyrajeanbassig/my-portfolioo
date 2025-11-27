@@ -1,0 +1,60 @@
+.card-swap-container {
+  position: relative;
+  margin: 0 auto;
+  transform: none; 
+  transform-origin: center center;
+  perspective: 1000px;
+  overflow: visible;
+  margin-bottom: 20px; 
+}
+
+.card {
+  position: absolute;
+  top: -200px;
+  left: 0;
+  border-radius: 15px;
+  background: transparent; 
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  width: 200%;
+  height: 200%;
+}
+
+
+
+/* --- NEW VIEW BUTTON (Right) --- */
+.view-btn {
+  position: absolute;
+  bottom: 300px;
+  right: 0; /* Aligns to Right */
+  
+  background: linear-gradient(135deg, #6a0dad, #8b3fcf); /* Purple Gradient */
+  border: none;
+  color: white;
+  padding: 20px 40px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 5px 20px rgba(106, 13, 173, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.view-btn:hover {
+  background: linear-gradient(135deg, #8b3fcf, #a660e8);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(106, 13, 173, 0.6);
+}
+
+@media (max-width: 768px) {
+  .card-swap-container {
+    transform: scale(0.85); 
+  }
+}

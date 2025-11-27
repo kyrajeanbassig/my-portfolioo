@@ -1,14 +1,106 @@
-/* 1. Transparent Section */
+/* 1. Main Section */
 .projects-section {
   position: relative;
   width: 100%;
-  padding: 50px 0;
-  background: transparent !important; /* Crucial fix */
-  text-align: center;
+  min-height: 100vh; /* Make sure it takes full height */
+  padding: 50px 20px;
+  background: transparent !important;
+  display: flex;
+  align-items: center; /* Vertically center everything */
+  justify-content: center;
 }
 
+/* 2. The Layout Wrapper (Splits screen in half) */
+.projects-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Pushes Text Left, Cards Right */
+  width: 100%;
+  max-width: 1200px; /* Constraints width */
+  margin: 0 auto;
+  
+}
 
+/* 3. LEFT SIDE: Text Styling */
+.projects-text-side {
+  flex: 1000; /* Takes up 50% width */
+  text-align: left; /* Aligns text to the left */
+  padding-left: 1px;
+  z-index: 2;
+  margin-top: -700px;
+}
 
+.projects-title {
+  font-size: 5rem;
+  font-weight: 800;
+  color: #6a0dad; /* Purple Title */
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  text-shadow: 0 0 10px rgba(106, 13, 173, 0.3);
+}
+
+.projects-subtitle {
+  font-size: 1.2rem;
+  color: #444;
+  margin-left: 5px;
+}
+
+/* 4. RIGHT SIDE: Animation Wrapper */
+.swap-wrapper {
+  flex: 1; /* Takes up the other 50% width */
+  display: flex;
+  justify-content: center; /* Centers the stack within the right half */
+  align-items: center;
+  position: relative;
+  height: 500px; /* Height for the animation area */
+  z-index: 10;
+}
+
+/* 5. Card Styles */
+.project-card {
+  /* Glass Effect */
+  background: rgba(255, 255, 255, 0.65); 
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  margin: 0; 
+}
+
+.project-image-wrapper {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  background: #eee;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #6a0dad;
+  margin: 0 0 0.5rem 0;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* Background Blobs */
 .projects-section::before,
 .projects-section::after {
   content: "";
@@ -23,121 +115,32 @@
   width: 350px;
   height: 350px;
   background: #8b3fcf;
-  top: -120px;
-  right: -150px;
+  top: 10%;
+  right: 10%;
 }
 
 .projects-section::after {
   width: 300px;
   height: 300px;
   background: #6a0dad;
-  bottom: -100px;
-  left: -100px;
+  bottom: 10%;
+  left: 10%;
 }
 
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 968px) {
+  .projects-layout {
+    flex-direction: column; /* Stack vertically on phones */
+    text-align: center;
+  }
 
-.projects-title {
-  font-size: 5rem;
-  font-weight: 700;
-  color: #6a0dad;
-  text-align: center;
-  width: 100%;
-  margin-bottom: 10.5rem;
-  letter-spacing: 1px;
-  z-index: 1;
-  animation: fadeInUp 1s ease-out forwards;
-}
-
-
-/* 2. Glass Container for the projects grid */
-.projects-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-/* 3. Make the Project Cards Glassy */
-.project-card {
-  background: rgba(255, 255, 255, 0.4); /* Semi-transparent */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 15px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-.project-card:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.6); /* Lighter on hover */
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-}
-
-
-.project-image-wrapper {
-  width: 100%;
-  height: 150px;
-  overflow: hidden;
-  border-radius: 10px;
-  margin-bottom: 0.75rem;
-}
-
-.project-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.project-card:hover .project-image {
-  transform: scale(1.05);
-}
-
-
-.project-card h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 0.4rem;
-  color: #6a0dad;
-}
-
-.project-card p {
-  font-size: 0.9rem;
-  color: #444;
-  margin-bottom: 0.75rem;
-  line-height: 1.4;
-  font-weight: 500;
-}
-
-.btn-view {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: #6a0dad;
-  color: white;
-  font-size: 0.8rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.btn-view:hover {
-  background: #9c4dcc;
-  transform: translateY(-2px);
-}
-
-
-@media (max-width: 768px) {
-  .projects-section {
-    padding: 4rem 1.5rem;
+  .projects-text-side {
+    text-align: center; /* Center text on phones */
+    padding-left: 0;
+    margin-bottom: 3rem;
   }
 
   .projects-title {
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
-  }
-
-  .project-card {
-    width: 100%;
-    max-width: 320px;
+    font-size: 3rem;
   }
 }

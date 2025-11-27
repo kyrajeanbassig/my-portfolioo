@@ -1,0 +1,183 @@
+/* --- MAIN CONTAINER --- */
+.project-land-section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: transparent; 
+  position: relative;
+  z-index: 10;
+  /* Ensure simple, modern font */
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+}
+
+/* --- HEADER --- */
+.land-header {
+  max-width: 1200px;
+  margin: 0 auto 40px; /* Reduced margin */
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.land-header h1 {
+  font-size: 3.5rem; /* Slightly smaller for balance */
+  font-weight: 800;
+  color: #fff;
+  margin-top: 10px;
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 20px rgba(189, 52, 254, 0.6);
+}
+
+/* --- BACK BUTTON --- */
+.back-btn {
+  position: absolute;
+  left: 0;
+  top: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e0e0e0;
+  padding: 8px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-btn:hover {
+  background: #ff00ff;
+  border-color: #ff00ff;
+  color: white;
+  transform: translateX(-3px);
+}
+
+/* --- GRID LAYOUT --- */
+.land-grid {
+  display: grid;
+  /* Fits more cards per row */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+  gap: 30px; 
+  max-width: 1200px;
+  margin: 0 auto 50px;
+}
+
+/* --- CARD DESIGN (Height & Border Fix) --- */
+.land-card {
+  /* Darker background for contrast */
+  background: rgba(60, 30, 90, 0.55);  
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  
+  /* 2PX BORDER REQUEST - Hot Pink/Purple tint */
+  border: 2px solid rgba(160, 100, 255, 0.4); 
+  border-radius: 20px;
+  
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  
+  /* Fixes the height issue - makes them equal */
+  height: 100%; 
+}
+
+.land-card:hover {
+  transform: translateY(-8px);
+  /* Make the 2px border glow on hover */
+   background: rgba(80, 40, 110, 0.65);
+  border-color: #ff00ff; 
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 
+              0 0 15px rgba(255, 0, 255, 0.3)
+}
+
+/* --- CARD IMAGE (Smaller Height) --- */
+.land-image-wrapper {
+  width: 100%;
+  height: 160px; /* Reduced from 200px to fix height */
+  overflow: hidden;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+.land-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.land-card:hover .land-image-wrapper img {
+  transform: scale(1.1);
+}
+
+/* --- CARD CONTENT (Compact) --- */
+.land-content {
+  padding: 20px; /* Reduced padding */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.land-content h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.land-content p {
+  font-size: 0.9rem;
+  color: #c0c0c0;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  flex-grow: 1; /* Pushes tags to bottom */
+}
+
+/* --- TAGS --- */
+.land-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  /* Glass tag style */
+  background: rgba(247, 239, 239, 0.05);
+  border: 1px solid rgba(160, 100, 255, 0.5);
+  color: #d8b4fe;
+  transition: 0.3s;
+}
+
+.land-card:hover .tag {
+  background: rgba(255, 0, 255, 0.15);
+  border-color: #ff00ff;
+  color: #fff;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .land-header {
+    align-items: center; /* Keep centered on tablet */
+  }
+  .back-btn {
+    position: relative;
+    top: 0;
+    margin-bottom: 15px;
+  }
+  .land-header h1 {
+    font-size: 2.5rem;
+  }
+}
