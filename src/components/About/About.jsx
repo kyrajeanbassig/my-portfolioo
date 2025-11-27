@@ -1,84 +1,96 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; 
 import "./About.css";
-import aboutImage from "../../assets/download.jpg"; 
-import { 
-  FaAward, 
-  FaGraduationCap, 
-  FaTrophy, 
-  FaCode, 
-  FaFacebookF, 
-  FaTwitter, 
-  FaLinkedinIn, 
-  FaGithub 
-} from "react-icons/fa";
+// Replace with your actual image path or placeholder
+import profileImg from "../../assets/download.jpg"; 
 
-function About() {
-  // You can customize these stats
-  const stats = [
-    { icon: <FaAward />, title: "Experience", subtitle: "Fresh Graduate" },
-    { icon: <FaGraduationCap />, title: "Education", subtitle: "BSIT Student" },
-    { icon: <FaTrophy />, title: "Achievements", subtitle: "Dean's Lister" },
-    { icon: <FaCode />, title: "Skills", subtitle: "Web Development" },
-  ];
+const About = () => {
+  const navigate = useNavigate(); 
+
+  const handleViewMore = () => {
+    navigate("/about"); 
+    window.scrollTo(0, 0);
+  };
 
   return (
-    <section id="about" className="about-modern-section">
+    <section className="about-modern-section" id="about">
       <div className="about-modern-container">
         
         {/* LEFT SIDE: Image & Blobs */}
         <div className="about-image-wrapper">
-          {/* Organic background shapes */}
           <div className="blob blob-1"></div>
           <div className="blob blob-2"></div>
-          
           <img 
-            src={aboutImage} 
-            alt="Kyra Jean Bassig" 
+            src={profileImg} 
+            alt="Profile" 
             className="modern-profile-pic" 
           />
         </div>
 
         {/* RIGHT SIDE: Content */}
         <div className="about-content-wrapper">
-          <h2 className="modern-heading">My Story</h2>
-          <h1 className="modern-title">Kyra Jean Bassig</h1>
+          <h4 className="modern-heading">My Biography</h4>
+          <h2 className="modern-title">Kyra Jean Bassig</h2>
           
           <p className="modern-description">
-            I am a passionate Bachelor of Science in Information Technology student,
-            eager to apply and enhance my skills in programming, networking, and system
-            administration. My goal is to gain real-world experience while contributing
-            positively with adaptability, teamwork, and a strong willingness to learn.
+            I am a passionate Bachelor of Science in Information Technology student, 
+            eager to apply and enhance my skills in programming, networking, and 
+            system administration. My goal is to gain real-world experience while 
+            contributing positively with adaptability, teamwork, and a strong 
+            willingness to learn.
           </p>
 
-          {/* Stats Grid */}
           <div className="stats-grid">
-            {stats.map((item, index) => (
-              <div className="stat-item" key={index}>
-                <div className="stat-icon">{item.icon}</div>
-                <div className="stat-text">
-                  <h4>{item.title}</h4>
-                  <span>{item.subtitle}</span>
-                </div>
+            <div className="stat-item">
+              <i className="fas fa-certificate stat-icon"></i>
+              <div className="stat-text">
+                <h4>Experience</h4>
+                <span>Fresh Graduate</span>
               </div>
-            ))}
-          </div>
-
-          {/* Footer: Button & Socials */}
-          <div className="about-footer">
-            <a href="/contact" className="modern-btn">Contact Me</a>
-            
-            <div className="social-links-modern">
-              <a href="https://facebook.com"><FaFacebookF /></a>
-              <a href="https://twitter.com"><FaTwitter /></a>
-              <a href="https://linkedin.com"><FaLinkedinIn /></a>
-              <a href="https://github.com"><FaGithub /></a>
+            </div>
+            <div className="stat-item">
+              <i className="fas fa-graduation-cap stat-icon"></i>
+              <div className="stat-text">
+                <h4>Education</h4>
+                <span>BSIT Student</span>
+              </div>
+            </div>
+            <div className="stat-item">
+              <i className="fas fa-trophy stat-icon"></i>
+              <div className="stat-text">
+                <h4>Achievements</h4>
+                <span>Dean's Lister</span>
+              </div>
+            </div>
+            <div className="stat-item">
+              <i className="fas fa-code stat-icon"></i>
+              <div className="stat-text">
+                <h4>Skills</h4>
+                <span>Web Development</span>
+              </div>
             </div>
           </div>
-        </div>
 
+          {/* ACTION AREA: Buttons Only */}
+          <div className="about-footer">
+            
+            {/* 1. Contact Me Button */}
+            <a href="/contact" className="modern-btn btn-pink">
+              Contact Me
+            </a>
+
+            {/* 2. View More Button */}
+            <button onClick={handleViewMore} className="modern-btn btn-gold-outline">
+              View More <i className="fas fa-arrow-right" style={{marginLeft: '8px'}}></i>
+            </button>
+
+            {/* SOCIAL ICONS REMOVED */}
+
+          </div>
+        </div>
       </div>
     </section>
   );
-}
+};
 
 export default About;

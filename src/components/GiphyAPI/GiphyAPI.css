@@ -1,106 +1,135 @@
- 
+/* =========================================
+   GiphyAPI.css - FLOATING BUTTON & MODALS
+   Theme: Burgundy, Pink, Gold (Dark Glass)
+   ========================================= */
+
+/* --- Floating Button (Bottom Right) --- */
 .giphy-btn {
   position: fixed;
-  right: 20px;
+  right: 30px;
   bottom: 40px;
-  width: 60px;
-  height: 60px;
-  background: #b478ff; 
+  width: 65px;
+  height: 65px;
+  /* Theme Pink */
+  background: #e92c78; 
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
+  font-size: 30px;
   cursor: pointer;
-  box-shadow: 0 0 15px rgba(180, 120, 255, 0.6);
+  /* Pink Glow */
+  box-shadow: 0 0 20px rgba(233, 44, 120, 0.6);
   z-index: 101;
-  transition: transform 0.3s ease, background 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .giphy-btn:hover {
-  transform: scale(1.3);
-  background: #9f5ee6;  
+  transform: scale(1.15) rotate(10deg);
+  background: #c41e60;  
+  box-shadow: 0 0 30px rgba(233, 44, 120, 0.9);
+  border-color: #f4b256; /* Gold Border on Hover */
 }
 
- 
+/* --- Modal Overlay --- */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.45);  
+  /* Darker overlay */
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100;
+  z-index: 2000; /* High z-index */
 }
 
- 
+/* --- Modal Content (Dark Glass) --- */
 .modal-content {
-  background: linear-gradient(145deg, #e8d6ff, #a0c4ff);  
-  padding: 25px 20px;
+  /* Dark Burgundy Glass */
+  background: rgba(35, 10, 20, 0.9);
+  border: 1px solid #f4b256; /* Gold Border */
+  padding: 30px 25px;
   border-radius: 20px;
   width: 90%;
   max-width: 420px;
   text-align: center;
   position: relative;
-  box-shadow: 0 8px 25px rgba(180, 120, 255, 0.35);
-  animation: fadeIn 0.3s ease;
-  color: #2b2b2b; 
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  color: #ffffff; 
 }
 
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Close Button */
 .modal-close-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background:#dfd3e2;  
-  border: none;
-  font-size: 18px;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.1);  
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 16px;
   border-radius: 50%;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
-  color: white;
-  box-shadow: 0 3px 10px rgba(255, 182, 193, 0.4);
-  transition: background 0.3s ease;
+  color: #e0d0d5;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-close-btn:hover {
-  background: #b478ff; 
+  background: #e92c78; /* Pink */
+  color: white;
+  border-color: #e92c78;
 }
 
- 
+/* --- GIF Image --- */
 .gif-img {
   width: 100%;
-  margin-top: 15px;
+  margin-top: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
 }
 
- 
+/* --- Next/Action Button --- */
 .next-btn {
-  margin-top: 15px;
-  padding: 10px 18px;
-  background: #c599fa;  
-  color: white;
+  margin-top: 20px;
+  padding: 12px 25px;
+  /* Gold Gradient */
+  background: linear-gradient(135deg, #f4b256, #d99a40);
+  color: #22030d; /* Dark text for contrast */
   border: none;
-  border-radius: 12px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 15px;
-  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(244, 178, 86, 0.3);
 }
 
 .next-btn:hover {
-  background: #9f5ee6;  
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(244, 178, 86, 0.5);
+  filter: brightness(1.1);
 }
 
- 
+/* --- Loading Spinner --- */
 .spinner {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #b478ff;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid #e92c78; /* Pink Spinner */
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -108,13 +137,55 @@
   margin: 20px auto;
 }
 
- 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* --- Dashboard / API Cards --- */
+.dash-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Dark Glass */
+  background: rgba(30, 5, 10, 0.95);
+  border: 1px solid #f4b256; /* Gold Border */
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  z-index: 2000;
+  text-align: center;
+  width: 320px;
+  color: #fff;
+  animation: fadeIn 0.3s ease;
+}
+
+.dash-card h3 {
+  color: #f4b256; /* Gold Heading */
+  margin-bottom: 10px;
+}
+
+.dash-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin: 15px 0;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #e92c78; /* Pink Close Icon */
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.close-btn:hover {
+  transform: scale(1.2);
+  color: #ff5c9d;
 }

@@ -1,4 +1,8 @@
-/* 1. Fix the container to fill the screen */
+/* =========================================
+   Profile.css - HERO & ORBIT SECTION
+   Theme: Burgundy, Pink, Gold
+   ========================================= */
+
 .profile-section {
   position: relative;
   background: transparent !important;
@@ -7,206 +11,223 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  margin-top: 100px;
+  margin-top: 60px;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-
-/* 2. Background positioning stays the same */
-.iridescence-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  opacity: 0.6;
-}
-
-/* 3. Ensure content is visible */
-.content-wrapper,
-.profile-header,
-.background-shape {
-  position: relative;
-  z-index: 1;
-}
-
-.modal-overlay {
-  z-index: 1000;
-}
-
-/* 4. Fix the Flex Layout */
 .profile-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 4rem; /* Better spacing between text and image */
+  gap: 2rem; /* Reduced gap to give text more room */
   width: 100%;
-  max-width: 1200px; /* Prevent it from stretching too wide */
-  margin: 0 auto;
+  max-width: 1200px;
   position: relative;
   z-index: 2;
 }
 
+/* --- Left Side: Text --- */
 .profile-intro {
-  flex: 1; /* Allow text to take available space */
+  flex: 1.2; /* Give text side more width priority */
   min-width: 300px;
 }
 
-/* --- TEXT STYLES (Kept mostly same) --- */
 .intro-greeting {
   font-size: 1.8rem;
-  color: #ffffff;
-  margin-bottom: 0.3rem;
+  color: #f4b256; /* Gold */
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
+/* --- FIXED TITLE SECTION --- */
 .title {
-  font-size: 5rem;
-  font-weight: 700;
+  /* Reduced from 5rem to prevent wrapping */
+  font-size: 4rem; 
+  font-weight: 800;
   margin: 0.2rem 0;
-  color: #000000;
-  line-height: 1.2;
-  /* Add flex-wrap if the name breaks on mobile */
-  display: inline-block; 
+  color: #ffffff;
+  line-height: 1.1;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  
+  /* Ensures text doesn't break mid-word */
+  white-space: normal; 
+  word-wrap: break-word;
 }
-
 
 .highlight {
-   color: #ffffff;
-  display: inline-block; /* Keeps name on one line if possible */
-  vertical-align: bottom; /* Aligns with "I am" and the Wave */
+  color: #e92c78; /* Pink Highlight */
+  display: inline-block;
+  text-shadow: 0 0 20px rgba(233, 44, 120, 0.4);
 }
 
 .subtitle {
-  font-size: 1.5rem;
-  margin: 0.5rem 0 1.5rem;
-  color: #6a0dad;
+  font-size: 1.3rem;
+  margin: 1rem 0 2rem;
+  color: #e0d0d5; /* Muted Pink/Grey */
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-.social-links {
-  margin-bottom: 2rem;
-}
-
+/* --- Social Links --- */
 .social-links a {
   margin-right: 1.5rem;
   font-size: 1.8rem;
-  color: #333;
-  transition: color 0.3s;
+  color: #ffffff;
+  transition: all 0.3s ease;
 }
 
 .social-links a:hover {
-  color: #6a0dad;
+  color: #e92c78; /* Pink */
+  transform: translateY(-3px);
+  text-shadow: 0 0 10px rgba(233, 44, 120, 0.6);
 }
 
+/* --- CTA Button --- */
 .cta-button {
   display: inline-block;
-  background-color: #6a0dad;
+  background-color: #e92c78; /* Pink */
   color: #fff;
-  padding: 1rem 2rem;
+  padding: 1rem 2.5rem;
   border-radius: 30px;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(233, 44, 120, 0.4);
+  text-transform: uppercase;
+  margin-top: 10px;
 }
 
 .cta-button:hover {
-  background-color: #7f39ff;
+  background-color: #c41e60;
   transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(233, 44, 120, 0.6);
 }
 
-/* 5. FIX THE IMAGE POSITIONING (Crucial) */
+/* --- Right Side: Image & Orbit --- */
 .profile-image {
   position: relative;
-  width: 400px;  /* Slightly larger */
-  height: 400px;
-  /* REMOVED the 'left', 'top', and negative margins that were breaking it */
+  width: 450px; 
+  height: 450px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0; /* Prevents image from squishing */
+  flex-shrink: 0;
 }
 
 .profile-pic {
-  width: 100%;
-  height: 100%;
+  width: 350px; 
+  height: 350px;
   border-radius: 50%;
-  border: 6px solid white;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  object-fit: cover; /* Ensures image doesn't stretch weirdly */
+  border: 6px solid #f4b256; /* Gold Border */
+  box-shadow: 0 0 40px rgba(244, 178, 86, 0.3);
+  object-fit: cover;
+  z-index: 2;
+  background: #1a050a; 
 }
 
-/* --- ORBIT BUTTONS --- */
+/* --- Orbiting Buttons --- */
 .orbit-btn {
   position: absolute;
   width: 60px;
   height: 60px;
-   font-size: 2.2rem; 
-  background-color: #6a0dad;
-  color: #fff;
+  font-size: 1.8rem; 
+  background-color: #f4b256;
+  color: #22030d; 
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
   top: 50%;
   left: 50%;
-  margin: -25px;
-  /* Adjusted radius slightly for better look */
-  transform-origin: 180px 0; 
-  animation: orbit 12s linear infinite; /* Slowed down slightly for elegance */
+  margin: -30px; 
+  transform-origin: 240px 0; 
+  animation: orbit 15s linear infinite;
   z-index: 5;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.orbit-btn:hover {
+  background-color: #e92c78; 
+  color: white;
+  transform: scale(1.15); 
+  box-shadow: 0 0 20px rgba(233, 44, 120, 0.6);
 }
 
 .orbit1 { animation-delay: 0s; }
-.orbit2 { animation-delay: 3s; }
-.orbit3 { animation-delay: 6s; }
-.orbit4 { animation-delay: 9s; }
+.orbit2 { animation-delay: -3.75s; } 
+.orbit3 { animation-delay: -7.5s; }  
+.orbit4 { animation-delay: -11.25s; }
 
 @keyframes orbit {
   from { transform: rotate(0deg) translateX(240px) rotate(0deg); }
   to   { transform: rotate(360deg) translateX(240px) rotate(-360deg); }
 }
 
+/* --- Responsive Layout Fixes --- */
 
-/* --- RESPONSIVE FIX --- */
+/* 1. Laptops/Smaller Desktops: Shrink text so it fits */
+@media (max-width: 1200px) {
+  .title {
+    font-size: 3.5rem; /* Smaller font for laptops */
+  }
+  .profile-image {
+    width: 380px;
+    height: 380px;
+  }
+  .profile-pic {
+    width: 300px;
+    height: 300px;
+  }
+  .orbit-btn {
+    transform-origin: 200px 0; /* Adjust orbit size */
+  }
+  @keyframes orbit {
+    from { transform: rotate(0deg) translateX(200px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+  }
+}
+
+/* 2. Tablets/Mobile: Stack vertically */
 @media (max-width: 968px) {
   .profile-header {
-    flex-direction: column-reverse; /* Puts image on top on mobile */
+    flex-direction: column-reverse;
     text-align: center;
     gap: 3rem;
   }
-
+  
+  .title {
+    font-size: 3rem;
+  }
+  
   .profile-image {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
+  }
+  
+  .profile-pic {
+    width: 220px;
+    height: 220px;
   }
   
   .orbit-btn {
-    transform-origin: 130px 0; 
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     font-size: 1.2rem;
+    margin: -22.5px;
+    transform-origin: 140px 0; 
   }
   
   @keyframes orbit {
-    from { transform: rotate(0deg) translateX(130px) rotate(0deg); }
-    to   { transform: rotate(360deg) translateX(130px) rotate(-360deg); }
+    from { transform: rotate(0deg) translateX(140px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
   }
-
+  
   .social-links {
     justify-content: center;
     display: flex;
   }
-  
-  .social-links a {
-    margin: 0 0.8rem;
-  }
-}
-
-
-/* Fix for the SplitText internal spans */
-.custom-split-text {
-  display: inline-block;
-  white-space: nowrap; /* Prevents name from breaking into multiple lines awkwardly */
 }

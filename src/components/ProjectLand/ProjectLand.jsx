@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ProjectLand.css";
 
+// Import your assets
+// Ensure these paths match your actual folder structure
 import packImage from "../../assets/pack.jpg";
 import libImage from "../../assets/lib.jpg";
 import dabreeImage from "../../assets/dabree.jpg";
@@ -52,16 +54,20 @@ const ProjectLand = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Scroll to top when page opens
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="project-land-section">
       <div className="land-header">
+        {/* Back Button */}
         <button className="back-btn" onClick={() => navigate('/')}>
-          <i className="fas fa-arrow-left"></i> {/* Assuming FontAwesome, or just use ← */}
+          <i className="fas fa-arrow-left"></i>
           <span>Back to Home</span>
         </button>
+        
+        {/* Main Title */}
         <h1>Project Gallery</h1>
       </div>
 

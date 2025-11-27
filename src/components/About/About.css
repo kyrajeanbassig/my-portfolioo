@@ -1,20 +1,20 @@
-/* --- Main Section Reset --- */
+/* =========================================
+   About.css - FIXED BUTTONS & ICONS
+   ========================================= */
+
+/* ... (Keep your top container styles the same) ... */
 .about-modern-section {
   position: relative;
   width: 100%;
-  min-height: 110vh;
-  /* Keeping it light/white to match the reference image style */
-  background-color: #ffffff; 
+  min-height: 100vh;
+  background-color: transparent; 
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 80px 20px;
-  font-family: 'Segoe UI', sans-serif;
   overflow: hidden;
-  
 }
 
-/* --- Container Layout --- */
 .about-modern-container {
   display: flex;
   flex-direction: row;
@@ -27,7 +27,7 @@
   z-index: 2;
 }
 
-/* --- LEFT SIDE: Image & Blobs --- */
+/* --- Left Side: Blobs & Image --- */
 .about-image-wrapper {
   flex: 1;
   position: relative;
@@ -36,12 +36,11 @@
   align-items: center;
 }
 
-/* Organic Shapes */
 .blob {
   position: absolute;
-  background-color: #f3e8ff; /* Very light purple */
   z-index: 0;
-  opacity: 0.8;
+  opacity: 0.6;
+  filter: blur(50px);
 }
 
 .blob-1 {
@@ -49,6 +48,7 @@
   height: 500px;
   top: -50px;
   left: -50px;
+  background: linear-gradient(135deg, #e92c78, #580826);
   border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
   animation: morph 8s ease-in-out infinite;
 }
@@ -58,24 +58,25 @@
   height: 250px;
   bottom: -30px;
   right: 10px;
-  background-color: #e9d5ff; /* Slightly darker purple */
+  background: linear-gradient(135deg, #f4b256, #b87e2e);
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   z-index: 0;
   animation: morph 10s ease-in-out infinite reverse;
 }
 
-/* The Image */
+/* --- Profile Pic --- */
 .modern-profile-pic {
   width: 400px;
-  height: 500px; /* Taller portrait aspect ratio */
+  height: 500px;
   border-radius: 20px;
   position: relative;
   z-index: 2;
   object-fit: cover;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border: 6px solid #f4b256; 
+  box-shadow: 0 0 30px rgba(244, 178, 86, 0.4);
 }
 
-/* --- RIGHT SIDE: Content --- */
+/* --- Right Side: Content --- */
 .about-content-wrapper {
   flex: 1;
   padding-right: 20px;
@@ -84,7 +85,7 @@
 .modern-heading {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #6a0dad;
+  color: #f4b256; 
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 10px;
@@ -93,22 +94,22 @@
 .modern-title {
   font-size: 3.5rem;
   font-weight: 800;
-  color: #1a1a1a;
+  color: #ffffff;
   margin-bottom: 1.5rem;
   line-height: 1.1;
 }
 
 .modern-description {
   font-size: 1.1rem;
-  color: #555;
+  color: #e0d0d5;
   line-height: 1.8;
   margin-bottom: 3rem;
 }
 
-/* --- Stats Grid --- */
+/* Stats Grid */
 .stats-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 Columns */
+  grid-template-columns: 1fr 1fr;
   gap: 30px;
   margin-bottom: 3rem;
 }
@@ -121,119 +122,134 @@
 
 .stat-icon {
   font-size: 2.5rem;
-  color: #6a0dad; /* Theme Purple */
+  color: #e92c78; 
 }
 
 .stat-text h4 {
   font-size: 1rem;
   font-weight: 700;
-  color: #222;
+  color: #ffffff;
   margin: 0;
 }
 
 .stat-text span {
   font-size: 0.9rem;
-  color: #666;
+  color: #f4b256; 
 }
 
-/* --- Footer: Button & Socials --- */
+/* --- UPDATED: Footer Buttons & Icons --- */
 .about-footer {
   display: flex;
   align-items: center;
-  gap: 30px;
+  flex-wrap: wrap; 
+  gap: 20px; /* Space between "Contact" and "View More" */
 }
 
+/* Shared Button Styles */
 .modern-btn {
-  padding: 12px 35px;
-  border: 2px solid #1a1a1a;
-  background: transparent;
-  color: #1a1a1a;
+  padding: 12px 30px;
+  border-radius: 30px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: none !important; /* Removes blue outline */
 }
 
-.modern-btn:hover {
-  background: #6a0dad;
-  border-color: #6a0dad;
+/* Contact Me (Pink) */
+.btn-pink {
+  background-color: #e92c78;
   color: white;
+  box-shadow: 0 5px 15px rgba(233, 44, 120, 0.4);
+}
+.btn-pink:hover {
+  background-color: #c41e60;
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(106, 13, 173, 0.2);
+  box-shadow: 0 8px 20px rgba(233, 44, 120, 0.6);
 }
 
+/* View More (Gold Outline) - FIXED */
+.btn-gold-outline {
+  background-color: transparent;
+  border: 2px solid #f4b256; /* Ensure border exists */
+  color: #f4b256; /* Gold text */
+}
+
+.btn-gold-outline:hover {
+  background-color: #f4b256;
+  color: #22030d; /* Dark text on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(244, 178, 86, 0.4);
+}
+
+.btn-gold-outline:focus {
+  outline: none; /* Removes default blue browser outline */
+  border-color: #f4b256;
+}
+
+/* --- FIXED SOCIAL ICONS VISIBILITY --- */
 .social-links-modern {
   display: flex;
   gap: 15px;
+  margin-left: 10px; 
 }
 
 .social-links-modern a {
   width: 45px;
   height: 45px;
-  border: 1px solid #ddd;
+  
+  /* Make border lighter/visible */
+  border: 2px solid rgba(255, 255, 255, 0.3); 
+  background-color: rgba(255,255,255,0.05); /* Slight fill */
+  
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #555;
+  
+  /* Make Icon White */
+  color: #ffffff; 
+  
   text-decoration: none;
   transition: all 0.3s ease;
-  background: white;
   font-size: 1.2rem;
 }
 
 .social-links-modern a:hover {
-  background: #6a0dad;
+  background: #e92c78; /* Pink on hover */
+  border-color: #e92c78;
   color: white;
-  border-color: #6a0dad;
   transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(233, 44, 120, 0.4);
 }
 
-/* --- Animation --- */
+/* Animation */
 @keyframes morph {
   0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-  34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
-  67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
   100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
 }
 
-/* --- Responsive --- */
 @media (max-width: 968px) {
   .about-modern-container {
     flex-direction: column;
     text-align: center;
-    gap: 40px;
   }
-
-  .about-image-wrapper {
-    margin-bottom: 20px;
-  }
-
-  .stats-grid {
-    grid-template-columns: 1fr; /* 1 Column on mobile */
-    justify-items: center;
-    text-align: left; /* Keep stats aligned nicely */
-  }
-  
-  .stat-item {
-    width: 200px; /* Fixed width for better mobile alignment */
-  }
-
   .about-footer {
     justify-content: center;
     flex-direction: column;
+    gap: 15px;
   }
-  
-  .modern-title {
-    font-size: 2.5rem;
+  .stats-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: left;
   }
-  
-  .blob-1 {
-    width: 350px;
-    height: 350px;
-  }
-  
-  .modern-profile-pic {
-    width: 300px;
-    height: 380px;
+  .social-links-modern {
+    margin-left: 0;
   }
 }
