@@ -2,13 +2,16 @@
 .projects-section {
   position: relative;
   width: 100%;
-  min-height: 100vh; /* Make sure it takes full height */
-  padding: 10px 20px;
-  background: transparent !important;
+  min-height: 110vh;
+  /* Keeping it light/white to match the reference image style */
+  background-color: #ffffff; 
   display: flex;
-  align-items: center; /* Vertically center everything */
   justify-content: center;
-  margin-top: 400px; 
+  align-items: center;
+  padding: 50px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  
 }
 
 /* 2. The Layout Wrapper (Splits screen in half) */
@@ -19,6 +22,8 @@
   width: 100%;
   max-width: 1500px; /* Constraints width */
   margin: 0 auto;
+  flex-direction: row;
+  
   
 }
 
@@ -28,14 +33,14 @@
     text-align: left; /* Aligns text to the left */
     padding-left: 1px;
     z-index: 2;
-    margin-top: -980px;
+    margin-top: -400px;
   }
 
 .projects-title {
   font-size: 7rem;
   font-weight: 800;
   color: #6a0dad; /* Purple Title */
-  margin-bottom: 1rem;
+  margin-bottom: -20000rem;
   line-height: 1.1;
   text-shadow: 0 0 10px rgba(106, 13, 173, 0.3);
 }
@@ -53,8 +58,9 @@
   justify-content: center; /* Centers the stack within the right half */
   align-items: center;
   position: relative;
-  height: 700px; /* Height for the animation area */
+  height: 100px; /* Height for the animation area */
   z-index: 10;
+   padding-top: 900px; 
 }
 
 /* 5. Card Styles */
