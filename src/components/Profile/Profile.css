@@ -1,58 +1,90 @@
-
+/* 1. Fix the container to fill the screen */
 .profile-section {
   position: relative;
-  background: linear-gradient(100deg, #dfd3e2, #fefeff);
-  font-family: 'Segoe UI', sans-serif; width: 100%;
-  height: 100vh;
+  /* Remove overflow:hidden so it doesn't clip the view */
+  /* Remove background-color */
+  background: transparent !important; /* Crucial fix */
+  min-height: 90vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  position: relative;
-  overflow: hidden;
-  color: white;
+  justify-content: center;
+  padding: 2rem;
 }
 
 
+/* 2. Background positioning stays the same */
+.iridescence-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* 3. Ensure content is visible */
+.content-wrapper,
+.profile-header,
+.background-shape {
+  position: relative;
+  z-index: 1;
+}
+
+.modal-overlay {
+  z-index: 1000;
+}
+
+/* 4. Fix the Flex Layout */
 .profile-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
+  gap: 4rem; /* Better spacing between text and image */
+  width: 100%;
+  max-width: 1200px; /* Prevent it from stretching too wide */
+  margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
 .profile-intro {
-  flex: 8;
+  flex: 1; /* Allow text to take available space */
+  min-width: 300px;
 }
 
+/* --- TEXT STYLES (Kept mostly same) --- */
 .intro-greeting {
-  font-size: 1.5rem;
-  color: #000000;
+  font-size: 1.8rem;
+  color: #ffffff;
   margin-bottom: 0.3rem;
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 5rem; /* Made slightly bigger */
   font-weight: 700;
   margin: 0.2rem 0;
-  color: #222;
+  color: #000000;
+  line-height: 1.2;
 }
 
 .highlight {
-  color: #6a0dad;
+  color: #ffffff;
 }
 
 .subtitle {
   font-size: 1.5rem;
-  margin: 0.5rem 0 1rem;
+  margin: 0.5rem 0 1.5rem;
   color: #6a0dad;
 }
 
+.social-links {
+  margin-bottom: 2rem;
+}
+
 .social-links a {
-  margin-right: 1rem;
-  font-size: 1.5rem;
+  margin-right: 1.5rem;
+  font-size: 1.8rem;
   color: #333;
   transition: color 0.3s;
 }
@@ -63,32 +95,31 @@
 
 .cta-button {
   display: inline-block;
-  margin-top: 1.5rem;
   background-color: #6a0dad;
   color: #fff;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
   border-radius: 30px;
   font-weight: 600;
   text-decoration: none;
   transition: background-color 0.3s ease;
+  box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
 }
 
 .cta-button:hover {
   background-color: #7f39ff;
+  transform: translateY(-2px);
 }
 
-
+/* 5. FIX THE IMAGE POSITIONING (Crucial) */
 .profile-image {
-  position: relative;         
-  width: 250px;                
-  height: 250px;
-   left: 100px; 
-   top: -90px;    
-  margin: 60px auto 0;          
+  position: relative;
+  width: 400px;  /* Slightly larger */
+  height: 400px;
+  /* REMOVED the 'left', 'top', and negative margins that were breaking it */
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  flex-shrink: 0; /* Prevents image from squishing */
 }
 
 .profile-pic {
@@ -96,13 +127,16 @@
   height: 100%;
   border-radius: 50%;
   border: 6px solid white;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  object-fit: cover; /* Ensures image doesn't stretch weirdly */
 }
 
+/* --- ORBIT BUTTONS --- */
 .orbit-btn {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
+   font-size: 2.2rem; 
   background-color: #6a0dad;
   color: #fff;
   border-radius: 50%;
@@ -113,254 +147,55 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   top: 50%;
   left: 50%;
-  margin: -25px;              
-  transform-origin: 165px 0;    
-  animation: orbit 8s linear infinite;
+  margin: -25px;
+  /* Adjusted radius slightly for better look */
+  transform-origin: 180px 0; 
+  animation: orbit 12s linear infinite; /* Slowed down slightly for elegance */
+  z-index: 5;
 }
 
 .orbit1 { animation-delay: 0s; }
-.orbit2 { animation-delay: 2s; }
-.orbit3 { animation-delay: 4s; }
-.orbit4 { animation-delay: 6s; }
+.orbit2 { animation-delay: 3s; }
+.orbit3 { animation-delay: 6s; }
+.orbit4 { animation-delay: 9s; }
 
 @keyframes orbit {
-  from { transform: rotate(0deg) translateX(165px) rotate(0deg); }
-  to   { transform: rotate(360deg) translateX(165px) rotate(-360deg); }
+  from { transform: rotate(0deg) translateX(240px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(240px) rotate(-360deg); }
 }
 
-.orbit-btn:hover {
-  transform: scale(1.2);
-  background-color: #7f39ff;
-}
 
-.background-shape {
-  position: absolute;
-  z-index: 0;
-  opacity: 0.3;
-  border-radius: 50%;
-  filter: blur(60px);
-}
-
-.shape-one {
-  width: 300px;
-  height: 300px;
-  background: #6a0dad;
-  top: -60px;
-  right: -80px;
-}
-
-.shape-two {
-  width: 250px;
-  height: 250px;
-  background: #6a0dad;
-  bottom: -60px;
-  left: -60px;
-}
-
-@media (max-width: 768px) {
+/* --- RESPONSIVE FIX --- */
+@media (max-width: 968px) {
   .profile-header {
-    flex-direction: column;
+    flex-direction: column-reverse; /* Puts image on top on mobile */
     text-align: center;
+    gap: 3rem;
   }
 
   .profile-image {
-    width: 180px;
-    height: 180px;
-    margin: 40px auto 0;
+    width: 200px;
+    height: 200px;
   }
-
+  
   .orbit-btn {
+    transform-origin: 130px 0; 
     width: 40px;
     height: 40px;
     font-size: 1.2rem;
-    animation-duration: 8s;
-    transform-origin: 115px 0;
   }
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(40, 0, 70, 0.45);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  backdrop-filter: blur(6px);
-}
-
-.modal-content {
-  background: linear-gradient(145deg, #fdfbff 0%, #ede1ff 100%);
-  padding: 2rem;
-  border-radius: 18px;
-  text-align: center;
-  box-shadow: 0 8px 28px rgba(70, 0, 120, 0.25);
-  max-width: 420px;
-  width: 90%;
-  position: relative;
-  transition: all 0.4s ease-in-out;
-}
-
-.modal-close-btn {
-  margin-top: 1.5rem;
-  padding: 0.6rem 1.5rem;
-  background: linear-gradient(90deg, #a56eff, #dba6ff);
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(160, 75, 255, 0.35);
-}
-
-.modal-close-btn:hover {
-  background: linear-gradient(90deg, #b388ff, #9c4eff);
-  transform: translateY(-2px);
-}
-
-.resume-card.glass-purple {
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(200, 150, 255, 0.35);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: #3a006a;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 6px 25px rgba(170, 80, 255, 0.2);
-  text-align: center;
-  animation: fadeIn 0.6s ease-in-out;
-  transition: all 0.4s ease;
-}
-
-.resume-title {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-  color: #5d2dbd;
-  text-shadow: 0 0 10px rgba(173, 118, 255, 0.3);
-}
-
-.resume-body {
-  background: rgba(245, 235, 255, 0.7);
-  padding: 18px;
-  border-radius: 14px;
-  margin-bottom: 20px;
-  box-shadow: inset 0 0 12px rgba(190, 110, 255, 0.15);
-}
-
-.resume-body p {
-  margin: 10px 0;
-  font-size: 1rem;
-  letter-spacing: 0.4px;
-  color: #3d0066;
-  font-weight: 500;
-}
-
-.resume-download-btn {
-  background: linear-gradient(90deg, #ce49f0 0%, #e7a9ff 100%);
-  color: #fff;
-  font-weight: 700;
-  padding: 12px 28px;
-  border-radius: 14px;
-  text-decoration: none;
-  display: inline-block;
-  box-shadow: 0 4px 16px rgba(140, 80, 255, 0.4);
-  transition: all 0.3s ease;
-}
-
-.resume-download-btn:hover {
-  background: linear-gradient(90deg, #cba9ff 0%, #a874ff 100%);
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 0 25px rgba(170, 100, 255, 0.5);
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
+  
+  @keyframes orbit {
+    from { transform: rotate(0deg) translateX(130px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(130px) rotate(-360deg); }
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .social-links {
+    justify-content: center;
+    display: flex;
   }
-}
-
-.resume-card.glass-purple {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #3a004c;
-  padding: 30px;
-  border-radius: 18px;
-  text-align: center;
-  box-shadow: 0 8px 25px rgba(150, 50, 255, 0.25);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.resume-card.glass-purple:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 35px rgba(180, 110, 255, 0.6);
-}
-
-.resume-title {
-  color: #6b21a8;
-  text-shadow: 0 0 10px rgba(205, 155, 255, 0.6);
-}
-
-.resume-body {
-  background: rgba(255, 255, 255, 0.35);
-  padding: 16px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.resume-body p {
-  color: #333;
-  font-weight: 500;
-}
-.resume-download-btn {
-  background: linear-gradient(90deg, #a855f7 0%, #9333ea 100%);
-  color: #fff;
-  font-weight: 600;
-  padding: 10px 24px;
-  border-radius: 10px;
-  text-decoration: none;
-  display: inline-block;
-  box-shadow: 0 4px 15px rgba(150, 50, 255, 0.4);
-  transition: 0.3s ease;
-}
-
-.resume-download-btn:hover {
-  background: linear-gradient(90deg, #c084fc 0%, #a855f7 100%);
-  transform: translateY(-3px);
-  box-shadow: 0 0 25px rgba(150, 50, 255, 0.5);
-}
-
-.api-card {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(180, 110, 255, 0.3);
-  border-radius: 15px;
-  padding: 25px;
-  box-shadow: 0 5px 18px rgba(150, 50, 255, 0.25);
-  color: #3a004c;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.api-card:hover {
-  transform: scale(1.02);
-}
-
-
-@keyframes floatLabel {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-.orbit-btn:hover::after {
-  animation: floatLabel 2s ease-in-out infinite;
+  
+  .social-links a {
+    margin: 0 0.8rem;
+  }
 }

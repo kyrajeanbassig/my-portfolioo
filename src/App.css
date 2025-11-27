@@ -1,38 +1,41 @@
 
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
-
-* {
-  box-sizing: border-box;
+/* 1. Position the animation behind EVERYTHING */
+.global-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -999; /* Furthest back */
+  pointer-events: none; /* Let mouse clicks pass through */
+  overflow: hidden;
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #222;
-  background-color: #fefefe;
+/* 2. Make the main containers transparent */
+html, body, #root, .App {
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
+  background-color: transparent !important; /* CRITICAL: Overrides white default */
   min-height: 100vh;
-  align-items: center;
-  overflow-x: hidden;
 }
 
-
+/* 3. Keep your container styles, but make them 'Glass' */
 .container {
   max-width: 1100px;
   width: 100%;
   padding: 30px 20px;
-  display: flex;
-  gap: 60px;
-  background: white;
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  backdrop-filter: blur(10px);
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
 }
 
+* {
+  box-sizing: border-box;
+}
 
 .left-content {
   flex: 1;
@@ -40,7 +43,6 @@ body {
   flex-direction: column;
   justify-content: center;
 }
-
 h1 {
   font-family: 'Georgia', serif;
   font-size: 3.5rem;
@@ -237,45 +239,6 @@ p {
 
   .stats {
     justify-content: center;
-  }
-}
-.orbit-btn {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background: #6a0dad; 
-  font-size: 1.5rem;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(106, 13, 173, 0.6); 
-  animation: spin 6s linear infinite;
-  user-select: none;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.orbit-btn:hover {
-  transform: scale(1.2);
-  background-color: #7f39ff;
-}
-
-.orbit1 { top: -70px; left: 50%; transform-origin: 0 0; }
-.orbit2 { top: 50%; left: -70px; transform-origin: 0 0; }
-.orbit3 { bottom: -70px; left: 50%; transform-origin: 0 0; }
-
-@keyframes spin {
-  0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
-}
-
-@media (max-width: 768px) {
-  .orbit-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-    animation: spin 8s linear infinite;
   }
 }
 

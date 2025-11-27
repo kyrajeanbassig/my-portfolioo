@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Profile.css";
 import profile from "../../assets/download.jpg";
 
+
 function Profile() {
   const [content, setContent] = useState("");
   const [showModal, setShowModal] = useState(false);
@@ -20,11 +21,7 @@ function Profile() {
               <p><strong>Course:</strong> BS in Information Technology</p>
               <p><strong>Goal:</strong> To apply my skills in web development and system management.</p>
             </div>
-            <a
-              href="/KyraJean_Resume.pdf"
-              download
-              className="resume-download-btn"
-            >
+            <a href="/KyraJean_Resume.pdf" download className="resume-download-btn">
               ⬇ Download Resume
             </a>
           </div>
@@ -71,19 +68,17 @@ function Profile() {
 
   return (
     <section id="profile" className="profile-section">
-      <div className="background-shape shape-one"></div>
-      <div className="background-shape shape-two"></div>
+      
 
-      <div className="profile-header">
+      <div className="profile-header content-wrapper">
         <div className="profile-intro">
           <p className="intro-greeting">Hello,</p>
           <h1 className="title">
             I am <span className="highlight">Kyra Jean Bassig</span>
-            <span className="wave"> 👋</span>
+           
           </h1>
           <h2 className="subtitle">BSIT Student</h2>
 
-          {/* UPDATED SOCIAL ICONS — HORIZONTAL */}
           <div className="social-links">
             <a href="https://www.facebook.com/kyrajeannn" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-facebook-f"></i>

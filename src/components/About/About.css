@@ -1,39 +1,32 @@
-body {
-  margin: 0;
-  padding: 0;
-
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-
+/* 1. Make the container transparent so global background shows */
 .about-section {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
-
- 
-  background: linear-gradient(100deg, #dfd3e2, #fefeff);
-  font-family: 'Segoe UI', sans-serif;
-
+  padding: 40px 0;
+  background: transparent !important; /* Forces transparency */
   display: flex;
   justify-content: center;
   align-items: center;
-
-  color: #333;
 }
 
+/* 2. Remove the blobs (::before/::after) if they look messy, 
+   or set their opacity very low */
+.about-section::before, 
+.about-section::after {
+  display: none; /* Hides the purple blobs so Iridescence shows */
+}
 
- 
+/* Optional: You can keep these blobs, or remove them if 
+   you want PURE global background. I lowered opacity so they blend better. */
 .about-section::before,
 .about-section::after {
   content: "";
   position: absolute;
   border-radius: 50%;
   filter: blur(60px);
-  opacity: 0.35;
+  opacity: 0.2; /* Lowered opacity to blend with Iridescence */
   z-index: 0;
+  pointer-events: none;
 }
 
 .about-section::before {
@@ -51,76 +44,82 @@ body {
   bottom: -60px;
   left: -60px;
 }
+
+
+/* 3. The Card itself - GLASS EFFECT */
 .about-container {
   display: flex;
   flex-direction: row-reverse;
   align-items: stretch;
-  max-width: 1200px;
   width: 85%;
-  background: linear-gradient(100deg, #e0c3fc, #e199f3);
+  max-width: 1200px;
+  
+  /* GLASSMOPHISM: This makes it look like frosted glass over the animation */
+  background: rgba(255, 255, 255, 0.6); 
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  
   border-radius: 20px;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   z-index: 2;
-  animation: fadeInUp 1s ease-in-out;
+  margin-bottom: 50px;
 }
-
 .about-image {
   flex: 0.4;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  background-color: transparent;
+  background: rgba(255, 255, 255, 0.2); /* Slight tint for image side */
 }
-
 .about-image img {
   width: 280px;
   height: 280px;
   object-fit: cover;
   border-radius: 50%;
-  border: 6px solid white;
+  border: 6px solid rgba(255, 255, 255, 0.8);
   box-shadow: 0 6px 12px rgba(112, 28, 101, 0.15);
 }
 
+/* 4. Ensure text area is transparent */
 .about-text {
   flex: 1;
-  padding: 5rem;
+  padding: 4rem;
+  background: transparent; /* Changed from white */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: white;
-  text-align: left;
-  border-radius: 0 10px 20px 0;
 }
 
 .section-label {
   color: #6a0dad;
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 0rem;
   font-size: 2rem;
   text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
 }
 
 .about-title {
   font-size: 2.5rem;
   font-weight: 900;
-  color: #333;
+  color: #222;
   margin-bottom: 0.3rem;
 }
 
 .about-subtitle {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #555;
+  color: #4a148c; /* Darker purple for better contrast on glass */
   margin-bottom: 1.5rem;
 }
 
 .about-description {
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.9;
-  color: #444;
+  color: #1a1a1a; /* Darker text for readability */
   margin-bottom: 2rem;
+  font-weight: 500;
 }
 
 .about-buttons {
@@ -133,27 +132,31 @@ body {
   border-radius: 10px;
   font-weight: 900;
   text-decoration: none;
-  transition: 0.9s ease;
+  transition: 0.3s ease;
+  cursor: pointer;
 }
 
 .primary-btn {
   background: #6a0dad;
   color: white;
+  box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
 }
 
 .primary-btn:hover {
   background: #580c9e;
+  transform: translateY(-2px);
 }
 
 .secondary-btn {
   border: 2px solid #6a0dad;
   color: #6a0dad;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .secondary-btn:hover {
   background: #6a0dad;
   color: white;
+  transform: translateY(-2px);
 }
 
 @keyframes fadeInUp {
@@ -167,21 +170,36 @@ body {
   }
 }
 
- 
+@media (max-width: 900px) {
+  .about-text {
+    padding: 3rem;
+  }
+}
+
 @media (max-width: 768px) {
   .about-container {
     flex-direction: column-reverse;
     flex-wrap: nowrap;
+    width: 95%; /* Wider on mobile */
   }
 
   .about-text {
-    padding: 3rem;
+    padding: 2.5rem 1.5rem;
     text-align: center;
     border-radius: 0 0 20px 20px;
+  }
+  
+  .about-image {
+    padding: 2rem 1rem;
+    background: transparent;
   }
 
   .about-image img {
     width: 180px;
     height: 180px;
+  }
+  
+  .about-buttons {
+    justify-content: center;
   }
 }

@@ -5,9 +5,7 @@
   overflow: hidden;
   font-family: 'Segoe UI', sans-serif;
   
-  
-  background: linear-gradient(100deg, #dfd3e2 0%, #fefeff 60%, #ffffff 100%);
-  
+ background: transparent; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,12 +19,7 @@
 
 .skills-section::before,
 .skills-section::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.35;
-  z-index: 0;
+  display: none;
 }
 
 .skills-section::before {
@@ -46,24 +39,67 @@
 }
 
 
+/* 4. Ensure titles are visible */
 .skills-title {
-  font-size: 3.8rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: #ab39ce;
-  margin-bottom: 5rem;
-  text-align: center;
-  animation: fadeInUp 1s ease-out forwards;
-  z-index: 1;
+  color: #fffefe; /* Dark text */
+  margin-bottom: 3rem;
+  text-transform: uppercase;
 }
-
 .skills-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  z-index: 1;
+  display: flex;           /* 👈 CSS Magic: aligns items in a row */
+  flex-wrap: wrap;         /* Wraps items to the next line on small screens */
+  justify-content: center; /* Centers the items in the middle */
+  gap: 30px;               /* Adds space between the bubbles */
+  
+  max-width: 1500px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 40px;
+  
+  /* Glass effect backing */
+  background: rgba(255, 255, 255, 0.15); 
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* 2. The Cards: Ensure they are circles and centered */
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  width: 140px;       /* Fixed width */
+  height: 140px;      /* Fixed height makes it a circle */
+  border-radius: 50%; /* Circle shape */
+  
+  /* Glass effect for individual bubbles */
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  
+  color: #333; /* Icon/Text color */
+  transition: transform 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+.skill-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  background: rgba(255, 255, 255, 0.5); /* Brighter on hover */
+}
+.skill-card i {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.skill-card span {
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
 .skill-circle {
   background: #ce8ceb;
   color: white;
