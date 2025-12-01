@@ -13,7 +13,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px 20px;
+   padding: 80px 20px;
   font-family: 'Segoe UI', sans-serif;
   overflow: hidden;
 }
@@ -24,8 +24,9 @@
   align-items: center;
   justify-content: space-between; 
   width: 100%;
-  max-width: 1500px; 
+  max-width: 1400px; 
   margin: 0 auto;
+  gap: 60px; 
   flex-direction: row;
 }
 
@@ -58,14 +59,14 @@
 
 /* 4. RIGHT SIDE: Animation Wrapper */
 .swap-wrapper {
-  flex: 1; 
-  display: flex;
-  justify-content: center; 
-  align-items: center;
+  flex: 1;
   position: relative;
-  height: 600px; /* Increased height to fit cards */
-  z-index: 10;
-  /* padding-top removed to let flexbox center it */
+  /* Height is crucial for absolute stacking */
+  height: 10px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
 }
 
 /* 5. Card Styles (Dark Glass) */
@@ -96,7 +97,7 @@
   width: 100%;
   height: 250px; 
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 1px;
   margin-bottom: 1rem; 
   background: rgba(0,0,0,0.3);
   border: 1px solid rgba(255, 255, 255, 0.1);
