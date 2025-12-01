@@ -3,6 +3,7 @@
    ========================================= */
 
 /* ... (Keep your top container styles the same) ... */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
 .about-modern-section {
   position: relative;
   width: 100%;
@@ -83,12 +84,13 @@
 }
 
 .modern-heading {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #f4b256; 
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
+  font-family: 'Segoe UI', sans-serif; /* Keep simple sans for "Hello" */
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #f4b256; /* Your Gold Color */
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+  text-transform: capitalize; /* "Hello," instead of uppercase */
 }
 
 .modern-title {

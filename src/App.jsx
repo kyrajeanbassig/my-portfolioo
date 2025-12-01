@@ -33,7 +33,7 @@ function App() {
         {/* 2. BACKGROUND SECTION 
             The color/gradient is now handled entirely by .global-background in App.css
         */}
-        <div className="global-background"></div>
+        
 
         <Header darkMode={darkMode} setDarkMode={setDarkMode} />
 

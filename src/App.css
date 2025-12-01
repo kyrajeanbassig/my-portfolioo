@@ -1,33 +1,22 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
 /* =========================================
-   1. COLOR PALETTE (From Roadmap Image)
+   1. COLOR PALETTE
    ========================================= */
 :root {
-  --bg-dark: #22030d;           /* Deep Burgundy */
+  --bg-dark: #22030d;
   --bg-gradient: radial-gradient(circle at 50% 30%, #4a0e24, #22030d);
-  --glass-bg: rgba(30, 5, 15, 0.65); /* Dark transparent background */
-  --glass-border: rgba(233, 44, 120, 0.3); /* Pinkish border */
+  --glass-bg: rgba(30, 5, 15, 0.65);
+  --glass-border: rgba(233, 44, 120, 0.3);
   --text-main: #ffffff;
   --text-muted: #e0d0d5;
-  --accent-gold: #f4b256;       /* Gold/Mustard */
-  --accent-pink: #e92c78;       /* Hot Pink */
+  --accent-gold: #f4b256;
+  --accent-pink: #e92c78;
   --accent-pink-hover: #c41e60;
-  
-  /* Theme Variables for consistency across files */
-  --theme-bg: #22030d;
-  --theme-bg-gradient: radial-gradient(circle at 50% 30%, #4a0e24, #22030d);
-  --theme-glass: rgba(30, 5, 10, 0.65);
-  --theme-text-main: #ffffff;
-  --theme-text-muted: #e0d0d5;
-  --theme-gold: #f4b256;
-  --theme-pink: #e92c78;
-  --theme-pink-hover: #c41e60;
-  --theme-border: rgba(244, 178, 86, 0.3);
 }
 
 /* =========================================
-   2. GLOBAL RESET & BACKGROUND
+   2. GLOBAL SEAMLESS BACKGROUND (The Fix)
    ========================================= */
 * {
   box-sizing: border-box;
@@ -38,83 +27,61 @@
 html, body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
-  background-color: var(--bg-dark); /* Fallback color */
+
+  /* This locks the gradient in place so it never "cuts off" */
+  background: var(--bg-gradient);
+  background-attachment: fixed; 
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  
   color: var(--text-main);
   font-family: 'Segoe UI', sans-serif;
-  min-height: 100vh;
-}
-
-/* This is the container behind everything */
-.global-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1; 
-  /* The Burgundy Gradient */
-  background: var(--bg-gradient);
 }
 
 #root, .App {
   width: 100%;
   min-height: 100vh;
-  /* Ensure React containers are transparent so bg shows through */
+  position: relative;
+  /* Ensure the app container is invisible */
   background-color: transparent !important; 
 }
 
 /* =========================================
-   3. GLASS CONTAINER (The "Card")
+   3. UNIVERSAL TRANSPARENCY (Fixes the Lines)
    ========================================= */
+/* This forces every main section to show the body gradient */
+section, 
+div[class*="section"], 
+.about-modern-section, 
+.skills-modern-section, 
+.projects-section, /* Assuming you have this class */
 .container {
-  max-width: 1100px;
-  width: 100%;
-  padding: 40px;
-  margin: 0 auto;
-  
-  /* Dark Glass Style */
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-
-  /* Layout */
-  display: flex;
-  align-items: center;
-  gap: 40px;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
 }
 
 /* =========================================
-   4. TYPOGRAPHY
+   4. TYPOGRAPHY & BUTTONS
    ========================================= */
-h1 {
-  font-family: 'Georgia', serif;
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 0.2em;
-  color: var(--text-main);
-}
+h1 { font-family: 'Georgia', serif; font-size: 3.5rem; color: var(--text-main); }
+h2 { font-size: 1.5rem; color: var(--accent-gold); text-transform: uppercase; }
+p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; }
 
-h2 {
-  font-weight: 600;
-  font-size: 1.5rem;
-  margin: 0 0 20px 0;
-  color: var(--accent-gold); /* Gold Heading */
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.btn-primary {
+  background-color: var(--accent-pink);
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-
-p {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  max-width: 480px;
-  margin-bottom: 1.8em;
-  line-height: 1.6;
-}
-
+.btn-primary:hover { transform: translateY(-2px); background-color: var(--accent-pink-hover); }
 /* =========================================
    5. BUTTONS (Pink & Transparent)
    ========================================= */

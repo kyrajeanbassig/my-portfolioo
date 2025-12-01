@@ -3,18 +3,14 @@
    Palette: Burgundy (#22030d), Pink (#e92c78), Gold (#f4b256)
    ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap');
-/* --- Main Section Layout --- */
 .skills-modern-section {
-  position: relative;
+ position: relative;
   width: 100%;
-  min-height: 100vh;
-  background: transparent !important; 
+  padding: 40px 20px;
+  background: transparent !important; /* Allow global background */
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 80px 20px;
-  font-family: 'Segoe UI', sans-serif;
-  overflow: hidden;
 }
 
 /* --- Vivid Background Blobs --- */
@@ -303,18 +299,14 @@
    Palette: Burgundy (#22030d), Pink (#e92c78), Gold (#f4b256)
    ========================================= */
 
-/* --- Main Section Layout --- */
 .skills-modern-section {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  background: transparent !important; 
+  padding: 40px 20px;
+  background: transparent !important; /* Allow global background */
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 80px 20px;
-  font-family: 'Segoe UI', sans-serif;
-  overflow: hidden;
 }
 
 /* --- Vivid Background Blobs --- */

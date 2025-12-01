@@ -1,106 +1,145 @@
+:root {
+  --bg-color: #1a0b1c; /* Dark background from image */
+  --line-color: #c98a58; /* Brownish/Gold line color */
+  --beam-color: #ff00ff; /* The moving beam color */
+  --center-gradient: linear-gradient(135deg, #d53f8c, #6b46c1);
+}
+
 .spider-container {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 500px; /* Adjust height as needed */
+  background-color: var(--bg-color);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  padding: 20px;
+  overflow: hidden;
+  font-family: sans-serif;
 }
 
-.spider-lines {
+/* --- SVG Lines Layer --- */
+.spider-svg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
   pointer-events: none;
-}
-
-.beam-line, .beam-line-final {
-  fill: none;
-  stroke: #6a0dad;
-  stroke-width: 2;
-  stroke-dasharray: 10;
-  animation: dash 30s linear infinite;
-  opacity: 0.4;
-}
-
-.beam-line-final {
-  stroke: #ff00ff;
-  stroke-width: 3;
-}
-
-@keyframes dash {
-  to { stroke-dashoffset: -1000; }
-}
-
-.icon-group {
-  display: flex;
-  flex-direction: column;
   z-index: 1;
-  gap: 15px;
 }
 
-.left-group {
-  justify-content: center;
-  margin-left: 20px;
+/* The faint background line connecting icons */
+.connector-line {
+  stroke: var(--line-color);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 5;
+  opacity: 0.3;
 }
 
-.center-group {
+/* The moving beam of light */
+.active-beam {
+  stroke: var(--beam-color);
+  stroke-width: 3;
+  stroke-linecap: round;
+  fill: none;
+  /* 
+     dasharray: length of beam (50), length of gap (1000) 
+     This creates a single short line segment
+  */
+  stroke-dasharray: 50 1000; 
+  stroke-dashoffset: 1000; /* Start hidden */
+  opacity: 0;
+  animation: shootBeam 3s linear infinite;
+  filter: drop-shadow(0 0 5px #ff00ff);
+}
+
+/* --- Animation Keyframes --- */
+@keyframes shootBeam {
+  0% {
+    stroke-dashoffset: 50; /* Start at the icon */
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -250; /* End at the center */
+    opacity: 0;
+  }
+}
+
+/* --- Icons Layer --- */
+.icon-container {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none; /* Let clicks pass through empty space */
 }
 
-.right-group {
-  margin-right: 20px;
-}
-
-.spider-circle {
-  width: 50px;
-  height: 50px;
-  background: white;
-  border-radius: 50%;
+/* Common Circle Styles */
+.circle-node {
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  background: #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%); /* Center the div on its coordinate */
+  pointer-events: auto;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.circle-node:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+  z-index: 10;
+}
+
+/* Outer Tech Icons */
+.outer-node {
+  width: 60px;
+  height: 60px;
+  font-size: 1.8rem;
   color: #333;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  border: 1px solid #eee;
-  transition: transform 0.3s ease;
-}
-
-.spider-circle:hover {
-  transform: scale(1.1);
-  color: #6a0dad;
-  border-color: #6a0dad;
-}
-
-.center-circle {
-  width: 70px;
-  height: 70px;
-  font-size: 2rem;
-  color: #000;
-  border: 2px solid #000;
-}
-
-.user-circle {
-  background: #6a0dad;
+  border: 2px solid var(--line-color);
+  background: #111; /* Dark inner background */
   color: white;
-  border: none;
 }
 
-@media (max-width: 768px) {
-  .spider-container {
-    transform: scale(0.8);
-    padding: 0;
-  }
+/* Center User Icon */
+.center-node {
+  width: 90px;
+  height: 90px;
+  font-size: 3rem;
+  background: var(--center-gradient);
+  color: white;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 30px rgba(213, 63, 140, 0.4);
+  z-index: 5;
+}
+
+/* Glow effect behind center */
+.center-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background: rgba(213, 63, 140, 0.2);
+  border-radius: 50%;
+  z-index: 0;
+  animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.2; }
 }
