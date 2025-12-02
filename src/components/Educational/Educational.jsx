@@ -1,41 +1,18 @@
-import React from "react";
-import "./Educational.css"; // Imports the CSS you provided
-import {
-  FaUserGraduate,
-  FaSchool,
-  FaBirthdayCake,
-  FaTransgender,
-  FaFlag,
-  FaLanguage,
-} from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import "./Educational.css";
+import { supabase } from "../../supabaseClient";
+import { FaUserGraduate, FaSchool, FaBirthdayCake, FaTransgender, FaFlag, FaLanguage } from "react-icons/fa";
 
 function Educational() {
-  const educationData = [
-    {
-      icon: <FaUserGraduate className="edu-icon" />,
-      school: "La Consolacion University Philippines",
-      level: "BSIT (2021 – Present)",
-      details: "With Honors • Running for Cum Laude",
-    },
-    {
-      icon: <FaSchool className="edu-icon" />,
-      school: "St. Mary Academy of Hagonoy",
-      level: "Senior High – STEM Strand (2019 – 2021)",
-      details: "With Honors",
-    },
-    {
-      icon: <FaSchool className="edu-icon" />,
-      school: "Ramona S. Trillana High School",
-      level: "High School (2015 – 2019)",
-      details: "With Honors",
-    },
-    {
-      icon: <FaSchool className="edu-icon" />,
-      school: "Mercado Elementary School",
-      level: "Elementary (2009 – 2015)",
-      details: "With Honors",
-    },
-  ];
+  const [educationList, setEducationList] = useState([]);
+
+  useEffect(() => {
+    const fetchEducation = async () => {
+      const { data } = await supabase.from('education').select('*').order('id', { ascending: true });
+      if (data) setEducationList(data);
+    };
+    fetchEducation();
+  }, []);
 
   const personalData = [
     { icon: <FaBirthdayCake className="info-icon" />, label: "Date of Birth", value: "October 4, 2003" },
@@ -47,30 +24,30 @@ function Educational() {
 
   return (
     <section className="edu-container">
-      {/* Decorative Background */}
       <div className="wave-bg"></div>
 
-      {/* --- Education Section --- */}
       <div className="edu-text">
         <h2>Educational Background</h2>
-        <p>My academic journey reflects growth, achievement, and a commitment to excellence.</p>
+        <p>My academic journey fetched from database.</p>
       </div>
 
       <div className="edu-cards">
-        {educationData.map((edu, index) => (
-          <div key={index} className="edu-card glass-purple">
-            {edu.icon}
+        {educationList.length > 0 ? educationList.map((edu) => (
+          <div key={edu.id} className="edu-card glass-purple">
+            <FaSchool className="edu-icon" />
             <h3>{edu.school}</h3>
-            <p className="level">{edu.level}</p>
-            <p className="details">{edu.details}</p>
+            <p className="level">{edu.degree}</p>
+            <p className="details">{edu.year}</p>
+            {edu.description && <small>{edu.description}</small>}
           </div>
-        ))}
+        )) : (
+          <p style={{color:'white'}}>Loading...</p>
+        )}
       </div>
 
-      {/* --- Personal Info Section --- */}
       <div className="personal-text">
         <h2>Personal Information</h2>
-        <p>Get to know me better through a few key details.</p>
+        <p>Get to know me better.</p>
       </div>
 
       <div className="personal-cards">
