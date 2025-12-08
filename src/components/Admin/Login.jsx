@@ -1,86 +1,89 @@
 import React, { useState } from 'react';
-import { supabase } from '../../supabaseClient'; // Make sure this path points to your client file
+import { supabase } from '../../supabaseClient'; 
 import { useNavigate } from 'react-router-dom';
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import './Login.css'; 
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(""); 
+  const [showPassword, setShowPassword] = useState(false); 
+  
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+    setErrorMsg(""); 
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
     if (error) {
-      alert("Login failed: " + error.message);
+      setErrorMsg(error.message);
       setLoading(false);
     } else {
-      // Login successful, go to dashboard
       navigate('/admin/dashboard');
     }
   };
 
-  // Simple Inline Styles to match your dark theme
-  const containerStyle = {
-    minHeight: '80vh',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'white'
-  };
-
-  const formStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '15px',
-    width: '300px',
-    padding: '30px',
-    background: 'rgba(0,0,0,0.5)',
-    borderRadius: '10px',
-    border: '1px solid #e92c78' // Pink border
-  };
-
-  const inputStyle = {
-    padding: '12px',
-    borderRadius: '5px',
-    border: '1px solid #555',
-    background: '#22030d',
-    color: 'white'
-  };
-
   return (
-    <div style={containerStyle}>
-      <h2 style={{ marginBottom: '20px', color: '#f4b256' }}>Admin Access</h2>
-      
-      <form onSubmit={handleLogin} style={formStyle}>
-        <input 
-          type="email" 
-          placeholder="Enter Admin Email" 
-          value={email}
-          onChange={(e) => setEmail(e.target.value)} 
-          style={inputStyle}
-          required
-        />
-        <input 
-          type="password" 
-          placeholder="Password" 
-          value={password}
-          onChange={(e) => setPassword(e.target.value)} 
-          style={inputStyle}
-          required
-        />
+    <div className="login-page">
+
+      <div className="login-blob blob-top"></div>
+      <div className="login-blob blob-bottom"></div>
+
+      <div className="login-card">
+        <h2 className="login-title">Admin Access</h2>
+        <p className="login-subtitle">Welcome back, Kyra.</p>
         
-        <button type="submit" className="btn-primary" disabled={loading}>
-          {loading ? 'Logging in...' : 'Login'}
-        </button>
-      </form>
+     
+        {errorMsg && <div className="error-msg">⚠️ {errorMsg}</div>}
+
+        <form onSubmit={handleLogin}>
+          
+    
+          <div className="input-group">
+            <FaEnvelope className="input-icon" />
+            <input 
+              type="email" 
+              className="modern-input"
+              placeholder="Admin Email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} 
+              required
+            />
+          </div>
+
+       
+          <div className="input-group">
+            <FaLock className="input-icon" />
+            <input 
+              type={showPassword ? "text" : "password"} 
+              className="modern-input"
+              placeholder="Password" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} 
+              required
+            />
+    
+            <button 
+              type="button" 
+              className="toggle-password"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
+          
+          <button type="submit" className="login-btn" disabled={loading}>
+            {loading ? 'Authenticating...' : 'Enter Dashboard'}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

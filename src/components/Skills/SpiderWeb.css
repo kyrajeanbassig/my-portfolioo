@@ -1,23 +1,14 @@
-:root {
-  --bg-color: #1a0b1c; /* Dark background from image */
-  --line-color: #c98a58; /* Brownish/Gold line color */
-  --beam-color: #ff00ff; /* The moving beam color */
-  --center-gradient: linear-gradient(135deg, #d53f8c, #6b46c1);
-}
 
 .spider-container {
   position: relative;
-  width: 100%;
-  height: 500px; /* Adjust height as needed */
-  background-color: var(--bg-color);
+  width: 500px;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  font-family: sans-serif;
 }
 
-/* --- SVG Lines Layer --- */
+
 .spider-svg {
   position: absolute;
   top: 0;
@@ -25,121 +16,111 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
 }
 
-/* The faint background line connecting icons */
 .connector-line {
-  stroke: var(--line-color);
-  stroke-width: 1.5;
-  stroke-dasharray: 5 5;
-  opacity: 0.3;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
 }
 
-/* The moving beam of light */
 .active-beam {
-  stroke: var(--beam-color);
-  stroke-width: 3;
+  stroke: url(#beamGradient);
+  stroke-width: 2;
   stroke-linecap: round;
   fill: none;
-  /* 
-     dasharray: length of beam (50), length of gap (1000) 
-     This creates a single short line segment
-  */
-  stroke-dasharray: 50 1000; 
-  stroke-dashoffset: 1000; /* Start hidden */
-  opacity: 0;
-  animation: shootBeam 3s linear infinite;
-  filter: drop-shadow(0 0 5px #ff00ff);
+  animation: beamMove 3s infinite;
 }
 
-/* --- Animation Keyframes --- */
-@keyframes shootBeam {
-  0% {
-    stroke-dashoffset: 50; /* Start at the icon */
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    stroke-dashoffset: -250; /* End at the center */
-    opacity: 0;
-  }
+@keyframes beamMove {
+  0% { stroke-dasharray: 0, 300; stroke-dashoffset: 0; opacity: 0; }
+  20% { opacity: 1; }
+  100% { stroke-dasharray: 100, 300; stroke-dashoffset: -300; opacity: 0; }
 }
 
-/* --- Icons Layer --- */
+
 .icon-container {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2;
-  pointer-events: none; /* Let clicks pass through empty space */
 }
 
-/* Common Circle Styles */
-.circle-node {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  border-radius: 50%;
-  transform: translate(-50%, -50%); /* Center the div on its coordinate */
-  pointer-events: auto;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
-.circle-node:hover {
-  transform: translate(-50%, -50%) scale(1.15);
-  z-index: 10;
-}
-
-/* Outer Tech Icons */
-.outer-node {
-  width: 60px;
-  height: 60px;
-  font-size: 1.8rem;
-  color: #333;
-  border: 2px solid var(--line-color);
-  background: #111; /* Dark inner background */
-  color: white;
-}
-
-/* Center User Icon */
-.center-node {
-  width: 90px;
-  height: 90px;
-  font-size: 3rem;
-  background: var(--center-gradient);
-  color: white;
-  border: 4px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 30px rgba(213, 63, 140, 0.4);
-  z-index: 5;
-}
-
-/* Glow effect behind center */
 .center-glow {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(233, 44, 120, 0.4), transparent 70%);
   transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-  background: rgba(213, 63, 140, 0.2);
-  border-radius: 50%;
   z-index: 0;
-  animation: pulse 3s infinite ease-in-out;
+  pointer-events: none;
 }
 
-@keyframes pulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.2; }
+
+.circle-node {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  
+
+  background: #22030d;
+  border: 2px solid; 
+  border-radius: 50%;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+
+
+  transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+
+.circle-node .icon-wrapper {
+  font-size: 2rem;
+  pointer-events: none;
+  display: flex;
+}
+
+
+.is-outer:hover {
+  transform: translate(-50%, -50%) scale(1.1) !important;
+  background: #3b0918;
+  border-color: #fff !important;
+  z-index: 5 !important;
+}
+
+
+.is-active {
+  background: radial-gradient(circle at 30% 30%, #e92c78, #6a0dad);
+  box-shadow: 0 0 30px rgba(233, 44, 120, 0.6);
+  color: white !important; 
+}
+
+.is-active .icon-wrapper {
+  font-size: 2.5rem; 
+}
+
+
+.node-label {
+  position: absolute;
+  bottom: -30px;
+  background: #f4b256;
+  color: #22030d;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.circle-node:hover .node-label {
+  opacity: 1;
 }

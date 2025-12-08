@@ -1,27 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./About2.css";
-// Make sure to adjust the path to your image if needed
-import aboutImage from "../../assets/download.jpg"; 
+import { supabase } from "../../supabaseClient"; // Ensure path is correct
+import defaultImage from "../../assets/download.jpg"; // Fallback image
 
 function About2() {
+  const [aboutData, setAboutData] = useState({
+    greeting: "About Me",
+    title: "Kyra Jean Bassig",
+    description: "Loading bio...",
+    image_url: null
+  });
+
+  useEffect(() => {
+    const fetchAboutData = async () => {
+      const { data, error } = await supabase
+        .from('about')
+        .select('*')
+        .maybeSingle();
+
+      if (error) {
+        console.error("Error fetching about:", error);
+      } else if (data) {
+        setAboutData(data);
+      }
+    };
+
+    fetchAboutData();
+  }, []);
+
   return (
     <div className="about2-page">
-      {/* Optional: Page Title if needed */}
-      {/* <h1 className="page-title">About Me</h1> */}
-
       <section id="about2" className="about2-section">
         <div className="about2-container">
           
           {/* Left Side: Text Content */}
           <div className="about2-text">
-            <h3 className="section-label">About Me</h3>
-            <h1 className="about2-title">Kyra Jean Bassig</h1>
+            {/* Map Greeting (e.g. "About Me") */}
+            <h3 className="section-label">{aboutData.greeting || "About Me"}</h3>
+            
+            {/* Map Title (e.g. "Kyra Jean Bassig") */}
+            <h1 className="about2-title">{aboutData.title}</h1>
+            
             <h2 className="about2-subtitle">BSIT Student</h2>
+            
+            {/* Map Description */}
             <p className="about2-description">
-              I am a passionate Bachelor of Science in Information Technology student,
-              eager to apply and enhance my skills in programming, networking, and system
-              administration. My goal is to gain real-world experience while contributing
-              positively with adaptability, teamwork, and a strong willingness to learn.
+              {aboutData.description}
             </p>
 
             <div className="about2-buttons">
@@ -32,7 +56,13 @@ function About2() {
 
           {/* Right Side: Image */}
           <div className="about2-image">
-            <img src={aboutImage} alt="Kyra Jean Bassig" loading="lazy" />
+            <img 
+              // Use DB image if exists, otherwise default
+              src={aboutData.image_url || defaultImage} 
+              alt={aboutData.title} 
+              loading="lazy" 
+              onError={(e) => {e.target.src = defaultImage}} // Safety fallback
+            />
           </div>
           
         </div>

@@ -1,19 +1,19 @@
-/* --- ADMIN LAYOUT (Sidebar + Main Content) --- */
+
 .admin-container {
   display: flex;
   min-height: 100vh;
-  background-color: #22030d; /* Deep Burgundy Base */
+  background-color: #22030d; 
   font-family: 'Segoe UI', sans-serif;
   color: white;
   position: relative;
-  z-index: 10; /* Ensure it sits on top of global backgrounds */
+  z-index: 10; 
 }
 
-/* --- SIDEBAR --- */
+
 .admin-sidebar {
   width: 260px;
   background: rgba(20, 5, 10, 0.95);
-  border-right: 1px solid rgba(233, 44, 120, 0.2); /* Faint Pink Line */
+  border-right: 1px solid rgba(233, 44, 120, 0.2);
   display: flex;
   flex-direction: column;
   padding: 30px 20px;
@@ -28,7 +28,7 @@
 .admin-logo {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #f4b256; /* Gold */
+  color: #f4b256; 
   margin-bottom: 50px;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -67,7 +67,7 @@
 }
 
 .nav-item.active {
-  background: linear-gradient(90deg, #e92c78, #c41e60); /* Pink Gradient */
+  background: linear-gradient(90deg, #e92c78, #c41e60); 
   color: white;
   box-shadow: 0 4px 15px rgba(233, 44, 120, 0.4);
 }
@@ -88,9 +88,8 @@
   color: white;
 }
 
-/* --- MAIN CONTENT AREA --- */
 .admin-main {
-  margin-left: 260px; /* Offset for sidebar */
+  margin-left: 260px; 
   flex: 1;
   padding: 40px;
   background-image: radial-gradient(circle at 20% 20%, rgba(233, 44, 120, 0.15), transparent 40%);
@@ -112,7 +111,7 @@
   color: transparent;
 }
 
-/* --- THE GLASS CARD (Form Container) --- */
+
 .content-card {
   background: rgba(30, 10, 20, 0.7);
   backdrop-filter: blur(15px);
@@ -125,14 +124,13 @@
 }
 
 .form-section h3 {
-  color: #f4b256; /* Gold Title */
+  color: #f4b256; 
   margin-bottom: 25px;
   font-size: 1.4rem;
   border-left: 4px solid #e92c78;
   padding-left: 15px;
 }
 
-/* --- INPUTS --- */
 .form-group {
   margin-bottom: 20px;
 }
@@ -148,7 +146,7 @@
 input, textarea {
   width: 100%;
   padding: 15px;
-  background: #0f0205; /* Very dark background */
+  background: #0f0205; 
   border: 1px solid #444;
   color: white;
   border-radius: 8px;
@@ -169,11 +167,11 @@ textarea {
   min-height: 120px;
 }
 
-/* --- SAVE BUTTON --- */
+
 .btn-save {
   width: 100%;
   padding: 15px;
-  background: linear-gradient(90deg, #f4b256, #d4953c); /* Gold Gradient */
+  background: linear-gradient(90deg, #f4b256, #d4953c); 
   border: none;
   color: #22030d;
   font-size: 1.1rem;
@@ -191,7 +189,7 @@ textarea {
   box-shadow: 0 5px 20px rgba(244, 178, 86, 0.4);
 }
 
-/* --- ADD NEW ITEMS BOX --- */
+
 .add-box {
   background: rgba(233, 44, 120, 0.05);
   border: 1px dashed rgba(233, 44, 120, 0.4);
@@ -207,7 +205,7 @@ textarea {
   margin-bottom: 10px;
 }
 
-/* --- LIST ITEMS --- */
+
 .admin-list li {
   background: rgba(255, 255, 255, 0.03);
   padding: 15px 20px;
@@ -239,7 +237,7 @@ textarea {
   background: #ff5555;
   color: white;
 }
-/* --- PROJECTS GRID (Admin) --- */
+
 .projects-grid-admin {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -291,7 +289,7 @@ textarea {
 }
 
 .edit-btn {
-  background: #3b82f6; /* Blue */
+  background: #3b82f6; 
   color: white;
   border: none;
   border-radius: 4px;

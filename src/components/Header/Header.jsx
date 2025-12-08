@@ -10,13 +10,12 @@ function Header() {
     <header className="glass-header-container">
       <div className="glass-navbar">
         
-        {/* 1. Logo Section */}
+
         <Link to="/" className="logo-container" onClick={() => setMobileMenuOpen(false)}>
           <span className="logo-icon">💼</span>
           <span className="logo-text">My Portfolio</span>
         </Link>
 
-        {/* 2. Desktop Navigation */}
         <nav className={`nav-menu ${mobileMenuOpen ? "open" : ""}`}>
           <ul>
             <li>
@@ -67,7 +66,7 @@ function Header() {
           </ul>
         </nav>
 
-        {/* 3. Mobile Hamburger Button */}
+
         <div 
           className={`hamburger ${mobileMenuOpen ? "open" : ""}`} 
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

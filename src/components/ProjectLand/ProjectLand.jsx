@@ -11,11 +11,10 @@ const ProjectLand = () => {
     window.scrollTo(0, 0);
 
     const fetchProjects = async () => {
-      // Fetch projects from Supabase
       const { data } = await supabase
         .from('projects')
         .select('*')
-        .order('id', { ascending: false }); // Newest first
+        .order('id', { ascending: false }); 
       
       if (data) setProjects(data);
     };
@@ -37,8 +36,7 @@ const ProjectLand = () => {
         {projects.map((project) => (
           <div className="land-card" key={project.id}>
             <div className="land-image-wrapper">
-              {/* DIRECT URL USAGE */}
-              {/* This works for both "/assets/img.jpg" AND "https://supabase..." */}
+          
               <img 
                 src={project.image_url} 
                 alt={project.title} 
@@ -50,7 +48,7 @@ const ProjectLand = () => {
               <h3>{project.title}</h3>
               <p>{project.description}</p>
               <div className="land-tags">
-                {/* Check if tags is an array before mapping */}
+         
                 {Array.isArray(project.tags) && project.tags.map((tag, i) => (
                   <span key={i} className="tag">{tag}</span>
                 ))}

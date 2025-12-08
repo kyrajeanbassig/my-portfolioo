@@ -4,47 +4,62 @@ import { supabase } from "../../supabaseClient";
 import SplitText from "../SplitText/SplitText"; 
 import defaultProfile from "../../assets/download.jpg"; 
 
+import myResume from "../../assets/Bassig - Resume.pdf";
+
 function Profile() {
-  // Default State (Fallback data in case DB fails)
+
+  const techStack = ["React", "Supabase", "HTML/CSS", "JavaScript", "Figma", "Git", "MySQL"];
+  const certificates = [
+    "Dean's Lister (2021-Present)",
+    "Microsoft Office Specialist - Excel",
+    "Cisco Packet Tracer Networking",
+    "Introduction to Cybersecurity"
+  ];
+  const softSkills = ["Adaptability", "Teamwork", "Problem Solving", "Leadership", "Communication"];
+
+
   const [profileData, setProfileData] = useState({
-    full_name: "Kyra Jean Bassig", // Default Name
-    role: "BSIT Student",          // Default Role
+    full_name: "Kyra Jean Bassig", 
+    role: "BSIT Student",          
     bio: "I am a passionate IT student...",
     github_link: "#",
     linkedin_link: "#",
-    resume_url: "/KyraJean_Resume.pdf"
+    resume_url: myResume 
   });
   
   const [email, setEmail] = useState("kyrajeanbassig@gmail.com");
   const [content, setContent] = useState("");
   const [showModal, setShowModal] = useState(false);
 
+
   useEffect(() => {
     const fetchData = async () => {
       console.log("Fetching Profile Data...");
 
-      // 1. Fetch Profile
       const { data: profile, error: profileError } = await supabase
         .from('profile')
         .select('*')
-        .single();
+        .maybeSingle();
 
       if (profileError) {
         console.error("Error fetching profile:", profileError.message);
       } else if (profile) {
-        console.log("Profile Data Loaded:", profile);
-        setProfileData(profile);
+        setProfileData(prev => ({
+          ...prev,
+          full_name: profile.full_name || prev.full_name,
+          role: profile.role || prev.role,
+          bio: profile.bio || prev.bio,
+          github_link: profile.github_link || prev.github_link,
+          linkedin_link: profile.linkedin_link || prev.linkedin_link,
+        }));
       }
 
-      // 2. Fetch Contact Email
-      const { data: contact, error: contactError } = await supabase
+      const { data: contact } = await supabase
         .from('contact_info')
         .select('email')
-        .single();
+        .maybeSingle();
 
-      if (contactError) {
-        console.error("Error fetching contact:", contactError.message);
-      } else if (contact) {
+      if (contact && contact.email) {
         setEmail(contact.email);
       }
     };
@@ -52,22 +67,78 @@ function Profile() {
     fetchData();
   }, []);
 
+
   const handleClick = (type) => {
-    if (type === "resume") {
-      setContent(
-        <div className="resume-card glass-purple">
-          <h2 className="resume-title">📘 Profile Summary</h2>
-          <div className="resume-body">
-            <p><strong>Name:</strong> {profileData.full_name}</p>
-            <p><strong>Role:</strong> {profileData.role}</p>
-            <p className="bio-preview">{profileData.bio}</p>
+    switch (type) {
+      case "resume":
+        setContent(
+          <div className="resume-card glass-purple">
+            <h2 className="resume-title">📘 Profile Summary</h2>
+            <div className="resume-body">
+              <p><strong>Name:</strong> {profileData.full_name}</p>
+              <p><strong>Role:</strong> {profileData.role}</p>
+              <p className="bio-preview">{profileData.bio}</p>
+            </div>
+            <a 
+              href={profileData.resume_url} 
+              download="Bassig - Resume.pdf" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="resume-download-btn"
+            >
+              ⬇ Download Resume
+            </a>
           </div>
-          <a href={profileData.resume_url} download target="_blank" rel="noreferrer" className="resume-download-btn">
-            ⬇ Download Resume
-          </a>
-        </div>
-      );
-      setShowModal(true);
+        );
+        setShowModal(true);
+        break;
+
+      case "skills": 
+        setContent(
+          <div className="api-card">
+            <h2>🧩 Tech Stack</h2>
+            <p>Tools & Technologies I use:</p>
+            <div className="tags-container">
+              {techStack.map((tech, index) => (
+                <span key={index} className="skill-tag">{tech}</span>
+              ))}
+            </div>
+          </div>
+        );
+        setShowModal(true);
+        break;
+
+      case "certs": 
+        setContent(
+          <div className="api-card">
+            <h2>🧾 Certificates & Awards</h2>
+            <ul className="cert-list">
+              {certificates.map((cert, index) => (
+                <li key={index}>🏆 {cert}</li>
+              ))}
+            </ul>
+          </div>
+        );
+        setShowModal(true);
+        break;
+
+      case "soft": 
+        setContent(
+          <div className="api-card">
+             <h2>✨ Soft Skills</h2>
+             <p>Values I bring to the team:</p>
+             <div className="soft-grid">
+               {softSkills.map((skill, index) => (
+                 <div key={index} className="soft-item">✦ {skill}</div>
+               ))}
+             </div>
+          </div>
+        );
+        setShowModal(true);
+        break;
+
+      default:
+        break;
     }
   };
 
@@ -96,7 +167,7 @@ function Profile() {
           <h2 className="subtitle">{profileData.role}</h2>
 
           <div className="social-links">
-            <a href="https://www.facebook.com/kyrajeannn"><i className="fab fa-facebook-f"></i></a>
+            <a href="https://www.facebook.com/kyrajeannn" target="_blank" rel="noreferrer"><i className="fab fa-facebook-f"></i></a>
             <a href={profileData.github_link} target="_blank" rel="noreferrer"><i className="fab fa-github"></i></a>
             <a href={profileData.linkedin_link} target="_blank" rel="noreferrer"><i className="fab fa-linkedin-in"></i></a>
             <a href={`mailto:${email}`}><i className="fas fa-envelope"></i></a>
@@ -107,10 +178,12 @@ function Profile() {
 
         <div className="profile-image">
           <img src={defaultProfile} alt="Profile" className="profile-pic" />
+          
+    
           <div className="orbit-btn orbit1" onClick={() => handleClick("resume")}>📘</div>
-          <div className="orbit-btn orbit2">🧩</div>
-          <div className="orbit-btn orbit3">🧾</div>
-          <div className="orbit-btn orbit4">✨</div>
+          <div className="orbit-btn orbit2" onClick={() => handleClick("skills")}>🧩</div>
+          <div className="orbit-btn orbit3" onClick={() => handleClick("certs")}>🧾</div>
+          <div className="orbit-btn orbit4" onClick={() => handleClick("soft")}>✨</div>
         </div>
       </div>
       

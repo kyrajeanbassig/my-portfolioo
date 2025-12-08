@@ -29,7 +29,7 @@ const CardNav = ({
     if (isMobile) {
       const contentEl = navEl.querySelector('.card-nav-content');
       if (contentEl) {
-        // Create temp clone to measure height invisibly
+     
         const clone = contentEl.cloneNode(true);
         clone.style.visibility = 'hidden';
         clone.style.position = 'absolute';
@@ -40,10 +40,10 @@ const CardNav = ({
         const contentHeight = clone.scrollHeight;
         document.body.removeChild(clone);
 
-        return contentHeight + 80; // 60px topbar + 20px padding
+        return contentHeight + 80; 
       }
     }
-    return 260; // Desktop height
+    return 260; 
   };
 
   const createTimeline = () => {
@@ -115,7 +115,7 @@ const CardNav = ({
       <nav ref={navRef} className={`card-nav ${isExpanded ? 'open' : ''}`} style={{ backgroundColor: baseColor }}>
         <div className="card-nav-top">
           
-          {/* Hamburger */}
+
           <div
             className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''}`}
             onClick={toggleMenu}
@@ -128,12 +128,12 @@ const CardNav = ({
             <div className="hamburger-line" />
           </div>
 
-          {/* Logo */}
+
           <div className="logo-container">
             {typeof logo === 'string' ? <img src={logo} alt={logoAlt} className="logo" /> : logo}
           </div>
 
-          {/* CTA Button */}
+     
           <Link
             to="/contact"
             className="card-nav-cta-button"
@@ -143,7 +143,7 @@ const CardNav = ({
           </Link>
         </div>
 
-        {/* Expanded Cards */}
+
         <div className="card-nav-content" aria-hidden={!isExpanded}>
           {(items || []).slice(0, 3).map((item, idx) => (
             <div
@@ -160,7 +160,7 @@ const CardNav = ({
                     className="nav-card-link" 
                     to={lnk.href}
                     aria-label={lnk.ariaLabel}
-                    onClick={toggleMenu} // Close menu when link clicked
+                    onClick={toggleMenu} 
                   >
                     <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
                     {lnk.label}

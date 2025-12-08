@@ -1,14 +1,8 @@
-/* =========================================
-   Projects.css - SWIPE/STACK SECTION
-   Palette: Burgundy (#22030d), Pink (#e92c78), Gold (#f4b256)
-   ========================================= */
 
-/* 1. Main Section */
 .projects-section {
   position: relative;
   width: 100%;
   min-height: 110vh;
-  /* Transparent so the global Burgundy gradient shows */
   background-color: transparent !important; 
   display: flex;
   justify-content: center;
@@ -18,7 +12,7 @@
  
 }
 
-/* 2. The Layout Wrapper */
+
 .projects-layout {
   display: flex;
   align-items: center;
@@ -30,38 +24,36 @@
   flex-direction: row;
 }
 
-/* 3. LEFT SIDE: Text Styling */
+
 .projects-text-side {
-  flex: 1; /* Standard flex value */
+  flex: 1;
   text-align: left; 
   padding-left: 20px;
   z-index: 2;
-  /* Adjusted margin for better vertical alignment */
   margin-top: -100px; 
 }
 
 .projects-title {
-  font-size: 6rem; /* Slightly reduced for better fit */
+  font-size: 6rem; 
   font-weight: 800;
-  color: #ffffff; /* White Title */
-  margin-bottom: 20px; /* Fixed the negative margin issue */
+  color: #ffffff; 
+  margin-bottom: 20px;
   line-height: 1.1;
-  text-shadow: 0 0 20px rgba(233, 44, 120, 0.4); /* Pink Glow */
+  text-shadow: 0 0 20px rgba(233, 44, 120, 0.4); 
 }
 
 .projects-subtitle {
   font-size: 1.4rem;
-  color: #f4b256; /* Gold Subtitle */
+  color: #f4b256; 
   margin-left: 5px;
   font-weight: 600;
   letter-spacing: 1px;
 }
 
-/* 4. RIGHT SIDE: Animation Wrapper */
+
 .swap-wrapper {
   flex: 1;
   position: relative;
-  /* Height is crucial for absolute stacking */
   height: 10px; 
   display: flex;
   justify-content: center;
@@ -69,14 +61,14 @@
   perspective: 1000px;
 }
 
-/* 5. Card Styles (Dark Glass) */
+
 .project-card {
-  /* Dark Burgundy Glass */
+
   background: rgba(30, 5, 10, 0.85); 
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   
-  /* Gold Border */
+
   border: 1px solid rgba(244, 178, 86, 0.3);
   border-radius: 15px;
   
@@ -90,7 +82,7 @@
 }
 
 .project-card:hover {
-  border-color: #e92c78; /* Pink Border on Hover */
+  border-color: #e92c78; 
 }
 
 .project-image-wrapper {
@@ -113,17 +105,17 @@
 .card-content h3 {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #f4b256; /* Gold Heading */
+  color: #f4b256;
   margin: 0 0 0.5rem 0;
 }
 
 .card-content p {
   font-size: 0.9rem;
-  color: #e0d0d5; /* Muted Pink/Grey Text */
+  color: #e0d0d5;
   line-height: 1.4;
 }
 
-/* Background Blobs (Updated Colors) */
+
 .projects-section::before,
 .projects-section::after {
   content: "";
@@ -134,7 +126,7 @@
   z-index: 0;
 }
 
-/* Pink Blob */
+
 .projects-section::before {
   width: 350px;
   height: 350px;
@@ -143,7 +135,7 @@
   right: 10%;
 }
 
-/* Gold Blob */
+
 .projects-section::after {
   width: 300px;
   height: 300px;
@@ -152,10 +144,10 @@
   left: 10%;
 }
 
-/* --- MOBILE RESPONSIVENESS --- */
+
 @media (max-width: 968px) {
   .projects-layout {
-    flex-direction: column; /* Stack vertically on phones */
+    flex-direction: column; 
     text-align: center;
   }
 

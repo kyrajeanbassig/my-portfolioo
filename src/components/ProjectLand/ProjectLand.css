@@ -1,23 +1,16 @@
-/* =========================================
-   ProjectLand.css - PROJECTS GALLERY GRID
-   Palette: Burgundy (#22030d), Pink (#e92c78), Gold (#f4b256)
-   ========================================= */
 
-/* --- Main Container --- */
 .project-land-section {
   width: 100%;
   min-height: 100vh;
   padding: 40px 20px;
-  /* Transparent so the global burgundy background shows through */
   background: transparent; 
   position: relative;
   z-index: 10;
   font-family: 'Segoe UI', sans-serif; 
-  /* Adjusted margin to clear fixed header */
   margin-top: 100px; 
 }
 
-/* --- HEADER SECTION --- */
+
 .land-header {
   max-width: 1200px;
   margin: 0 auto 60px;
@@ -32,27 +25,26 @@
 .land-header h1 {
   font-size: 3.5rem;
   font-weight: 800;
-  color: #ffffff; /* Pure White */
+  color: #ffffff; 
   margin-top: 20px;
   letter-spacing: -0.5px;
   text-transform: uppercase;
-  /* Pink Glow */
   text-shadow: 0 0 25px rgba(233, 44, 120, 0.6); 
 }
 
-/* --- BACK BUTTON --- */
+
 .back-btn {
   position: absolute;
   left: 0;
-  top: 10px; /* Aligns with the top of the container */
+  top: 10px; 
   
-  /* Dark Glass Button */
+
   background: rgba(30, 5, 10, 0.6);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   
-  border: 1px solid #f4b256; /* Gold Border */
-  color: #f4b256; /* Gold Text */
+  border: 1px solid #f4b256; 
+  color: #f4b256;
   
   padding: 10px 24px;
   border-radius: 30px;
@@ -68,8 +60,8 @@
 }
 
 .back-btn:hover {
-  background: #f4b256; /* Gold Fill */
-  color: #22030d; /* Dark Text */
+  background: #f4b256; 
+  color: #22030d; 
   transform: translateX(-5px);
   box-shadow: 0 0 15px rgba(244, 178, 86, 0.4);
 }
@@ -78,24 +70,24 @@
   font-size: 1rem;
 }
 
-/* --- GRID LAYOUT --- */
+
 .land-grid {
   display: grid;
-  /* Auto-responsive columns: Min width 320px */
+ 
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
   gap: 40px; 
   max-width: 1200px;
   margin: 0 auto 50px;
 }
 
-/* --- CARD DESIGN --- */
+
 .land-card {
-  /* Dark Burgundy Glass */
+
   background: rgba(30, 5, 10, 0.85);  
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   
-  /* Subtle Gold Border */
+
   border: 1px solid rgba(244, 178, 86, 0.3); 
   border-radius: 20px;
   overflow: hidden;
@@ -108,19 +100,19 @@
 
 .land-card:hover {
   transform: translateY(-10px);
-  border-color: #e92c78; /* Pink Border on Hover */
+  border-color: #e92c78; 
   box-shadow: 
     0 20px 40px rgba(0, 0, 0, 0.5), 
-    0 0 20px rgba(233, 44, 120, 0.3); /* Pink Glow */
+    0 0 20px rgba(233, 44, 120, 0.3); 
 }
 
-/* --- IMAGE WRAPPER --- */
+
 .land-image-wrapper {
   width: 100%;
-  height: 200px; /* Fixed height for consistency */
+  height: 200px; 
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: #000; /* Fallback */
+  background: #000;
 }
 
 .land-image-wrapper img {
@@ -134,7 +126,7 @@
   transform: scale(1.1);
 }
 
-/* --- CONTENT --- */
+
 .land-content {
   padding: 25px;
   flex-grow: 1;
@@ -145,19 +137,19 @@
 .land-content h3 {
   font-size: 1.4rem;
   font-weight: 700;
-  color: #f4b256; /* Gold Title */
+  color: #f4b256; 
   margin-bottom: 10px;
 }
 
 .land-content p {
   font-size: 0.95rem;
-  color: #e0d0d5; /* Muted Pink/Grey */
+  color: #e0d0d5; 
   line-height: 1.6;
   margin-bottom: 20px;
   flex-grow: 1; 
 }
 
-/* --- TAGS --- */
+
 .land-tags {
   display: flex;
   flex-wrap: wrap;
@@ -173,7 +165,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   
-  /* Default Tag Style */
+
   background: rgba(233, 44, 120, 0.1);
   border: 1px solid #e92c78;
   color: #ffffff;
@@ -181,22 +173,22 @@
 }
 
 .land-card:hover .tag {
-  background: #e92c78; /* Pink Fill */
+  background: #e92c78; 
   color: #fff;
   box-shadow: 0 0 10px rgba(233, 44, 120, 0.4);
 }
 
-/* --- RESPONSIVE HEADER FIX --- */
+
 @media (max-width: 900px) {
   .land-header {
-    flex-direction: column; /* Stack vertically on mobile */
-    align-items: flex-start; /* Align Left */
+    flex-direction: column; 
+    align-items: flex-start;
     gap: 20px;
   }
   
   .back-btn {
-    position: static; /* Remove absolute positioning */
-    transform: none; /* Remove centering transform */
+    position: static; 
+    transform: none; 
     margin-bottom: 10px;
   }
   
@@ -207,6 +199,6 @@
   }
   
   .land-grid {
-    grid-template-columns: 1fr; /* Single column on mobile */
+    grid-template-columns: 1fr; 
   }
 }

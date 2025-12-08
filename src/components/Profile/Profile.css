@@ -1,7 +1,4 @@
-/* =========================================
-   Profile.css - HERO & ORBIT SECTION
-   Theme: Burgundy, Pink, Gold
-   ========================================= */
+
 
 .profile-section {
   position: relative;
@@ -19,44 +16,41 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem; /* Reduced gap to give text more room */
+  gap: 2rem; 
   width: 100%;
   max-width: 1200px;
   position: relative;
   z-index: 2;
 }
 
-/* --- Left Side: Text --- */
+
 .profile-intro {
-  flex: 1.2; /* Give text side more width priority */
+  flex: 1.2; 
   min-width: 300px;
 }
 
 .intro-greeting {
   font-size: 1.8rem;
-  color: #f4b256; /* Gold */
+  color: #f4b256;
   margin-bottom: 0.5rem;
   font-weight: 600;
   letter-spacing: 1px;
 }
 
-/* --- FIXED TITLE SECTION --- */
+
 .title {
-  /* Reduced from 5rem to prevent wrapping */
   font-size: 4rem; 
   font-weight: 800;
   margin: 0.2rem 0;
   color: #ffffff;
   line-height: 1.1;
   text-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  
-  /* Ensures text doesn't break mid-word */
   white-space: normal; 
   word-wrap: break-word;
 }
 
 .highlight {
-  color: #e92c78; /* Pink Highlight */
+  color: #e92c78; 
   display: inline-block;
   text-shadow: 0 0 20px rgba(233, 44, 120, 0.4);
 }
@@ -64,13 +58,13 @@
 .subtitle {
   font-size: 1.3rem;
   margin: 1rem 0 2rem;
-  color: #e0d0d5; /* Muted Pink/Grey */
+  color: #e0d0d5; 
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
-/* --- Social Links --- */
+
 .social-links a {
   margin-right: 1.5rem;
   font-size: 1.8rem;
@@ -79,15 +73,14 @@
 }
 
 .social-links a:hover {
-  color: #e92c78; /* Pink */
+  color: #e92c78; 
   transform: translateY(-3px);
   text-shadow: 0 0 10px rgba(233, 44, 120, 0.6);
 }
 
-/* --- CTA Button --- */
 .cta-button {
   display: inline-block;
-  background-color: #e92c78; /* Pink */
+  background-color: #e92c78; 
   color: #fff;
   padding: 1rem 2.5rem;
   border-radius: 30px;
@@ -105,7 +98,7 @@
   box-shadow: 0 6px 25px rgba(233, 44, 120, 0.6);
 }
 
-/* --- Right Side: Image & Orbit --- */
+
 .profile-image {
   position: relative;
   width: 450px; 
@@ -120,14 +113,14 @@
   width: 350px; 
   height: 350px;
   border-radius: 50%;
-  border: 6px solid #f4b256; /* Gold Border */
+  border: 6px solid #f4b256; 
   box-shadow: 0 0 40px rgba(244, 178, 86, 0.3);
   object-fit: cover;
   z-index: 2;
   background: #1a050a; 
 }
 
-/* --- Orbiting Buttons --- */
+
 .orbit-btn {
   position: absolute;
   width: 60px;
@@ -167,12 +160,10 @@
   to   { transform: rotate(360deg) translateX(240px) rotate(-360deg); }
 }
 
-/* --- Responsive Layout Fixes --- */
 
-/* 1. Laptops/Smaller Desktops: Shrink text so it fits */
 @media (max-width: 1200px) {
   .title {
-    font-size: 3.5rem; /* Smaller font for laptops */
+    font-size: 3.5rem; 
   }
   .profile-image {
     width: 380px;
@@ -183,7 +174,7 @@
     height: 300px;
   }
   .orbit-btn {
-    transform-origin: 200px 0; /* Adjust orbit size */
+    transform-origin: 200px 0; 
   }
   @keyframes orbit {
     from { transform: rotate(0deg) translateX(200px) rotate(0deg); }
@@ -191,7 +182,7 @@
   }
 }
 
-/* 2. Tablets/Mobile: Stack vertically */
+
 @media (max-width: 968px) {
   .profile-header {
     flex-direction: column-reverse;
@@ -230,4 +221,67 @@
     justify-content: center;
     display: flex;
   }
+}
+
+.api-card {
+  text-align: center;
+  color: #fff;
+  padding: 10px;
+}
+
+.api-card h2 {
+  color: #f4b256; 
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+.api-card p {
+  color: #e0d0d5;
+  margin-bottom: 20px;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.skill-tag {
+  background: rgba(233, 44, 120, 0.2); 
+  border: 1px solid #e92c78;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+
+.cert-list {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+.cert-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.soft-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  text-align: left;
+}
+
+.soft-item {
+  color: #f4b256;
+  font-size: 1.1rem;
+  font-weight: 600;
 }

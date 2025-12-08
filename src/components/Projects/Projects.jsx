@@ -41,7 +41,7 @@ function Projects() {
               {projects.map((project) => (
                 <Card customClass="project-card" key={project.id}>
                   <div className="project-image-wrapper">
-                    {/* Direct Source Usage */}
+        
                     <img
                       src={project.image_url}
                       alt={project.title}

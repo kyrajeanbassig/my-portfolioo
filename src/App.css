@@ -1,8 +1,5 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
-/* =========================================
-   1. COLOR PALETTE
-   ========================================= */
 :root {
   --bg-dark: #22030d;
   --bg-gradient: radial-gradient(circle at 50% 30%, #4a0e24, #22030d);
@@ -15,9 +12,7 @@
   --accent-pink-hover: #c41e60;
 }
 
-/* =========================================
-   2. GLOBAL SEAMLESS BACKGROUND (The Fix)
-   ========================================= */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -31,7 +26,7 @@ html, body {
   min-height: 100vh;
   overflow-x: hidden;
 
-  /* This locks the gradient in place so it never "cuts off" */
+
   background: var(--bg-gradient);
   background-attachment: fixed; 
   background-position: center;
@@ -46,28 +41,22 @@ html, body {
   width: 100%;
   min-height: 100vh;
   position: relative;
-  /* Ensure the app container is invisible */
   background-color: transparent !important; 
 }
 
-/* =========================================
-   3. UNIVERSAL TRANSPARENCY (Fixes the Lines)
-   ========================================= */
-/* This forces every main section to show the body gradient */
+
 section, 
 div[class*="section"], 
 .about-modern-section, 
 .skills-modern-section, 
-.projects-section, /* Assuming you have this class */
+.projects-section, 
 .container {
   background: transparent !important;
   background-color: transparent !important;
   border: none !important;
 }
 
-/* =========================================
-   4. TYPOGRAPHY & BUTTONS
-   ========================================= */
+
 h1 { font-family: 'Georgia', serif; font-size: 3.5rem; color: var(--text-main); }
 h2 { font-size: 1.5rem; color: var(--accent-gold); text-transform: uppercase; }
 p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; }
@@ -82,9 +71,7 @@ p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; }
   transition: all 0.3s ease;
 }
 .btn-primary:hover { transform: translateY(-2px); background-color: var(--accent-pink-hover); }
-/* =========================================
-   5. BUTTONS (Pink & Transparent)
-   ========================================= */
+
 .btn-primary {
   background-color: var(--accent-pink);
   color: #fff;
@@ -121,9 +108,6 @@ p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; }
   color: var(--bg-dark);
 }
 
-/* =========================================
-   6. STATS & EXTRAS
-   ========================================= */
 .stats {
   display: flex;
   gap: 15px;
@@ -170,9 +154,7 @@ p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; }
   color: var(--accent-pink);
 }
 
-/* =========================================
-   7. RESPONSIVE
-   ========================================= */
+
 @media (max-width: 900px) {
   .container {
     flex-direction: column;

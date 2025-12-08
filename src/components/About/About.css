@@ -1,8 +1,4 @@
-/* =========================================
-   About.css - FIXED BUTTONS & ICONS
-   ========================================= */
 
-/* ... (Keep your top container styles the same) ... */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
 .about-modern-section {
   position: relative;
@@ -28,7 +24,7 @@
   z-index: 2;
 }
 
-/* --- Left Side: Blobs & Image --- */
+
 .about-image-wrapper {
   flex: 1;
   position: relative;
@@ -65,7 +61,7 @@
   animation: morph 10s ease-in-out infinite reverse;
 }
 
-/* --- Profile Pic --- */
+
 .modern-profile-pic {
   width: 400px;
   height: 500px;
@@ -77,20 +73,20 @@
   box-shadow: 0 0 30px rgba(244, 178, 86, 0.4);
 }
 
-/* --- Right Side: Content --- */
+
 .about-content-wrapper {
   flex: 1;
   padding-right: 20px;
 }
 
 .modern-heading {
-  font-family: 'Segoe UI', sans-serif; /* Keep simple sans for "Hello" */
+  font-family: 'Segoe UI', sans-serif; 
   font-size: 1.5rem;
   font-weight: 600;
-  color: #f4b256; /* Your Gold Color */
+  color: #f4b256;
   margin-bottom: 5px;
   letter-spacing: 1px;
-  text-transform: capitalize; /* "Hello," instead of uppercase */
+  text-transform: capitalize; 
 }
 
 .modern-title {
@@ -108,7 +104,7 @@
   margin-bottom: 3rem;
 }
 
-/* Stats Grid */
+
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -139,15 +135,15 @@
   color: #f4b256; 
 }
 
-/* --- UPDATED: Footer Buttons & Icons --- */
+
 .about-footer {
   display: flex;
   align-items: center;
   flex-wrap: wrap; 
-  gap: 20px; /* Space between "Contact" and "View More" */
+  gap: 20px;
 }
 
-/* Shared Button Styles */
+
 .modern-btn {
   padding: 12px 30px;
   border-radius: 30px;
@@ -160,10 +156,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  outline: none !important; /* Removes blue outline */
+  outline: none !important;
 }
 
-/* Contact Me (Pink) */
+
 .btn-pink {
   background-color: #e92c78;
   color: white;
@@ -175,26 +171,26 @@
   box-shadow: 0 8px 20px rgba(233, 44, 120, 0.6);
 }
 
-/* View More (Gold Outline) - FIXED */
+
 .btn-gold-outline {
   background-color: transparent;
-  border: 2px solid #f4b256; /* Ensure border exists */
-  color: #f4b256; /* Gold text */
+  border: 2px solid #f4b256; 
+  color: #f4b256; 
 }
 
 .btn-gold-outline:hover {
   background-color: #f4b256;
-  color: #22030d; /* Dark text on hover */
+  color: #22030d;
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(244, 178, 86, 0.4);
 }
 
 .btn-gold-outline:focus {
-  outline: none; /* Removes default blue browser outline */
+  outline: none;
   border-color: #f4b256;
 }
 
-/* --- FIXED SOCIAL ICONS VISIBILITY --- */
+
 .social-links-modern {
   display: flex;
   gap: 15px;
@@ -205,32 +201,29 @@
   width: 45px;
   height: 45px;
   
-  /* Make border lighter/visible */
+
   border: 2px solid rgba(255, 255, 255, 0.3); 
-  background-color: rgba(255,255,255,0.05); /* Slight fill */
+  background-color: rgba(255,255,255,0.05); 
   
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  /* Make Icon White */
   color: #ffffff; 
-  
   text-decoration: none;
   transition: all 0.3s ease;
   font-size: 1.2rem;
 }
 
 .social-links-modern a:hover {
-  background: #e92c78; /* Pink on hover */
+  background: #e92c78; 
   border-color: #e92c78;
   color: white;
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(233, 44, 120, 0.4);
 }
 
-/* Animation */
+
 @keyframes morph {
   0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
   100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }

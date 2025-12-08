@@ -1,4 +1,4 @@
-/* --- Container Fixed to Top --- */
+
 .card-nav-container {
   position: fixed;
   top: 1.5em;
@@ -11,7 +11,7 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* --- The Glass Bar --- */
+
 .card-nav {
   display: block;
   height: 60px;
@@ -32,7 +32,7 @@
   box-shadow: 0 15px 40px rgba(106, 13, 173, 0.15);
 }
 
-/* --- Top Bar (Logo + Hamburger) --- */
+
 .card-nav-top {
   position: absolute;
   top: 0;
@@ -46,7 +46,6 @@
   z-index: 2;
 }
 
-/* --- Hamburger Menu Icon --- */
 .hamburger-menu {
   height: 100%;
   display: flex;
@@ -75,7 +74,7 @@
   transform: translateY(-3.5px) rotate(-45deg);
 }
 
-/* --- Logo Area --- */
+
 .logo-container {
   position: absolute;
   left: 50%;
@@ -97,7 +96,7 @@
   gap: 8px;
 }
 
-/* --- CTA Button --- */
+
 .card-nav-cta-button {
   background: linear-gradient(135deg, #6a0dad, #ff00ff);
   color: white;
@@ -109,7 +108,7 @@
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   z-index: 10;
-  text-decoration: none; /* Because we might use it as a link */
+  text-decoration: none; 
   display: inline-block;
 }
 
@@ -119,7 +118,7 @@
   color: white;
 }
 
-/* --- Expanded Content (The Cards) --- */
+
 .card-nav-content {
   position: absolute;
   left: 0;
@@ -140,7 +139,6 @@
   pointer-events: auto;
 }
 
-/* --- Individual Cards --- */
 .nav-card {
   height: 100%;
   flex: 1;
@@ -196,7 +194,7 @@
   font-size: 1.1em;
 }
 
-/* --- Mobile Responsiveness --- */
+
 @media (max-width: 768px) {
   .card-nav-container {
     width: 95%;
@@ -224,6 +222,6 @@
   }
 
   .card-nav-cta-button {
-    display: none; /* Hide CTA on small screens */
+    display: none; 
   }
 }
