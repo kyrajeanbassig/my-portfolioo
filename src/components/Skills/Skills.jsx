@@ -7,44 +7,47 @@ import * as SiIcons from "react-icons/si";
 
 function Skills() {
   const [dbSkills, setDbSkills] = useState([]);
+  // Initial state is Loading, but we will fix it in useEffect
   const [description, setDescription] = useState("Loading...");
   const [activeId, setActiveId] = useState('user-center');
-
 
   const centerX = 250; 
   const centerY = 250; 
   const radius = 170; 
 
-
   useEffect(() => {
     const fetchData = async () => {
-
+      // 1. Fetch Skills Nodes
       const { data: skillsData } = await supabase
         .from('skills')
         .select('*')
         .order('id');
       if (skillsData) setDbSkills(skillsData);
 
-n
+      // 2. Fetch Description Text
       const { data: contentData } = await supabase
         .from('site_content')
         .select('content_text')
         .eq('section_key', 'skills_desc')
         .maybeSingle();
-      if (contentData) setDescription(contentData.content_text);
+
+      // FIXED: Check if data exists, otherwise use fallback text
+      if (contentData && contentData.content_text) {
+        setDescription(contentData.content_text);
+      } else {
+        setDescription("These are the tools that power my programming and web development workflow. They help me write clean, efficient code while creating responsive and user-centered designs.");
+      }
     };
+    
     fetchData();
   }, []);
 
-
   const nodes = useMemo(() => {
-
     const userNode = {
       id: 'user-center',
       name: 'About Me',
       icon_name: 'FaUser', 
     };
-
 
     const allNodes = [userNode, ...dbSkills];
 
@@ -55,14 +58,12 @@ n
       let x, y, scale, zIndex, isCenter;
 
       if (node.id === activeId) {
-
         x = centerX;
         y = centerY;
         scale = 1.4; 
         zIndex = 10;
         isCenter = true;
       } else {
-
         const index = outerNodes.indexOf(node);
         const totalOuter = outerNodes.length;
         const angle = (index / totalOuter) * 2 * Math.PI - Math.PI / 2;
@@ -73,7 +74,6 @@ n
         zIndex = 1;
         isCenter = false;
       }
-
 
       let IconComponent = FaIcons.FaCode; 
       if (node.icon_name === 'FaUser') IconComponent = FaUser;
@@ -91,18 +91,15 @@ n
 
       <div className="glass-panel">
         
-
         <div className="skills-text-wrapper">
           <h4 className="modern-heading">Expertise</h4>
           <h1 className="skills-main-title">My Skills & Tools</h1>
           <p className="skills-description">{description}</p>
         </div>
 
-
         <div className="spiderweb-wrapper">
           <div className="spiderweb-box">
             
-
             <svg className="spider-svg" viewBox="0 0 500 500">
               <defs>
                 <linearGradient id="beamGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -115,9 +112,7 @@ n
                 if (node.isCenter) return null;
                 return (
                   <g key={node.id}>
-
                     <line x1={node.x} y1={node.y} x2={centerX} y2={centerY} stroke="rgba(255,255,255,0.1)" strokeWidth="1" strokeDasharray="4 4" />
-
                     <path 
                       d={`M${node.x},${node.y} L${centerX},${centerY}`} 
                       className="active-beam"
@@ -128,19 +123,16 @@ n
               })}
             </svg>
 
-
             {nodes.map((node) => (
               <div 
                 key={node.id}
                 className={`skill-node ${node.isCenter ? 'is-active' : ''}`}
                 onClick={() => setActiveId(node.id)}
                 style={{
-         
                   left: node.x,
                   top: node.y,
                   transform: `translate(-50%, -50%) scale(${node.scale})`,
                   zIndex: node.zIndex,
-         
                   background: node.isCenter ? 'radial-gradient(circle at 30% 30%, #e92c78, #6a0dad)' : '#22030d',
                   borderColor: node.isCenter ? '#e92c78' : 'rgba(244, 178, 86, 0.6)'
                 }}
@@ -149,7 +141,6 @@ n
                   <node.IconComponent />
                 </div>
                 
-
                 <span className="skill-name" style={{ opacity: node.isCenter ? 1 : undefined, bottom: '-40px' }}>
                   {node.name}
                 </span>

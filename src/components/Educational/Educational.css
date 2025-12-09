@@ -36,13 +36,13 @@
   font-weight: 600;
 }
 .edu-card p, .edu-card span {
-  color: #d8b4fe; 
+  color: #e92f9c; 
   font-size: 0.95rem;
   line-height: 1.5;
 }
 .edu-icon, .info-icon {
   font-size: 2.5rem;
-  color: #d8b4fe; 
+  color: #e7e559; 
   margin-bottom: 15px;
   animation: float 3s ease-in-out infinite;
 }
@@ -57,12 +57,12 @@
   font-size: 2.5rem;
   color: #fff; 
   font-weight: 700;
-  text-shadow: 0 0 10px rgba(130, 50, 255, 0.5);
+  text-shadow: 0 0 10px rgba(214, 197, 44, 0.5);
   margin-top: 40px;
 }
 
 .edu-text p, .personal-text p {
-  color: #d8b4fe; 
+  color: #ebba53; 
   font-size: 1.1rem;
   margin-top: 10px;
 }
@@ -78,8 +78,8 @@
 
 .edu-card, .personal-card {
 
-  background: rgba(20, 10, 40, 0.6); 
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(53, 5, 19, 0.6); 
+  border: 2px solid   rgba(233, 190, 48, 0.2);
   border-radius: 20px;
   padding: 30px;
   width: 300px;
@@ -99,7 +99,7 @@
 }
 .personal-card p, 
 .personal-card span {
-  color: #d8b4fe !important;
+  color: #f0d14a !important;
   font-size: 1rem;
   font-weight: 400;
   margin-top: 10px;
@@ -107,14 +107,14 @@
 }
 .edu-card:hover, .personal-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 0 35px rgba(160, 75, 255, 0.4);
-  border-color: #ff00ff;
+  box-shadow: 0 0 35px rgba(236, 201, 43, 0.4);
+  border-color: #9e780f;
 }
 
 
 .edu-icon, .info-icon {
   font-size: 2.5rem;
-  color: #d8b4fe;
+  color: #e6ab53;
   margin-bottom: 15px;
   animation: float 3s ease-in-out infinite;
 }

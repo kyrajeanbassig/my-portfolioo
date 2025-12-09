@@ -1,0 +1,91 @@
+
+.hero-geo-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #030303; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+
+.hero-bg-grid {
+  position: absolute;
+  inset: 0;
+
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+
+  background-size: 50px 50px;
+  
+  z-index: 1;
+  opacity: 0.5;
+  
+
+  mask-image: radial-gradient(circle at center, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 100%);
+}
+
+
+.hero-bg-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(233, 44, 120, 0.1), transparent 60%);
+  z-index: 0;
+}
+
+
+.elegant-shape {
+  position: absolute;
+  border-radius: 9999px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  box-shadow: 
+    0 20px 50px -10px rgba(0, 0, 0, 0.5),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+    
+  overflow: hidden;
+  opacity: 0.9;
+}
+
+.elegant-shape::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), transparent 60%);
+  pointer-events: none;
+}
+
+
+.shape-1 { left: -15%; top: 15%; }
+.shape-2 { right: -10%; top: 65%; }
+.shape-3 { left: -5%; bottom: 5%; }
+.shape-4 { right: 10%; top: 5%; }
+.shape-5 { left: 30%; top: -10%; }
+
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 40%, #030303 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .shape-1 { left: -30%; top: 20%; width: 500px !important; }
+  .shape-2 { right: -20%; top: 70%; width: 400px !important; }
+}
