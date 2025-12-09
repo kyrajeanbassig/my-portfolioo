@@ -1,7 +1,7 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
 :root {
-  /* Updated Color Palette for Pink & Black */
+ 
   --bg-black: #030303;
   --text-main: #ffffff;
   --text-muted: #a1a1aa;
@@ -9,7 +9,7 @@
   --accent-pink: #e92c78;
   --accent-pink-hover: #c41e60;
   
-  /* Glass Variables */
+
   --glass-bg: rgba(20, 20, 20, 0.7);
   --glass-border: rgba(233, 44, 120, 0.2);
 }
@@ -27,38 +27,30 @@ html, body {
   min-height: 100vh;
   overflow-x: hidden;
 
-  /* 1. Set Deep Black Background */
+
   background-color: var(--bg-black); 
   
   color: var(--text-main);
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* =========================================
-   GLOBAL BACKGROUND LAYERING
-   ========================================= */
 
-/* The container that holds HeroGeometric */
 .global-geo-background {
-  position: fixed; /* Stays stuck to the screen */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 0; /* Behind everything */
-  pointer-events: none; /* Allows clicks to pass through to your buttons */
+  z-index: 0; 
+  pointer-events: none; 
 }
 
-/* The wrapper for Header, Profile, Projects, etc. */
+
 .app-content-wrapper {
   position: relative;
-  z-index: 1; /* Sits ON TOP of the shapes */
+  z-index: 1; 
   width: 100%;
 }
-
-/* =========================================
-   COMPONENT RESETS
-   ========================================= */
 
 #root, .App {
   width: 100%;
@@ -67,7 +59,7 @@ html, body {
   background: transparent !important; 
 }
 
-/* Ensure sections don't have their own backgrounds blocking the shapes */
+
 section, 
 div[class*="section"], 
 .about-modern-section, 
@@ -80,9 +72,7 @@ div[class*="section"],
   border: none !important;
 }
 
-/* =========================================
-   GLOBAL STYLES
-   ========================================= */
+
 
 h1 { font-family: 'Georgia', serif; font-size: 3.5rem; color: var(--text-main); }
 h2 { font-size: 1.5rem; color: var(--accent-gold); text-transform: uppercase; }
@@ -117,7 +107,6 @@ p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; }
   color: var(--accent-pink);
 }
 
-/* Scrollbar styling to match black theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
